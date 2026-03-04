@@ -38,16 +38,26 @@ function useHorizontalScroll() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  /* body縦スクロール無効化（デスクトップ時） */
+  useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflow = "";
+      return;
+    }
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, [isMobile]);
+
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
+    /* wheelイベントをdocumentレベルで捕捉し、deltaYを横スクロールに変換 */
     const handleWheel = (e: WheelEvent) => {
       if (isMobile) return;
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        el.scrollLeft += e.deltaY;
-      }
+      e.preventDefault();
+      const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+      el.scrollLeft += delta;
     };
 
     const handleScroll = () => {
@@ -64,10 +74,10 @@ function useHorizontalScroll() {
       }
     };
 
-    el.addEventListener("wheel", handleWheel, { passive: false });
+    document.addEventListener("wheel", handleWheel, { passive: false });
     el.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      el.removeEventListener("wheel", handleWheel);
+      document.removeEventListener("wheel", handleWheel);
       el.removeEventListener("scroll", handleScroll);
     };
   }, [isMobile]);
