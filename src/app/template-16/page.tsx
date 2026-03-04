@@ -30,6 +30,8 @@ function useHorizontalScroll() {
   const [scrollRatio, setScrollRatio] = useState(0);
   const [currentStage, setCurrentStage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const stageRef = useRef(0);          // wheel用の即時参照
+  const scrollingRef = useRef(false);   // 連続wheel抑制
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -48,16 +50,34 @@ function useHorizontalScroll() {
     return () => { document.body.style.overflow = ""; };
   }, [isMobile]);
 
+  const goToStage = useCallback((idx: number) => {
+    const el = containerRef.current;
+    if (!el) return;
+    const clamped = Math.max(0, Math.min(STAGES.length - 1, idx));
+    stageRef.current = clamped;
+    if (isMobile) {
+      const stageEls = el.querySelectorAll<HTMLElement>(".t16-stage");
+      stageEls[clamped]?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      el.scrollTo({ left: clamped * window.innerWidth, behavior: "smooth" });
+    }
+  }, [isMobile]);
+
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
-    /* wheelイベントをdocumentレベルで捕捉し、deltaYを横スクロールに変換 */
+    /* wheelでステージ単位移動（scroll-snapと競合しない） */
     const handleWheel = (e: WheelEvent) => {
       if (isMobile) return;
       e.preventDefault();
+      if (scrollingRef.current) return;
       const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
-      el.scrollLeft += delta;
+      if (Math.abs(delta) < 10) return;
+      scrollingRef.current = true;
+      const dir = delta > 0 ? 1 : -1;
+      goToStage(stageRef.current + dir);
+      setTimeout(() => { scrollingRef.current = false; }, 700);
     };
 
     const handleScroll = () => {
@@ -66,11 +86,13 @@ function useHorizontalScroll() {
         setScrollRatio(Math.min(1, Math.max(0, ratio)));
         const stage = Math.round(ratio * (STAGES.length - 1));
         setCurrentStage(Math.min(STAGES.length - 1, Math.max(0, stage)));
+        stageRef.current = Math.min(STAGES.length - 1, Math.max(0, stage));
       } else {
         const ratio = el.scrollLeft / (el.scrollWidth - el.clientWidth || 1);
         setScrollRatio(Math.min(1, Math.max(0, ratio)));
         const stage = Math.round(ratio * (STAGES.length - 1));
         setCurrentStage(Math.min(STAGES.length - 1, Math.max(0, stage)));
+        stageRef.current = Math.min(STAGES.length - 1, Math.max(0, stage));
       }
     };
 
@@ -80,20 +102,9 @@ function useHorizontalScroll() {
       document.removeEventListener("wheel", handleWheel);
       el.removeEventListener("scroll", handleScroll);
     };
-  }, [isMobile]);
+  }, [isMobile, goToStage]);
 
-  const scrollToStage = useCallback((idx: number) => {
-    const el = containerRef.current;
-    if (!el) return;
-    if (isMobile) {
-      const stageEls = el.querySelectorAll<HTMLElement>(".t16-stage");
-      stageEls[idx]?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      el.scrollTo({ left: idx * window.innerWidth, behavior: "smooth" });
-    }
-  }, [isMobile]);
-
-  return { containerRef, scrollRatio, currentStage, isMobile, scrollToStage };
+  return { containerRef, scrollRatio, currentStage, isMobile, scrollToStage: goToStage };
 }
 
 function useStageReveal(stageIndex: number, currentStage: number) {
