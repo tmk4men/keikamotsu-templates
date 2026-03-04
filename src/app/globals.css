@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/* ===================================================
+   共通ベーススタイル（全テンプレート共通）
+   テンプレ固有のスタイルは各 styles.css で定義
+   =================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 日本語の折り返し制御 */
+h1, h2, h3, h4, p, li, td, th, span, a {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* ===========================
+   ScrollReveal 共通
+   =========================== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
