@@ -16,6 +16,7 @@ import {
   Quicksand,
   Dancing_Script,
   Zen_Maru_Gothic,
+  DotGothic16,
 } from "next/font/google";
 import { meta } from "@/data/siteData";
 import "./globals.css";
@@ -110,12 +111,19 @@ const zenMaruGothic = Zen_Maru_Gothic({
   variable: "--font-maru",
   display: "swap",
 });
+const dotGothic16 = DotGothic16({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-dot",
+  display: "swap",
+});
 
 const allFonts = [
   notoSansJP, notoSerifJP, zenKurenaido,
   playfairDisplay, oswald, spaceGrotesk, jetbrainsMono,
   mPlusRounded, shipporiMincho, kleeOne, josefinSans,
   cormorantGaramond, inter, quicksand, dancingScript, zenMaruGothic,
+  dotGothic16,
 ].map((f) => f.variable).join(" ");
 
 export const metadata: Metadata = {

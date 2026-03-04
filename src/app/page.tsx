@@ -21,6 +21,7 @@ const templates = [
   { id: "13", name: "重厚",             desc: "ダークネイビー、太いフォント、重みある影",                 color: "#e2e8f0", bg: "#1e1b4b" },
   { id: "14", name: "親しみやすい",     desc: "パステルカラー、丸角多用、やわらかい印象",                 color: "#10b981", bg: "#ecfdf5" },
   { id: "15", name: "クリエイティブ",   desc: "非対称レイアウト、アート風、個性的なスクロール",           color: "#f97316", bg: "#fffbeb" },
+  { id: "16", name: "RPGクエスト",     desc: "横スクロール、RPGテーマ、ステージ構成の冒険的デザイン",   color: "#ffd700", bg: "#1a2e1a" },
 ];
 
 export default function GalleryPage() {
@@ -31,7 +32,7 @@ export default function GalleryPage() {
           テンプレートギャラリー
         </h1>
         <p style={{ fontSize: 14, color: "#6b7280", marginBottom: 32 }}>
-          軽貨物ドライバー採用HP — 15種類のデザインテンプレート
+          軽貨物ドライバー採用HP — 16種類のデザインテンプレート
         </p>
 
         <div style={{
