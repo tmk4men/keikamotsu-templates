@@ -107,15 +107,20 @@ function useHorizontalScroll() {
   return { containerRef, scrollRatio, currentStage, isMobile, scrollToStage: goToStage };
 }
 
-function useStageReveal(stageIndex: number, currentStage: number) {
+function useStageReveal(container: React.RefObject<HTMLDivElement | null>) {
+  const ref = useRef<HTMLDivElement>(null);
   const [revealed, setRevealed] = useState(false);
   useEffect(() => {
-    if (currentStage >= stageIndex && !revealed) {
-      const t = setTimeout(() => setRevealed(true), 100);
-      return () => clearTimeout(t);
-    }
-  }, [currentStage, stageIndex, revealed]);
-  return revealed;
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setRevealed(true); obs.disconnect(); } },
+      { root: container.current, threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [container]);
+  return { ref, revealed };
 }
 
 /* ── サブコンポーネント ── */
@@ -268,18 +273,18 @@ export default function Template16() {
   const { containerRef, scrollRatio, currentStage, isMobile, scrollToStage } = useHorizontalScroll();
   const [mapLocked, setMapLocked] = useState(true);
 
-  /* ステージリビール */
-  const r0 = useStageReveal(0, currentStage);
-  const r1 = useStageReveal(1, currentStage);
-  const r2 = useStageReveal(2, currentStage);
-  const r3 = useStageReveal(3, currentStage);
-  const r4 = useStageReveal(4, currentStage);
-  const r5 = useStageReveal(5, currentStage);
-  const r6 = useStageReveal(6, currentStage);
-  const r7 = useStageReveal(7, currentStage);
-  const r8 = useStageReveal(8, currentStage);
-  const r9 = useStageReveal(9, currentStage);
-  const reveals = [r0, r1, r2, r3, r4, r5, r6, r7, r8, r9];
+  /* ステージリビール（IntersectionObserver） */
+  const s0 = useStageReveal(containerRef);
+  const s1 = useStageReveal(containerRef);
+  const s2 = useStageReveal(containerRef);
+  const s3 = useStageReveal(containerRef);
+  const s4 = useStageReveal(containerRef);
+  const s5 = useStageReveal(containerRef);
+  const s6 = useStageReveal(containerRef);
+  const s7 = useStageReveal(containerRef);
+  const s8 = useStageReveal(containerRef);
+  const s9 = useStageReveal(containerRef);
+  const stages = [s0, s1, s2, s3, s4, s5, s6, s7, s8, s9];
 
   return (
     <>
@@ -294,7 +299,7 @@ export default function Template16() {
       <div ref={containerRef} className="t16-scroll-container">
         {/* ── Stage 0: 城門 (Hero) ── */}
         <section className="t16-stage t16-stage--castle-gate">
-          <div className={`t16-stage-inner${reveals[0] ? " revealed" : ""}`}>
+          <div ref={stages[0].ref} className={`t16-stage-inner${stages[0].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title">STAGE 0 — 城門</div>
             <div className="t16-hero-content">
               <div className="t16-hero-guild">⚔ {data.company.name} ギルド ⚔</div>
@@ -324,7 +329,7 @@ export default function Template16() {
 
         {/* ── Stage 1: 草原 (選ばれる理由) ── */}
         <section className="t16-stage t16-stage--grassland">
-          <div className={`t16-stage-inner${reveals[1] ? " revealed" : ""}`}>
+          <div ref={stages[1].ref} className={`t16-stage-inner${stages[1].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title">STAGE 1 — 草原</div>
             <div className="t16-stage-subtitle">3つの宝箱を開けて、冒険の理由を見つけよう</div>
             <div className="t16-chest-grid">
@@ -337,7 +342,7 @@ export default function Template16() {
 
         {/* ── Stage 2: 街 (求人情報) ── */}
         <section className="t16-stage t16-stage--town">
-          <div className={`t16-stage-inner${reveals[2] ? " revealed" : ""}`}>
+          <div ref={stages[2].ref} className={`t16-stage-inner${stages[2].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title" style={{ color: "var(--t16-dark)" }}>STAGE 2 — 街</div>
             <div className="t16-stage-subtitle" style={{ color: "var(--t16-border)" }}>装備を確認しよう</div>
             <RpgDialogBox speaker="ギルド受付嬢">
@@ -350,7 +355,7 @@ export default function Template16() {
 
         {/* ── Stage 3: 峠 (待遇・福利厚生) ── */}
         <section className="t16-stage t16-stage--mountain">
-          <div className={`t16-stage-inner${reveals[3] ? " revealed" : ""}`}>
+          <div ref={stages[3].ref} className={`t16-stage-inner${stages[3].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title">STAGE 3 — 峠</div>
             <div className="t16-stage-subtitle">習得スキル一覧</div>
             <div className="t16-skill-grid">
@@ -367,7 +372,7 @@ export default function Template16() {
 
         {/* ── Stage 4: 港町 (1日の流れ) ── */}
         <section className="t16-stage t16-stage--port">
-          <div className={`t16-stage-inner${reveals[4] ? " revealed" : ""}`}>
+          <div ref={stages[4].ref} className={`t16-stage-inner${stages[4].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title">STAGE 4 — 港町</div>
             <div className="t16-stage-subtitle">クエスト行程表</div>
             <div className="t16-quest-log">
@@ -387,7 +392,7 @@ export default function Template16() {
 
         {/* ── Stage 5: 酒場 (先輩の声) ── */}
         <section className="t16-stage t16-stage--tavern">
-          <div className={`t16-stage-inner${reveals[5] ? " revealed" : ""}`}>
+          <div ref={stages[5].ref} className={`t16-stage-inner${stages[5].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title">STAGE 5 — 酒場</div>
             <div className="t16-stage-subtitle">先輩冒険者の話を聞こう</div>
             <div className="t16-npc-cards">
@@ -405,7 +410,7 @@ export default function Template16() {
 
         {/* ── Stage 6: 王城 (会社概要+FAQ+News) ── */}
         <section className="t16-stage t16-stage--royal">
-          <div className={`t16-stage-inner${reveals[6] ? " revealed" : ""}`}>
+          <div ref={stages[6].ref} className={`t16-stage-inner${stages[6].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title">STAGE 6 — 王城</div>
             <div className="t16-stage-subtitle">ギルド情報・掲示板</div>
             <div className="t16-guild-panels">
@@ -454,7 +459,7 @@ export default function Template16() {
 
         {/* ── Stage 7: 記録 (ギャラリー) ── */}
         <section className="t16-stage t16-stage--records">
-          <div className={`t16-stage-inner${reveals[7] ? " revealed" : ""}`}>
+          <div ref={stages[7].ref} className={`t16-stage-inner${stages[7].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title">STAGE 7 — 記録</div>
             <div className="t16-stage-subtitle">{data.gallery.heading}</div>
             <GalleryCarousel />
@@ -463,7 +468,7 @@ export default function Template16() {
 
         {/* ── Stage 8: 地図 (アクセス) ── */}
         <section className="t16-stage t16-stage--map">
-          <div className={`t16-stage-inner${reveals[8] ? " revealed" : ""}`}>
+          <div ref={stages[8].ref} className={`t16-stage-inner${stages[8].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title" style={{ color: "var(--t16-dark)" }}>STAGE 8 — 地図</div>
             <div className="t16-stage-subtitle" style={{ color: "var(--t16-border)" }}>{data.access.heading}</div>
             <div className="t16-map-wrap">
@@ -489,7 +494,7 @@ export default function Template16() {
 
         {/* ── Stage 9: 出発！ (CTA + 応募フォーム) ── */}
         <section className="t16-stage t16-stage--departure">
-          <div className={`t16-stage-inner${reveals[9] ? " revealed" : ""}`}>
+          <div ref={stages[9].ref} className={`t16-stage-inner${stages[9].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title">FINAL STAGE — 出発！</div>
             <div className="t16-final">
               <div className="t16-final-question">仲間になりますか？</div>
