@@ -244,7 +244,7 @@ export default function TemplateRenderer({
 
             <div className="t-daily-image">
               <Image
-                src="/keikamotsu-hp/images/daily-flow.png"
+                src="/keikamotsu-templates/images/daily-flow.png"
                 alt="朝焼けの大阪の街を走る軽バン"
                 width={1104}
                 height={824}

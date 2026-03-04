@@ -357,7 +357,7 @@ export default function Template08Page() {
               <div className="clean-carousel__track" style={{ transform: `translateX(-${galleryIdx * 100}%)` }}>
                 {data.gallery.images.map((img, i) => (
                   <figure key={i} className="clean-carousel__slide">
-                    <Image src={`/keikamotsu-hp${img.src}`} alt={img.alt} width={800} height={500} className="clean-carousel__img" />
+                    <Image src={`/keikamotsu-templates${img.src}`} alt={img.alt} width={800} height={500} className="clean-carousel__img" />
                     <figcaption className="clean-carousel__caption">{img.caption}</figcaption>
                   </figure>
                 ))}

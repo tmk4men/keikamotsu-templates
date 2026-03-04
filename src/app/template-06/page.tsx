@@ -270,7 +270,7 @@ export default function Template06Page() {
             <div className="warm-carousel__track" style={{ transform: `translateX(-${galleryIdx * 100}%)` }}>
               {data.gallery.images.map((img, i) => (
                 <figure key={i} className="warm-carousel__slide">
-                  <Image src={`/keikamotsu-hp${img.src}`} alt={img.alt} width={800} height={500} className="warm-carousel__img" />
+                  <Image src={`/keikamotsu-templates${img.src}`} alt={img.alt} width={800} height={500} className="warm-carousel__img" />
                   <figcaption className="warm-carousel__caption">{img.caption}</figcaption>
                 </figure>
               ))}

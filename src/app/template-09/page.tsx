@@ -287,7 +287,7 @@ export default function Template09Page() {
               <div className="glass-carousel__track" style={{ transform: `translateX(-${galleryIdx * 100}%)` }}>
                 {data.gallery.images.map((img, i) => (
                   <figure key={i} className="glass-carousel__slide">
-                    <Image src={`/keikamotsu-hp${img.src}`} alt={img.alt} width={800} height={500} className="glass-carousel__img" />
+                    <Image src={`/keikamotsu-templates${img.src}`} alt={img.alt} width={800} height={500} className="glass-carousel__img" />
                     <figcaption className="glass-carousel__caption">{img.caption}</figcaption>
                   </figure>
                 ))}

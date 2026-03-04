@@ -344,7 +344,7 @@ export default function Template04() {
             <div className="t04-carousel__track" style={{ transform: `translateX(-${galleryIdx * 100}%)` }}>
               {data.gallery.images.map((img, i) => (
                 <figure key={i} className="t04-carousel__slide">
-                  <Image src={`/keikamotsu-hp${img.src}`} alt={img.alt} width={800} height={500} className="t04-carousel__img" />
+                  <Image src={`/keikamotsu-templates${img.src}`} alt={img.alt} width={800} height={500} className="t04-carousel__img" />
                   <figcaption className="t04-carousel__caption">{img.caption}</figcaption>
                 </figure>
               ))}

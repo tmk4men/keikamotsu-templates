@@ -4,11 +4,11 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 
 const photos = [
-  { src: "/keikamotsu-hp/images/vehicle.webp", alt: "配送に使用する軽バン", label: "車両" },
-  { src: "/keikamotsu-hp/images/workplace.webp", alt: "営業所の様子", label: "営業所" },
-  { src: "/keikamotsu-hp/images/delivery.webp", alt: "配送の様子", label: "配送風景" },
-  { src: "/keikamotsu-hp/images/team.webp", alt: "チームメンバー", label: "仲間たち" },
-  { src: "/keikamotsu-hp/images/loading.webp", alt: "荷物の積み込み", label: "積み込み" },
+  { src: "/keikamotsu-templates/images/vehicle.webp", alt: "配送に使用する軽バン", label: "車両" },
+  { src: "/keikamotsu-templates/images/workplace.webp", alt: "営業所の様子", label: "営業所" },
+  { src: "/keikamotsu-templates/images/delivery.webp", alt: "配送の様子", label: "配送風景" },
+  { src: "/keikamotsu-templates/images/team.webp", alt: "チームメンバー", label: "仲間たち" },
+  { src: "/keikamotsu-templates/images/loading.webp", alt: "荷物の積み込み", label: "積み込み" },
 ];
 
 export default function GalleryCarousel() {

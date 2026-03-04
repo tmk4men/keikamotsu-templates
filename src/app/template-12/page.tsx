@@ -311,7 +311,7 @@ export default function Template12() {
             <div className="t12-carousel__track" style={{ transform: `translateX(-${galleryIdx * 100}%)` }}>
               {data.gallery.images.map((img, i) => (
                 <div key={i} className="t12-carousel__slide">
-                  <Image src={`/keikamotsu-hp${img.src}`} alt={img.alt} width={600} height={400} className="t12-carousel__img" />
+                  <Image src={`/keikamotsu-templates${img.src}`} alt={img.alt} width={600} height={400} className="t12-carousel__img" />
                   <p className="t12-carousel__caption">{img.caption}</p>
                 </div>
               ))}

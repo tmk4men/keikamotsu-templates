@@ -320,7 +320,7 @@ export default function Template10Page() {
               <div className="classic-carousel__track" style={{ transform: `translateX(-${galleryIdx * 100}%)` }}>
                 {data.gallery.images.map((img, i) => (
                   <figure key={i} className="classic-carousel__slide">
-                    <Image src={`/keikamotsu-hp${img.src}`} alt={img.alt} width={800} height={500} className="classic-carousel__img" />
+                    <Image src={`/keikamotsu-templates${img.src}`} alt={img.alt} width={800} height={500} className="classic-carousel__img" />
                     <figcaption className="classic-carousel__caption">{img.caption}</figcaption>
                   </figure>
                 ))}

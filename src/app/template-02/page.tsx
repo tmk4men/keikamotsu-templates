@@ -463,7 +463,7 @@ export default function Template02() {
           {data.gallery.images.map((img, i) => (
             <figure key={i} className="t02-filmstrip__frame">
               <span className="t02-filmstrip__idx">{String(i + 1).padStart(2, "0")}</span>
-              <Image src={`/keikamotsu-hp${img.src}`} alt={img.alt} width={600} height={400} className="t02-filmstrip__img" />
+              <Image src={`/keikamotsu-templates${img.src}`} alt={img.alt} width={600} height={400} className="t02-filmstrip__img" />
               <figcaption className="t02-filmstrip__caption">{img.caption}</figcaption>
             </figure>
           ))}

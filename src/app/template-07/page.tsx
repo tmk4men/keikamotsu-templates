@@ -294,7 +294,7 @@ export default function Template07Page() {
               <div className="dyn-carousel__track" style={{ transform: `translateX(-${galleryIdx * 100}%)` }}>
                 {data.gallery.images.map((img, i) => (
                   <figure key={i} className="dyn-carousel__slide">
-                    <Image src={`/keikamotsu-hp${img.src}`} alt={img.alt} width={800} height={500} className="dyn-carousel__img" />
+                    <Image src={`/keikamotsu-templates${img.src}`} alt={img.alt} width={800} height={500} className="dyn-carousel__img" />
                     <figcaption className="dyn-carousel__caption">{img.caption}</figcaption>
                   </figure>
                 ))}

@@ -349,7 +349,7 @@ export default function Template03() {
             <div className="t03-carousel__track" style={{ transform: `translateX(-${galleryIdx * 100}%)` }}>
               {data.gallery.images.map((img, i) => (
                 <figure key={i} className="t03-carousel__slide">
-                  <Image src={`/keikamotsu-hp${img.src}`} alt={img.alt} width={800} height={500} className="t03-carousel__img" />
+                  <Image src={`/keikamotsu-templates${img.src}`} alt={img.alt} width={800} height={500} className="t03-carousel__img" />
                   <figcaption className="t03-carousel__caption">{img.caption}</figcaption>
                 </figure>
               ))}
