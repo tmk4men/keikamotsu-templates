@@ -118,7 +118,7 @@ export default function Template07Page() {
         <div className="dyn-hero__content">
           <div className="dyn-hero__accent-line" />
           <h1 className="dyn-hero__heading">
-            {data.hero.headlineParts[0]}<br />{data.hero.headlineParts[1]}
+            {data.hero.headlineParts[0]}<br className="br-desktop" />{data.hero.headlineParts[1]}
           </h1>
           <p className="dyn-hero__sub">
             {data.hero.subtext.join("")}

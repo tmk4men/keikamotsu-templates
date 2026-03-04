@@ -605,3 +605,25 @@
   .clean-news__row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .clean-carousel__img { height: 250px; }
 }
+
+/* --- Extra Small Mobile --- */
+@media (max-width: 480px) {
+  .clean-container { padding: 0 16px; }
+  .clean-reasons,
+  .clean-jobs,
+  .clean-benefits,
+  .clean-daily,
+  .clean-voices,
+  .clean-gallery-section,
+  .clean-faq-section,
+  .clean-form-section,
+  .clean-cta { padding: 48px 0; }
+  .clean-section-title { font-size: 1.4rem; }
+  .clean-hero__heading { font-size: 1.5rem; }
+  .clean-hero__stat-circle { width: 72px; height: 72px; }
+  .clean-hero__stat-value { font-size: 1.2rem; }
+  .clean-hero__badges { flex-direction: column; align-items: center; }
+  .clean-carousel__img { height: 200px; }
+  .clean-icon-grid { grid-template-columns: 1fr; }
+  .clean-footer__inner { grid-template-columns: 1fr; }
+}

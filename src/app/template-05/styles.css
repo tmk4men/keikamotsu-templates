@@ -503,3 +503,22 @@
   .t05-section { padding: 60px 0 80px; }
   .t05-carousel__img { height: 260px; }
 }
+
+/* ── Extra-small screens ── */
+@media (max-width: 480px) {
+  .t05-container { padding: 0 16px; }
+  .t05-section { padding: 48px 0 60px; }
+  .t05-section-title { font-size: 20px; margin-bottom: 28px; }
+  .t05-hero { padding: 80px 16px 60px; }
+  .t05-hero__heading-line { font-size: 22px; }
+  .t05-hero__badges { flex-direction: column; align-items: center; }
+  .t05-hero__salary strong { font-size: 26px; }
+  .t05-benefits-grid { grid-template-columns: 1fr; }
+  .t05-carousel__img { height: 200px; }
+  .t05-cta { padding: 60px 16px 60px; }
+  .t05-cta__heading { font-size: 20px; }
+  .t05-cta__phone { font-size: 28px; padding: 8px 20px; }
+  .t05-header__inner { padding: 0 16px; }
+  .t05-footer { padding: 48px 16px 20px; }
+  .t05-wave-divider { height: 24px; }
+}

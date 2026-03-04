@@ -575,6 +575,15 @@
   .t13-cta-watermark { font-size: 5rem; }
 }
 @media (max-width: 480px) {
-  .t13-benefits-grid { grid-template-columns: 1fr; }
+  .t13-container { padding: 0 16px; }
+  .t13-section { padding: 48px 0; }
+  .t13-section-title { font-size: 1.2rem; }
+  .t13-hero__heading { font-size: 1.6rem; }
   .t13-hero__badges { flex-direction: column; align-items: center; }
+  .t13-hero__salary strong { font-size: 1.8rem; }
+  .t13-benefits-grid { grid-template-columns: 1fr; }
+  .t13-carousel__img { height: 200px; }
+  .t13-cta-phone { font-size: 1.5rem; }
+  .t13-cta-heading { font-size: 1.3rem; }
+  .t13-cta-watermark { font-size: 3rem; }
 }

@@ -585,3 +585,23 @@
   .dyn-section-title { font-size: 1.8rem; }
   .dyn-carousel__img { height: 250px; }
 }
+
+/* --- Extra Small Mobile --- */
+@media (max-width: 480px) {
+  .dyn-container { padding: 0 16px; }
+  .dyn-reasons,
+  .dyn-benefits,
+  .dyn-daily,
+  .dyn-voices,
+  .dyn-gallery-section,
+  .dyn-faq-section,
+  .dyn-form-section,
+  .dyn-cta { padding: 48px 0; }
+  .dyn-section-title { font-size: 1.5rem; }
+  .dyn-hero__heading { font-size: 2.2rem; }
+  .dyn-hero__salary-num { font-size: 2rem; }
+  .dyn-hero__badges { flex-direction: column; align-items: center; }
+  .dyn-carousel__img { height: 200px; }
+  .dyn-reason__big-num { font-size: 4rem; }
+  .dyn-timeline__time { font-size: 1.6rem; min-width: 60px; }
+}

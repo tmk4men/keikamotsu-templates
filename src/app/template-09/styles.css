@@ -674,3 +674,20 @@
   .glass-news__item { flex-direction: column; align-items: flex-start; gap: 6px; }
   .glass-carousel__img { height: 250px; }
 }
+
+/* --- Extra Small Mobile --- */
+@media (max-width: 480px) {
+  .glass-container { padding: 0 16px; }
+  .glass-section { padding: 48px 0; }
+  .glass-section-title { font-size: 1.5rem; }
+  .glass-hero__heading { font-size: 1.5rem; }
+  .glass-hero__card { padding: 24px 16px; }
+  .glass-hero__salary-num { font-size: 1.6rem; }
+  .glass-hero__badges { flex-direction: column; align-items: center; }
+  .glass-carousel__img { height: 200px; }
+  .glass-bento-reasons { grid-template-columns: 1fr; }
+  .glass-bento-benefits { grid-template-columns: 1fr; }
+  .glass-masonry { grid-template-columns: 1fr; padding-left: 24px; }
+  .glass-voices__grid { grid-template-columns: 1fr; }
+  .glass-footer__inner { grid-template-columns: 1fr; }
+}

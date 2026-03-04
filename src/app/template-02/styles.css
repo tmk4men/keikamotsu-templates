@@ -566,6 +566,12 @@
   }
   .t02-nav--open { display: flex; }
   .t02-hamburger { display: flex; }
+  /* SplitTitle: モバイルではアニメーション無効化→自然な日本語改行 */
+  .t02-split-char {
+    display: inline !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
   .t02-kinetic__line { font-size: 32px; }
   .t02-table-clean__row { flex-direction: column; gap: 4px; }
   .t02-table-clean__label { width: 100%; }
@@ -579,4 +585,26 @@
   .t02-filmstrip__frame { flex: 0 0 82vw; }
   .t02-filmstrip__img { height: 240px; }
   .t02-section-num { font-size: clamp(80px, 18vw, 160px); opacity: 0.2; }
+}
+
+/* ── Extra-small screens ── */
+@media (max-width: 480px) {
+  .t02-container { padding: 0 16px; }
+  .t02-section { padding: 48px 0; }
+  .t02-section-title { font-size: 18px; }
+  .t02-hero { padding: 100px 16px 60px; }
+  .t02-typewriter__line { font-size: clamp(24px, 6vw, 36px); }
+  .t02-hero__badges { flex-direction: column; align-items: center; }
+  .t02-carousel__img { height: 200px; }
+  .t02-filmstrip__img { height: 200px; }
+  .t02-filmstrip__frame { flex: 0 0 88vw; }
+  .t02-reason-display__num { font-size: 36px; }
+  .t02-reasons-tabs { gap: 12px; flex-wrap: wrap; }
+  .t02-reasons-tab { font-size: 12px; padding: 6px 12px; }
+  .t02-cta { padding: 80px 16px; }
+  .t02-cta__phone { font-size: clamp(28px, 7vw, 40px); }
+  .t02-cta__heading { font-size: 18px; }
+  .t02-header__inner { padding: 0 16px; }
+  .t02-footer { padding: 48px 16px 24px; }
+  .t02-section-num { font-size: clamp(60px, 15vw, 100px); }
 }

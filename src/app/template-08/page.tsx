@@ -157,11 +157,11 @@ export default function Template08Page() {
         <div className="clean-hero__overlay" />
         <div className="clean-hero__content">
           <h1 className="clean-hero__heading">
-            {data.hero.headlineParts[0]}<br />{data.hero.headlineParts[1]}
+            {data.hero.headlineParts[0]}<br className="br-desktop" />{data.hero.headlineParts[1]}
           </h1>
           <p className="clean-hero__sub">
             {data.hero.subtext.map((line, i) => (
-              <span key={i}>{line}<br /></span>
+              <span key={i}>{line}<br className="br-desktop" /></span>
             ))}
           </p>
           {/* Stat Circles */}

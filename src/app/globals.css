@@ -11,8 +11,20 @@ html {
 
 /* 日本語の折り返し制御 */
 h1, h2, h3, h4, p, li, td, th, span, a {
-  word-break: keep-all;
+  word-break: normal;
+  word-break: auto-phrase; /* Chrome 119+ 自然な日本語改行 */
+  line-break: strict;      /* 禁則処理強化 */
   overflow-wrap: anywhere;
+}
+
+/* デスクトップ専用改行（768px以下で非表示） */
+.br-desktop {
+  display: inline;
+}
+@media (max-width: 768px) {
+  .br-desktop {
+    display: none;
+  }
 }
 
 /* ===========================

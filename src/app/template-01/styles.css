@@ -602,3 +602,22 @@
 @media (min-width: 769px) {
   .t01-reason-card { flex: 0 0 33vw; max-width: 400px; }
 }
+
+/* ── Extra-small screens ── */
+@media (max-width: 480px) {
+  .t01-container { padding: 0 16px; }
+  .t01-section { padding: 48px 0; }
+  .t01-section-title { font-size: 18px; margin-bottom: 32px; }
+  .t01-hero__content { padding: 100px 16px 60px; }
+  .t01-hero__heading-line { font-size: 24px; }
+  .t01-hero__badges { flex-direction: column; align-items: center; }
+  .t01-hero__salary strong { font-size: 28px; }
+  .t01-benefits-grid { grid-template-columns: 1fr; }
+  .t01-carousel__img { height: 200px; }
+  .t01-reason-card { flex: 0 0 90vw; }
+  .t01-timeline-h__step { flex: 0 0 140px; }
+  .t01-cta-phone { font-size: 28px; padding: 10px 24px; }
+  .t01-cta-heading { font-size: 20px; }
+  .t01-header__inner { padding: 0 16px; }
+  .t01-footer__inner { padding: 0 16px; }
+}

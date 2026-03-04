@@ -123,11 +123,11 @@ export default function Template09Page() {
         </div>
         <div className="glass-hero__card">
           <h1 className="glass-hero__heading">
-            {data.hero.headlineParts[0]}<br />{data.hero.headlineParts[1]}
+            {data.hero.headlineParts[0]}<br className="br-desktop" />{data.hero.headlineParts[1]}
           </h1>
           <p className="glass-hero__sub">
             {data.hero.subtext.map((line, i) => (
-              <span key={i}>{line}<br /></span>
+              <span key={i}>{line}<br className="br-desktop" /></span>
             ))}
           </p>
           <div className="glass-hero__salary">

@@ -503,3 +503,21 @@
   .t04-section { padding: 72px 0; }
   .t04-carousel__img { height: 260px; }
 }
+
+/* ── Extra-small screens ── */
+@media (max-width: 480px) {
+  .t04-container { padding: 0 16px; }
+  .t04-section { padding: 48px 0; }
+  .t04-section-title { font-size: 18px; }
+  .t04-hero__right { padding: 48px 16px; }
+  .t04-hero__heading-line { font-size: 20px; }
+  .t04-hero__badges { flex-direction: column; align-items: center; }
+  .t04-carousel__img { height: 200px; }
+  .t04-reason-wide__num { font-size: 36px; width: 60px; }
+  .t04-cta { padding: 60px 16px; }
+  .t04-cta__heading { font-size: 18px; }
+  .t04-cta__phone { font-size: 24px; padding: 10px 24px; }
+  .t04-header__inner { padding: 0 16px; }
+  .t04-footer { padding: 40px 16px 24px; }
+  .t04-marquee__item { font-size: 11px; }
+}

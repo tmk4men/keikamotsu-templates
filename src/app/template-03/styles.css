@@ -528,3 +528,27 @@
   .t03-hero__heading-line { font-size: 28px; }
   .t03-carousel__img { height: 240px; }
 }
+
+/* ── Extra-small screens ── */
+@media (max-width: 480px) {
+  .t03-container { padding: 0 16px; }
+  .t03-section { padding: 48px 0; }
+  .t03-section-title { font-size: 22px; margin-bottom: 28px; }
+  .t03-hero { padding: 80px 16px 60px; }
+  .t03-hero__heading-line { font-size: 22px; }
+  .t03-hero__badges-top { flex-direction: column; align-items: center; }
+  .t03-hero__salary strong { font-size: 28px; }
+  .t03-honeycomb { grid-template-columns: 1fr; }
+  .t03-honeycomb__cell:nth-child(even) { transform: none; }
+  .t03-carousel__img { height: 200px; }
+  .t03-flip-card { height: 220px; }
+  .t03-cta { padding: 60px 16px; }
+  .t03-cta__heading { font-size: 20px; }
+  .t03-cta__phone { font-size: 28px; }
+  .t03-company-row { flex-direction: column; gap: 4px; }
+  .t03-company-row__dt { width: 100%; }
+  .t03-header__inner { padding: 0 16px; }
+  .t03-footer { padding: 36px 16px 20px; }
+  .t03-job-pill { flex-direction: column; border-radius: 16px; }
+  .t03-job-pill__label { border-radius: 16px 16px 0 0; width: 100%; text-align: center; }
+}

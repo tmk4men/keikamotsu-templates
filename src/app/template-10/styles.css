@@ -674,3 +674,18 @@
   .classic-section-title { font-size: 1.3rem; }
   .classic-carousel__img { height: 250px; }
 }
+
+/* --- Extra Small Mobile --- */
+@media (max-width: 480px) {
+  .classic-container { padding: 0 16px; }
+  .classic-section { padding: 48px 0; }
+  .classic-section-title { font-size: 1.1rem; }
+  .classic-hero__heading { font-size: 1.3rem; }
+  .classic-hero__content { padding: 24px 16px; }
+  .classic-hero__salary-num { font-size: 1.3rem; }
+  .classic-hero__badges { flex-direction: column; align-items: center; }
+  .classic-carousel__img { height: 200px; }
+  .classic-benefits__grid { grid-template-columns: 1fr; }
+  .classic-voices__grid { grid-template-columns: 1fr; }
+  .classic-footer__inner { max-width: 100%; }
+}

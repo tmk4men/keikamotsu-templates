@@ -126,11 +126,11 @@ export default function Template10Page() {
           <div className="classic-hero__frame-corner classic-hero__frame-corner--br" />
           <div className="classic-hero__content">
             <h1 className="classic-hero__heading">
-              {data.hero.headlineParts[0]}<br />{data.hero.headlineParts[1]}
+              {data.hero.headlineParts[0]}<br className="br-desktop" />{data.hero.headlineParts[1]}
             </h1>
             <p className="classic-hero__sub">
               {data.hero.subtext.map((line, i) => (
-                <span key={i}>{line}<br /></span>
+                <span key={i}>{line}<br className="br-desktop" /></span>
               ))}
             </p>
             <div className="classic-hero__salary">
@@ -176,7 +176,7 @@ export default function Template10Page() {
                   <p className="classic-chapter__text">
                     <span className="classic-chapter__drop-cap t10-anim" data-anim="t10-anim--dropCap">{r.title[0]}</span>
                     <strong className="classic-chapter__title-inline">{r.title.slice(1)}</strong>
-                    <br />{r.text}
+                    <br className="br-desktop" />{r.text}
                   </p>
                 </article>
               ))}
