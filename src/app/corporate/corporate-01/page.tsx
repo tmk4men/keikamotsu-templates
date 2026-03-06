@@ -621,33 +621,55 @@ export default function Corporate01() {
           </div>
 
           <div className="cp01-footer__middle">
+            {/* Column 1: Company Info */}
             <div className="cp01-footer__info">
               <p className="cp01-footer__company-name">{data.company.name}</p>
               <p className="cp01-footer__address">
                 〒{data.company.postalCode} {data.company.address}
               </p>
-              <p className="cp01-footer__contact-line">
-                TEL: {data.company.phone} / FAX: {data.company.fax}
-              </p>
-              <p className="cp01-footer__contact-line">
-                {data.company.email}
-              </p>
               <p className="cp01-footer__hours">{data.company.hours}</p>
             </div>
+
+            {/* Column 2: Nav Links */}
             <nav className="cp01-footer__nav">
-              {data.navLinks.map((l) => (
+              <span className="cp01-footer__nav-heading">サイトマップ</span>
+              {data.navLinks.slice(0, 8).map((l) => (
                 <a key={l.href} href={l.href} className="cp01-footer__link">
                   {l.label}
                 </a>
               ))}
             </nav>
+
+            {/* Column 3: Contact */}
+            <div className="cp01-footer__contact-col">
+              <span className="cp01-footer__contact-heading">お問い合わせ</span>
+              <div className="cp01-footer__phone">
+                <span className="cp01-footer__phone-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                  </svg>
+                </span>
+                {data.company.phone}
+              </div>
+              <p className="cp01-footer__hours-text">{data.company.hours}</p>
+              <a href={`mailto:${data.company.email}`} className="cp01-footer__email-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M22 7l-10 6L2 7" />
+                </svg>
+                {data.company.email}
+              </a>
+            </div>
           </div>
 
           <div className="cp01-footer__bottom">
             <p className="cp01-footer__copy">
-              &copy; {new Date().getFullYear()} {data.company.name} All Rights
-              Reserved.
+              &copy; {new Date().getFullYear()} {data.company.name} All Rights Reserved.
             </p>
+            <div className="cp01-footer__bottom-links">
+              <a href="#" className="cp01-footer__bottom-link">プライバシーポリシー</a>
+              <a href="#" className="cp01-footer__bottom-link">サイトマップ</a>
+            </div>
           </div>
         </div>
       </footer>
