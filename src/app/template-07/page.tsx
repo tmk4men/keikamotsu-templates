@@ -72,9 +72,7 @@ export default function Template07Page() {
     return () => clearInterval(timer);
   }, []);
 
-  const r1 = useReveal("left");
-  const r2 = useReveal("right");
-  const r3 = useReveal("left");
+  const rReasons = useReveal("up");
   const rJobs = useReveal("up");
   const rBenefits = useReveal("up");
   const rDaily = useReveal("up");
@@ -156,21 +154,20 @@ export default function Template07Page() {
 
       {/* ========== Reasons (Oversized Numbers) ========== */}
       <section id="reasons" className="dyn-reasons">
-        <div className="dyn-container">
-          <h2 className="dyn-section-title t07-anim" data-anim="t07-anim--slam">選ばれる<span className="dyn-accent">3</span>つの理由</h2>
-          <div className="dyn-reasons__list">
-            {data.reasons.map((r, i) => {
-              const rev = i === 1 ? r2 : i === 2 ? r3 : r1;
-              return (
-                <div key={r.num} ref={rev.ref} className={`dyn-reason ${rev.className} t07-anim t07-anim-delay-${Math.min(i + 1, 3) as 1 | 2 | 3}`} data-anim={i % 2 === 0 ? "t07-anim--slideLeft" : "t07-anim--slideRight"}>
+        <div className="dyn-container" ref={rReasons.ref}>
+          <div className={rReasons.className}>
+            <h2 className="dyn-section-title t07-anim" data-anim="t07-anim--slam">選ばれる<span className="dyn-accent">3</span>つの理由</h2>
+            <div className="dyn-reasons__list">
+              {data.reasons.map((r, i) => (
+                <div key={r.num} className={`dyn-reason t07-anim t07-anim-delay-${Math.min(i + 1, 3) as 1 | 2 | 3}`} data-anim={i % 2 === 0 ? "t07-anim--slideLeft" : "t07-anim--slideRight"}>
                   <span className="dyn-reason__big-num">{r.num}</span>
                   <div className="dyn-reason__content">
                     <h3 className="dyn-reason__title">{r.title}</h3>
                     <p className="dyn-reason__text">{r.text}</p>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
         <div className="dyn-diagonal-bg dyn-diagonal-bg--bottom" />
