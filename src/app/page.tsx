@@ -31,9 +31,49 @@ export default function GalleryPage() {
         <h1 style={{ fontSize: 28, fontWeight: 800, color: "#111827", marginBottom: 8 }}>
           テンプレートギャラリー
         </h1>
-        <p style={{ fontSize: 14, color: "#6b7280", marginBottom: 32 }}>
-          軽貨物ドライバー採用HP — 16種類のデザインテンプレート
+        <p style={{ fontSize: 14, color: "#6b7280", marginBottom: 24 }}>
+          軽貨物ドライバー事業向け — HPデザインテンプレート集
         </p>
+
+        {/* ─── カテゴリナビ ─── */}
+        <div style={{
+          display: "flex",
+          gap: 8,
+          marginBottom: 32,
+          flexWrap: "wrap",
+        }}>
+          <span style={{
+            display: "inline-flex",
+            alignItems: "center",
+            padding: "8px 20px",
+            borderRadius: 999,
+            fontSize: 14,
+            fontWeight: 700,
+            background: "#111827",
+            color: "#fff",
+            cursor: "default",
+          }}>
+            採用HPテンプレート（16種）
+          </span>
+          <Link
+            href="/corporate"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              padding: "8px 20px",
+              borderRadius: 999,
+              fontSize: 14,
+              fontWeight: 600,
+              background: "#fff",
+              color: "#374151",
+              border: "1px solid #d1d5db",
+              textDecoration: "none",
+              transition: "all 0.2s",
+            }}
+          >
+            コーポレートHPテンプレート（5種）→
+          </Link>
+        </div>
 
         <div style={{
           display: "grid",
