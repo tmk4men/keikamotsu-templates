@@ -251,7 +251,7 @@ function GalleryCarousel() {
         <div className="t16-gallery-track" style={{ transform: `translateX(-${idx * 100}%)` }}>
           {imgs.map((img, i) => (
             <div key={i} className="t16-gallery-slide">
-              <Image src={img.src} alt={img.alt} fill style={{ objectFit: "cover" }} sizes="600px" />
+              <Image src={`/keikamotsu-templates${img.src}`} alt={img.alt} fill style={{ objectFit: "cover" }} sizes="600px" />
               <div className="t16-gallery-caption">{img.caption}</div>
             </div>
           ))}
