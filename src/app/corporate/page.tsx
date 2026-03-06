@@ -3,7 +3,20 @@
    コーポレート5種を一覧表示
    =================================================== */
 
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "コーポレートHPテンプレート一覧（5種）",
+  description:
+    "軽貨物ドライバー事業向けコーポレートサイトテンプレート5種を一覧表示。ロジスティクス・プロ、トラストブルー、エコモーション、エグゼクティブ、フューチャーフローの5デザイン。",
+  openGraph: {
+    title: "コーポレートHPテンプレート一覧（5種）｜軽貨物ドライバー事業テンプレート集",
+    description:
+      "軽貨物ドライバー事業向けコーポレートサイトテンプレート5種。",
+    type: "website",
+  },
+};
 
 const corporateTemplates = [
   { id: "01", name: "ロジスティクス・プロ", desc: "クリーン企業風・白ベース、紺×オレンジの信頼感あるデザイン",     color: "#1e3a5f", accent: "#e67e22", bg: "#ffffff" },

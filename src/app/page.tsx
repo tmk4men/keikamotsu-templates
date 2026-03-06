@@ -3,7 +3,20 @@
    全テンプレを一覧表示し、プレビューリンクを提供する
    =================================================== */
 
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "採用HPテンプレート一覧（16種）",
+  description:
+    "軽貨物ドライバー採用に特化したHPデザインテンプレート16種を一覧表示。スタイリッシュ、ミニマル、ポップ、高級感など多彩なデザインから選べます。",
+  openGraph: {
+    title: "採用HPテンプレート一覧（16種）｜軽貨物ドライバー事業テンプレート集",
+    description:
+      "軽貨物ドライバー採用に特化したHPデザインテンプレート16種を一覧表示。",
+    type: "website",
+  },
+};
 
 const templates = [
   { id: "01", name: "スタイリッシュ",   desc: "ダークテーマ、シャープな線、モノトーン+ブルーアクセント",     color: "#3b82f6", bg: "#0a0a1a" },

@@ -19,6 +19,7 @@ import {
   DotGothic16,
 } from "next/font/google";
 import { meta } from "@/data/siteData";
+import { company } from "@/data/corporateSiteData";
 import "./globals.css";
 
 /* ── 基本日本語フォント ── */
@@ -126,8 +127,14 @@ const allFonts = [
   dotGothic16,
 ].map((f) => f.variable).join(" ");
 
+const BASE_URL = "https://tomo1015.github.io/keikamotsu-templates";
+
 export const metadata: Metadata = {
-  title: meta.title,
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: meta.title,
+    template: "%s｜軽貨物ドライバー事業テンプレート集",
+  },
   description: meta.description,
   keywords: meta.keywords,
   openGraph: {
@@ -135,8 +142,18 @@ export const metadata: Metadata = {
     description: meta.description,
     type: "website",
     locale: "ja_JP",
+    siteName: "軽貨物ドライバー事業 HPテンプレート集",
+    url: BASE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: meta.title,
+    description: meta.description,
   },
   robots: { index: true, follow: true },
+  alternates: {
+    canonical: BASE_URL,
+  },
 };
 
 export default function RootLayout({
@@ -144,9 +161,41 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: company.name,
+    alternateName: company.nameEn,
+    url: company.url,
+    telephone: company.phone,
+    email: company.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "池田2-11-55",
+      addressLocality: "寝屋川市",
+      addressRegion: "大阪府",
+      postalCode: company.postalCode,
+      addressCountry: "JP",
+    },
+    foundingDate: "2021-05",
+    numberOfEmployees: { "@type": "QuantitativeValue", value: 150 },
+    description: meta.description,
+    areaServed: ["大阪", "東京", "兵庫", "鳥取", "島根", "沖縄"],
+    serviceType: [
+      "軽貨物運送",
+      "事業用車両リース",
+      "レンタカー",
+      "レッカー・ロードサービス",
+    ],
+  };
+
   return (
     <html lang="ja" className={allFonts}>
       <body className="font-[family-name:var(--font-sans)] antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>
