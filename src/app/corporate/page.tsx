@@ -7,13 +7,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "コーポレートHPテンプレート一覧（5種）",
+  title: "コーポレートHPテンプレート一覧（8種）",
   description:
-    "軽貨物ドライバー事業向けコーポレートサイトテンプレート5種を一覧表示。ロジスティクス・プロ、トラストブルー、エコモーション、エグゼクティブ、フューチャーフローの5デザイン。",
+    "軽貨物ドライバー事業向けコーポレートサイトテンプレート8種を一覧表示。ロジスティクス・プロ、トラストブルー、エコモーション、エグゼクティブ、フューチャーフロー、ウォームドライブ、ボールドインパクト、クリアブリーズの8デザイン。",
   openGraph: {
-    title: "コーポレートHPテンプレート一覧（5種）｜軽貨物ドライバー事業テンプレート集",
+    title: "コーポレートHPテンプレート一覧（8種）｜軽貨物ドライバー事業テンプレート集",
     description:
-      "軽貨物ドライバー事業向けコーポレートサイトテンプレート5種。",
+      "軽貨物ドライバー事業向けコーポレートサイトテンプレート8種。",
     type: "website",
   },
 };
@@ -24,6 +24,9 @@ const corporateTemplates = [
   { id: "03", name: "エコモーション",       desc: "ナチュラル・エコ・丸みのあるデザイン、緑×琥珀の温かな印象",   color: "#2d7d46", accent: "#f59e0b", bg: "#f0fdf4" },
   { id: "04", name: "エグゼクティブ",       desc: "ダークテーマの高級感、紺黒×ゴールドのプレミアムデザイン",     color: "#c9a84c", accent: "#c9a84c", bg: "#1a1a2e" },
   { id: "05", name: "フューチャーフロー",   desc: "テック・グラデーション・グラスモーフィズムの先進的デザイン",   color: "#8b5cf6", accent: "#06b6d4", bg: "#0f0f23" },
+  { id: "06", name: "ウォームドライブ",     desc: "温かみ・地域密着、アースカラー・紙テクスチャの人間味あるデザイン", color: "#6b4226", accent: "#c2703e", bg: "#faf7f2" },
+  { id: "07", name: "ボールドインパクト",   desc: "力強さ・スピード感、ダークネイビー×オレンジのダイナミックデザイン", color: "#f97316", accent: "#f97316", bg: "#0f172a" },
+  { id: "08", name: "クリアブリーズ",       desc: "清潔感・透明性、スカイブルー×ミントグリーンのミニマルデザイン", color: "#0ea5e9", accent: "#10b981", bg: "#ffffff" },
 ];
 
 export default function CorporateGalleryPage() {
@@ -73,7 +76,7 @@ export default function CorporateGalleryPage() {
             color: "#fff",
             cursor: "default",
           }}>
-            コーポレートHPテンプレート（5種）
+            コーポレートHPテンプレート（8種）
           </span>
         </div>
 

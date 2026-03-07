@@ -84,7 +84,7 @@ export default function GalleryPage() {
               transition: "all 0.2s",
             }}
           >
-            コーポレートHPテンプレート（5種）→
+            コーポレートHPテンプレート（8種）→
           </Link>
         </div>
 
