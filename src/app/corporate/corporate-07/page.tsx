@@ -184,6 +184,12 @@ export default function Corporate07Page() {
     alert("お問い合わせありがとうございます。担当者より折り返しご連絡いたします。");
   }, []);
 
+  const strengthImages = [
+    "/keikamotsu-templates/images/reasons.png",
+    "/keikamotsu-templates/images/workplace.png",
+    "/keikamotsu-templates/images/vehicle.png",
+  ];
+
   const serviceImages = [
     "/keikamotsu-templates/images/service-ec.png",
     "/keikamotsu-templates/images/service-b2b.png",
@@ -229,9 +235,17 @@ export default function Corporate07Page() {
       {menuOpen && <div className="cp07-overlay" onClick={closeMenu} aria-hidden="true" />}
 
       {/* ─── HERO ─── */}
-      <section className="cp07-hero">
+      <section className="cp07-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <Image
+          src="/keikamotsu-templates/images/delivery.png"
+          alt="配達風景"
+          fill
+          style={{ objectFit: "cover", opacity: 0.25, position: "absolute", top: 0, left: 0, zIndex: 0 }}
+          priority
+        />
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", background: "linear-gradient(135deg, rgba(10,20,40,0.85) 0%, rgba(10,20,40,0.6) 100%)", zIndex: 1 }} aria-hidden="true" />
         <SpeedLines />
-        <div className="cp07-hero-content cp07-reveal">
+        <div className="cp07-hero-content cp07-reveal" style={{ position: "relative", zIndex: 2 }}>
           <h1 className="cp07-hero-headline">
             物流の力で、<br />未来を切り拓く。
           </h1>
@@ -286,6 +300,17 @@ export default function Corporate07Page() {
           <div className="cp07-strengths-list">
             {data.strengths.map((s, i) => (
               <div key={i} className={`cp07-strength-card cp07-reveal cp07-reveal--${i % 2 === 0 ? "left" : "right"}`} style={{ transitionDelay: `${i * 0.12}s` }}>
+                {strengthImages[i] && (
+                  <div style={{ width: "120px", minWidth: "120px", height: "120px", borderRadius: "8px", overflow: "hidden", border: "2px solid var(--cp07-accent, #f57c00)", flexShrink: 0 }}>
+                    <Image
+                      src={strengthImages[i]}
+                      alt={s.title}
+                      width={120}
+                      height={120}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    />
+                  </div>
+                )}
                 <div className="cp07-strength-num">{s.num}</div>
                 <div className="cp07-strength-body">
                   <h3 className="cp07-strength-title">{s.title}</h3>
@@ -332,14 +357,25 @@ export default function Corporate07Page() {
             <h2 className="cp07-section-title">会社概要</h2>
             <div className="cp07-title-bar" />
           </div>
-          <dl className="cp07-overview-table cp07-reveal">
-            {data.companyOverview.map((item, i) => (
-              <div key={i} className="cp07-overview-row">
-                <dt className="cp07-overview-dt">{item.dt}</dt>
-                <dd className="cp07-overview-dd">{item.dd}</dd>
-              </div>
-            ))}
-          </dl>
+          <div className="cp07-reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "start" }}>
+            <dl className="cp07-overview-table" style={{ margin: 0 }}>
+              {data.companyOverview.map((item, i) => (
+                <div key={i} className="cp07-overview-row">
+                  <dt className="cp07-overview-dt">{item.dt}</dt>
+                  <dd className="cp07-overview-dd">{item.dd}</dd>
+                </div>
+              ))}
+            </dl>
+            <div style={{ position: "relative", borderRight: "4px solid var(--cp07-accent, #f57c00)", borderBottom: "4px solid var(--cp07-accent, #f57c00)", borderRadius: "8px", overflow: "hidden" }}>
+              <Image
+                src="/keikamotsu-templates/images/company.png"
+                alt="社屋外観"
+                width={560}
+                height={380}
+                style={{ width: "100%", height: "auto", display: "block", borderRadius: "8px" }}
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -370,8 +406,15 @@ export default function Corporate07Page() {
       </section>
 
       {/* ─── NUMBERS ─── */}
-      <section id="numbers" className="cp07-section cp07-section--numbers">
-        <div className="cp07-container">
+      <section id="numbers" className="cp07-section cp07-section--numbers" style={{ position: "relative", overflow: "hidden" }}>
+        <Image
+          src="/keikamotsu-templates/images/team.png"
+          alt="チーム"
+          fill
+          style={{ objectFit: "cover", opacity: 0.15, position: "absolute", top: 0, left: 0, zIndex: 0 }}
+        />
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(10,20,40,0.7)", zIndex: 1 }} aria-hidden="true" />
+        <div className="cp07-container" style={{ position: "relative", zIndex: 2 }}>
           <div className="cp07-section-header cp07-section-header--light cp07-reveal">
             <span className="cp07-section-label">Numbers</span>
             <h2 className="cp07-section-title">数字で見る実績</h2>
@@ -433,8 +476,15 @@ export default function Corporate07Page() {
       <SkewDividerFlip color="var(--cp07-accent)" />
 
       {/* ─── RECRUIT CTA ─── */}
-      <section id="recruit" className="cp07-section cp07-recruit-section">
-        <div className="cp07-container">
+      <section id="recruit" className="cp07-section cp07-recruit-section" style={{ position: "relative", overflow: "hidden" }}>
+        <Image
+          src="/keikamotsu-templates/images/jobs.png"
+          alt="求人イメージ"
+          fill
+          style={{ objectFit: "cover", opacity: 0.2, position: "absolute", top: 0, left: 0, zIndex: 0 }}
+        />
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(10,20,40,0.6)", zIndex: 1 }} aria-hidden="true" />
+        <div className="cp07-container" style={{ position: "relative", zIndex: 2 }}>
           <div className="cp07-recruit cp07-reveal">
             <h2 className="cp07-recruit-heading">{data.recruit.heading}</h2>
             <p className="cp07-recruit-text">{data.recruit.text}</p>

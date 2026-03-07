@@ -266,9 +266,21 @@ export default function Corporate06Page() {
       )}
 
       {/* ─── HERO ─── */}
-      <section className="cp06-hero">
+      <section className="cp06-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <Image
+          src="/keikamotsu-templates/images/team.png"
+          alt="チームの集合写真"
+          fill
+          style={{
+            objectFit: "cover",
+            opacity: 0.18,
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+          priority
+        />
         <WarmParticles />
-        <div className="cp06-hero-content cp06-reveal">
+        <div className="cp06-hero-content cp06-reveal" style={{ position: "relative", zIndex: 1 }}>
           <p className="cp06-hero-label">地域をつなぐ、温かな物流</p>
           <h1 className="cp06-hero-headline">{data.hero.headline}</h1>
           <div className="cp06-hero-sub">
@@ -323,8 +335,31 @@ export default function Corporate06Page() {
       <WaveDivider color="var(--cp06-bg-alt)" />
 
       {/* ─── STRENGTHS ─── */}
-      <section id="strengths" className="cp06-section cp06-section--alt">
-        <div className="cp06-container">
+      <section id="strengths" className="cp06-section cp06-section--alt" style={{ position: "relative", overflow: "hidden" }}>
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            right: "-60px",
+            bottom: "-40px",
+            width: "340px",
+            height: "340px",
+            opacity: 0.1,
+            borderRadius: "24px",
+            overflow: "hidden",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+        >
+          <Image
+            src="/keikamotsu-templates/images/reasons.png"
+            alt=""
+            width={340}
+            height={340}
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+          />
+        </div>
+        <div className="cp06-container" style={{ position: "relative", zIndex: 1 }}>
           <div className="cp06-section-header cp06-reveal">
             <span className="cp06-section-label">Strengths</span>
             <h2 className="cp06-section-title">私たちの強み</h2>
@@ -398,14 +433,38 @@ export default function Corporate06Page() {
             <h2 className="cp06-section-title">会社概要</h2>
             <div className="cp06-wavy-line" aria-hidden="true" />
           </div>
-          <dl className="cp06-overview-table cp06-reveal">
-            {data.companyOverview.map((item, i) => (
-              <div key={i} className="cp06-overview-row">
-                <dt className="cp06-overview-dt">{item.dt}</dt>
-                <dd className="cp06-overview-dd">{item.dd}</dd>
-              </div>
-            ))}
-          </dl>
+          <div
+            className="cp06-reveal"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1.5fr",
+              gap: "2rem",
+              alignItems: "start",
+            }}
+          >
+            <div style={{ borderRadius: "12px", overflow: "hidden" }}>
+              <Image
+                src="/keikamotsu-templates/images/company.png"
+                alt="社屋外観"
+                width={520}
+                height={380}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                }}
+              />
+            </div>
+            <dl className="cp06-overview-table">
+              {data.companyOverview.map((item, i) => (
+                <div key={i} className="cp06-overview-row">
+                  <dt className="cp06-overview-dt">{item.dt}</dt>
+                  <dd className="cp06-overview-dd">{item.dd}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </section>
 
@@ -446,8 +505,19 @@ export default function Corporate06Page() {
       </section>
 
       {/* ─── NUMBERS ─── */}
-      <section id="numbers" className="cp06-section cp06-section--warm">
-        <div className="cp06-container">
+      <section id="numbers" className="cp06-section cp06-section--warm" style={{ position: "relative", overflow: "hidden" }}>
+        <Image
+          src="/keikamotsu-templates/images/loading.png"
+          alt=""
+          fill
+          style={{
+            objectFit: "cover",
+            opacity: 0.08,
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+        <div className="cp06-container" style={{ position: "relative", zIndex: 1 }}>
           <div className="cp06-section-header cp06-section-header--light cp06-reveal">
             <span className="cp06-section-label">Numbers</span>
             <h2 className="cp06-section-title">数字で見る実績</h2>
@@ -527,8 +597,31 @@ export default function Corporate06Page() {
       <WaveDivider flip color="var(--cp06-primary)" />
 
       {/* ─── RECRUIT CTA ─── */}
-      <section id="recruit" className="cp06-section cp06-recruit-section">
-        <div className="cp06-container">
+      <section
+        id="recruit"
+        className="cp06-section cp06-recruit-section"
+        style={{ position: "relative", overflow: "hidden" }}
+      >
+        <Image
+          src="/keikamotsu-templates/images/jobs.png"
+          alt="求人イメージ"
+          fill
+          style={{
+            objectFit: "cover",
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(135deg, rgba(139,90,43,0.85) 0%, rgba(78,52,28,0.90) 100%)",
+            zIndex: 1,
+          }}
+        />
+        <div className="cp06-container" style={{ position: "relative", zIndex: 2 }}>
           <div className="cp06-recruit cp06-reveal">
             <h2 className="cp06-recruit-heading">{data.recruit.heading}</h2>
             <p className="cp06-recruit-text">{data.recruit.text}</p>

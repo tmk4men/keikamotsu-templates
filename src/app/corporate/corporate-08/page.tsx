@@ -221,7 +221,16 @@ export default function Corporate08Page() {
       {menuOpen && <div className="cp08-overlay" onClick={closeMenu} aria-hidden="true" />}
 
       {/* ─── HERO ─── */}
-      <section className="cp08-hero">
+      <section className="cp08-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+          <Image
+            src="/keikamotsu-templates/images/vehicle.png"
+            alt=""
+            fill
+            style={{ objectFit: "cover", opacity: 0.12 }}
+            aria-hidden="true"
+          />
+        </div>
         <FloatingBubbles />
         <div className="cp08-hero-content cp08-reveal">
           <p className="cp08-hero-label">Trusted Logistics Partner</p>
@@ -282,6 +291,39 @@ export default function Corporate08Page() {
               </div>
             ))}
           </div>
+          <div
+            className="cp08-reveal"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 16,
+              marginTop: 48,
+            }}
+          >
+            {[
+              { src: "/keikamotsu-templates/images/reasons.png", alt: "研修風景" },
+              { src: "/keikamotsu-templates/images/workplace.png", alt: "事務所" },
+              { src: "/keikamotsu-templates/images/team.png", alt: "チーム" },
+            ].map((img, i) => (
+              <div
+                key={i}
+                style={{
+                  borderRadius: 10,
+                  overflow: "hidden",
+                  lineHeight: 0,
+                  opacity: 0.85,
+                }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={400}
+                  height={260}
+                  style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -319,6 +361,15 @@ export default function Corporate08Page() {
             <span className="cp08-section-label">Company</span>
             <h2 className="cp08-section-title">会社概要</h2>
             <div className="cp08-title-line" />
+          </div>
+          <div className="cp08-reveal" style={{ marginBottom: 32, borderRadius: 12, overflow: "hidden", lineHeight: 0 }}>
+            <Image
+              src="/keikamotsu-templates/images/company.png"
+              alt="社屋外観"
+              width={1200}
+              height={400}
+              style={{ width: "100%", height: "auto", objectFit: "cover", borderRadius: 12, maxHeight: 360 }}
+            />
           </div>
           <dl className="cp08-overview-table cp08-reveal">
             {data.companyOverview.map((item, i) => (
@@ -358,8 +409,17 @@ export default function Corporate08Page() {
       </section>
 
       {/* ─── NUMBERS ─── */}
-      <section id="numbers" className="cp08-section cp08-section--numbers">
-        <div className="cp08-container">
+      <section id="numbers" className="cp08-section cp08-section--numbers" style={{ position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+          <Image
+            src="/keikamotsu-templates/images/loading.png"
+            alt=""
+            fill
+            style={{ objectFit: "cover", opacity: 0.1 }}
+            aria-hidden="true"
+          />
+        </div>
+        <div className="cp08-container" style={{ position: "relative", zIndex: 1 }}>
           <div className="cp08-section-header cp08-section-header--light cp08-reveal">
             <span className="cp08-section-label">Numbers</span>
             <h2 className="cp08-section-title">数字で見る実績</h2>
@@ -421,8 +481,18 @@ export default function Corporate08Page() {
       <WaveDivider flip color="var(--cp08-primary)" />
 
       {/* ─── RECRUIT CTA ─── */}
-      <section id="recruit" className="cp08-section cp08-recruit-section">
-        <div className="cp08-container">
+      <section id="recruit" className="cp08-section cp08-recruit-section" style={{ position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+          <Image
+            src="/keikamotsu-templates/images/jobs.png"
+            alt=""
+            fill
+            style={{ objectFit: "cover", opacity: 0.18 }}
+            aria-hidden="true"
+          />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(56, 189, 248, 0.25)" }} />
+        </div>
+        <div className="cp08-container" style={{ position: "relative", zIndex: 1 }}>
           <div className="cp08-recruit cp08-reveal">
             <h2 className="cp08-recruit-heading">{data.recruit.heading}</h2>
             <p className="cp08-recruit-text">{data.recruit.text}</p>
