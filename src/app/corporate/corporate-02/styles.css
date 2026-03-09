@@ -173,7 +173,7 @@
 .cp02-reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .cp02-reveal.cp02-visible {
@@ -408,12 +408,13 @@
 .cp02-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 86, 179, 0.82);
+  background: rgba(0, 86, 179, 0.55);
   pointer-events: none;
   z-index: 1;
 }
 
 .cp02-hero::before {
+  display: none;
   content: "";
   position: absolute;
   bottom: -2px;
@@ -505,14 +506,12 @@
   border-left: 4px solid var(--cp02-primary);
   border-radius: var(--cp02-radius);
   padding: 32px 28px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s ease-out;
 }
 
 .cp02-service-card:hover {
-  box-shadow: 0 12px 32px rgba(0, 56, 128, 0.12);
-  transform: translateY(-6px);
-  border-color: rgba(0, 86, 179, 0.3);
-  border-left-color: var(--cp02-accent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
 }
 
 .cp02-service-icon {
@@ -1326,7 +1325,7 @@
 .cp02-ceo-img {
   width: 280px;
   height: auto;
-  border-radius: 8px;
+  border-radius: 16px;
   object-fit: cover;
   box-shadow: 0 8px 24px rgba(0, 86, 179, 0.12);
 }
@@ -1341,7 +1340,8 @@
    =================================================== */
 .cp02-service-img {
   width: 100%;
-  height: 200px;
+  height: 240px;
+  min-height: 200px;
   object-fit: cover;
   border-radius: 6px;
   margin-bottom: 16px;
@@ -1351,7 +1351,7 @@
    Ornament Separator
    =================================================== */
 .cp02-ornament {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   gap: 16px;
@@ -1459,7 +1459,7 @@
 
 .cp02-strength-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 40px;
   align-items: center;
   background: #fff;
@@ -1495,7 +1495,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s ease-out;
 }
 
 .cp02-strength-row:hover .cp02-strength-row__img {
@@ -1526,7 +1526,7 @@
 .cp02-company-photo__img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 8px 24px rgba(0, 86, 179, 0.12);
 }
@@ -1560,7 +1560,7 @@
 .cp02-interlude__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 56, 128, 0.65);
+  background: rgba(0, 56, 128, 0.40);
   z-index: 1;
 }
 
@@ -1590,7 +1590,7 @@
   overflow: hidden;
   cursor: pointer;
   aspect-ratio: 4 / 3;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
 }
 
 .cp02-gallery-item:hover {
@@ -1603,11 +1603,11 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s ease-out;
 }
 
 .cp02-gallery-item:hover .cp02-gallery-item__img {
-  transform: scale(1.08);
+  transform: scale(1.04);
 }
 
 .cp02-gallery-item__overlay {

@@ -72,29 +72,33 @@
   transform: translate(0, 0);
 }
 
-/* ── Skew Divider ── */
+/* ── Skew Divider (非表示: 装飾控えめ) ── */
 .cp07-skew-divider {
+  display: none;
   line-height: 0;
   margin-top: -1px;
 }
 .cp07-skew-divider--flip {
+  display: none;
   margin-top: 0;
   margin-bottom: -1px;
 }
 .cp07-skew-svg {
-  display: block;
+  display: none;
   width: 100%;
   height: 50px;
 }
 
-/* ── Speed Lines ── */
+/* ── Speed Lines (非表示: 装飾控えめ) ── */
 .cp07-speed-lines {
+  display: none;
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
 .cp07-speed-line {
+  display: none;
   position: absolute;
   right: -200px;
   height: 2px;
@@ -243,7 +247,7 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
 .cp07-hero-accent {
@@ -376,9 +380,10 @@
 }
 .cp07-service-img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
   display: block;
+  border-radius: 12px 12px 0 0;
 }
 .cp07-service-body {
   padding: 24px;
@@ -445,8 +450,15 @@
   width: 160px;
   height: 160px;
   object-fit: cover;
-  border-radius: var(--cp07-radius);
+  border-radius: 12px;
   flex-shrink: 0;
+}
+/* Strength画像の親divを大きく（inline 120px→160pxへ上書き） */
+.cp07-strength-card > div:first-child {
+  width: 160px !important;
+  min-width: 160px !important;
+  height: 160px !important;
+  border-radius: 12px !important;
 }
 .cp07-strength-title {
   font-size: 20px;
@@ -478,7 +490,7 @@
   width: 200px;
   height: 250px;
   object-fit: cover;
-  border-radius: var(--cp07-radius);
+  border-radius: 12px;
 }
 .cp07-message-paragraph {
   font-size: 15px;
@@ -1020,6 +1032,32 @@
 .cp07-recruit-text,
 .cp07-contact-intro {
   white-space: pre-line;
+}
+
+/* ── 装飾控えめ改善: Company写真にborder-radius追加 ── */
+.cp07-section .cp07-overview-table + div,
+.cp07-section dl + div {
+  border-radius: 12px !important;
+}
+.cp07-section dl + div img {
+  border-radius: 12px !important;
+}
+
+/* ── hover時のアニメーション控えめ ── */
+.cp07-service-card:hover {
+  transform: translateY(-3px);
+}
+.cp07-strength-card:hover {
+  transform: translateX(3px);
+}
+.cp07-number-card:hover {
+  transform: translateY(-2px);
+}
+.cp07-partner-card:hover {
+  transform: translateY(-2px);
+}
+.cp07-news-item:hover {
+  transform: translateX(3px);
 }
 
 /* ═══════════════════════════════════════════════

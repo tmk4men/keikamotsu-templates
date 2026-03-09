@@ -243,7 +243,7 @@ export default function Corporate07Page() {
           src="/keikamotsu-templates/images/delivery.png"
           alt="配達風景"
           fill
-          style={{ objectFit: "cover", opacity: 0.25, position: "absolute", top: 0, left: 0, zIndex: 0 }}
+          style={{ objectFit: "cover", opacity: 0.4, position: "absolute", top: 0, left: 0, zIndex: 0 }}
           priority
         />
         <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", background: "linear-gradient(135deg, rgba(10,20,40,0.85) 0%, rgba(10,20,40,0.6) 100%)", zIndex: 1 }} aria-hidden="true" />
@@ -414,7 +414,7 @@ export default function Corporate07Page() {
           src="/keikamotsu-templates/images/team.png"
           alt="チーム"
           fill
-          style={{ objectFit: "cover", opacity: 0.15, position: "absolute", top: 0, left: 0, zIndex: 0 }}
+          style={{ objectFit: "cover", opacity: 0.25, position: "absolute", top: 0, left: 0, zIndex: 0 }}
         />
         <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(10,20,40,0.7)", zIndex: 1 }} aria-hidden="true" />
         <div className="cp07-container" style={{ position: "relative", zIndex: 2 }}>
@@ -484,7 +484,7 @@ export default function Corporate07Page() {
           src="/keikamotsu-templates/images/jobs.png"
           alt="求人イメージ"
           fill
-          style={{ objectFit: "cover", opacity: 0.2, position: "absolute", top: 0, left: 0, zIndex: 0 }}
+          style={{ objectFit: "cover", opacity: 0.3, position: "absolute", top: 0, left: 0, zIndex: 0 }}
         />
         <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(10,20,40,0.6)", zIndex: 1 }} aria-hidden="true" />
         <div className="cp07-container" style={{ position: "relative", zIndex: 2 }}>

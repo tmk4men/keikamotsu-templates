@@ -230,7 +230,7 @@ export default function Corporate08Page() {
             src="/keikamotsu-templates/images/vehicle.png"
             alt=""
             fill
-            style={{ objectFit: "cover", opacity: 0.12 }}
+            style={{ objectFit: "cover", opacity: 0.25 }}
             aria-hidden="true"
           />
         </div>
@@ -418,7 +418,7 @@ export default function Corporate08Page() {
             src="/keikamotsu-templates/images/loading.png"
             alt=""
             fill
-            style={{ objectFit: "cover", opacity: 0.1 }}
+            style={{ objectFit: "cover", opacity: 0.2 }}
             aria-hidden="true"
           />
         </div>
@@ -490,7 +490,7 @@ export default function Corporate08Page() {
             src="/keikamotsu-templates/images/jobs.png"
             alt=""
             fill
-            style={{ objectFit: "cover", opacity: 0.18 }}
+            style={{ objectFit: "cover", opacity: 0.28 }}
             aria-hidden="true"
           />
           <div style={{ position: "absolute", inset: 0, background: "rgba(56, 189, 248, 0.25)" }} />

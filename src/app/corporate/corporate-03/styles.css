@@ -43,7 +43,7 @@
 .cp03-reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.3, 1), transform 0.7s cubic-bezier(0.25, 1, 0.3, 1);
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.3, 1), transform 0.5s cubic-bezier(0.25, 1, 0.3, 1);
 }
 .cp03-reveal.cp03-visible {
   opacity: 1;
@@ -69,7 +69,7 @@
   padding: 64px 0;
 }
 .cp03-section--alt {
-  background: var(--cp03-bg-alt);
+  background: #f5f5f5;
 }
 
 /* ── Section Title ── */
@@ -332,7 +332,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(45,125,70,0.8) 0%, rgba(45,125,70,0.75) 60%, rgba(245,158,11,0.45) 100%);
+  background: rgba(0, 0, 0, 0.45);
   z-index: 0;
 }
 .cp03-hero::after {
@@ -340,47 +340,20 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(160deg, #e8f5ec 0%, #f0fdf4 40%, #fffbeb 100%);
-  opacity: 0.15;
+  opacity: 0;
   z-index: 0;
+  display: none;
 }
 .cp03-hero-bg-shapes {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
+  display: none;
 }
 .cp03-hero-blob {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.12;
+  display: none;
 }
-.cp03-hero-blob--1 {
-  width: 500px;
-  height: 500px;
-  background: var(--cp03-primary);
-  top: -120px;
-  right: -100px;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  animation: cp03-blob-float 12s ease-in-out infinite;
-}
-.cp03-hero-blob--2 {
-  width: 350px;
-  height: 350px;
-  background: var(--cp03-accent);
-  bottom: -80px;
-  left: -60px;
-  border-radius: 40% 60% 70% 30% / 50% 60% 40% 50%;
-  animation: cp03-blob-float 15s ease-in-out infinite reverse;
-}
+.cp03-hero-blob--1,
+.cp03-hero-blob--2,
 .cp03-hero-blob--3 {
-  width: 200px;
-  height: 200px;
-  background: var(--cp03-primary-light);
-  top: 40%;
-  left: 20%;
-  border-radius: 50% 30% 60% 40% / 60% 50% 30% 50%;
-  animation: cp03-blob-float 10s ease-in-out infinite;
+  display: none;
 }
 
 @keyframes cp03-blob-float {
@@ -554,9 +527,9 @@
 /* Service Images */
 .cp03-service-img {
   width: 100%;
-  height: 200px;
+  height: 240px;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 12px;
   margin-bottom: 16px;
 }
 .cp03-service-text {
@@ -576,7 +549,7 @@
 }
 .cp03-strength-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 40px;
   align-items: center;
   background: var(--cp03-bg);
@@ -603,7 +576,7 @@
 .cp03-strength-img-wrap {
   width: 100%;
   height: 100%;
-  min-height: 280px;
+  min-height: 320px;
   position: relative;
   overflow: hidden;
 }
@@ -656,7 +629,7 @@
 .cp03-ceo-img {
   width: 280px;
   height: auto;
-  border-radius: 20px;
+  border-radius: 16px;
   object-fit: cover;
   box-shadow: 0 8px 30px rgba(45, 125, 70, 0.15);
 }
@@ -761,7 +734,7 @@
 .cp03-company-img {
   width: 100%;
   height: auto;
-  border-radius: var(--cp03-radius-lg);
+  border-radius: 12px;
   object-fit: cover;
   box-shadow: var(--cp03-shadow);
 }
@@ -1059,7 +1032,7 @@
 .cp03-interlude-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(45,125,70,0.7) 0%, rgba(30,92,50,0.6) 100%);
+  background: linear-gradient(160deg, rgba(45,125,70,0.45) 0%, rgba(30,92,50,0.35) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1439,19 +1412,10 @@
    FALLING LEAVES
    ═══════════════════════════════════════ */
 .cp03-leaves {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 2;
+  display: none;
 }
 .cp03-leaf {
-  position: absolute;
-  top: -20px;
-  background: var(--cp03-primary);
-  border-radius: 50% 0 50% 50%;
-  opacity: 0;
-  animation: cp03-leafFall linear infinite;
+  display: none;
 }
 .cp03-leaf:nth-child(odd) {
   background: var(--cp03-accent-light);
@@ -1464,33 +1428,20 @@
    WAVE DIVIDER
    ═══════════════════════════════════════ */
 .cp03-wave {
-  position: relative;
-  margin-top: -1px;
-  margin-bottom: -1px;
-  line-height: 0;
-  z-index: 3;
+  display: none;
 }
 .cp03-wave svg {
-  display: block;
-  width: 100%;
-  height: 40px;
+  display: none;
 }
 .cp03-wave--flip {
-  transform: scaleX(-1);
+  display: none;
 }
 
 /* ═══════════════════════════════════════
    TIMELINE VINE
    ═══════════════════════════════════════ */
 .cp03-timeline-vine {
-  position: absolute;
-  top: 8px;
-  left: 18px;
-  width: 3px;
-  background: linear-gradient(180deg, var(--cp03-primary), var(--cp03-accent));
-  border-radius: 3px;
-  z-index: 1;
-  transition: height 0.15s linear;
+  display: none;
 }
 .cp03-timeline-dot--active {
   background: var(--cp03-accent) !important;
@@ -1503,12 +1454,7 @@
    SPROUT (Numbers)
    ═══════════════════════════════════════ */
 .cp03-sprout {
-  width: 28px;
-  height: 36px;
-  margin-top: 4px;
-  opacity: 0;
-  transform-origin: bottom center;
-  transform: scaleY(0) translateY(10px);
+  display: none;
 }
 .cp03-number-circle.cp03-visible .cp03-sprout {
   animation: cp03-sproutGrow 0.8s cubic-bezier(0.25, 1, 0.3, 1) 0.6s both;

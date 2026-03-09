@@ -276,7 +276,7 @@ export default function Corporate06Page() {
           fill
           style={{
             objectFit: "cover",
-            opacity: 0.18,
+            opacity: 0.3,
             zIndex: 0,
             pointerEvents: "none",
           }}
@@ -515,7 +515,7 @@ export default function Corporate06Page() {
           fill
           style={{
             objectFit: "cover",
-            opacity: 0.08,
+            opacity: 0.18,
             zIndex: 0,
             pointerEvents: "none",
           }}
