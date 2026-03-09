@@ -30,6 +30,7 @@
   color: var(--cp05-text);
   font-family: var(--font-sans), sans-serif;
   line-height: 1.85;
+  letter-spacing: 0.04em;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -401,24 +402,56 @@
   line-height: 1.6;
   white-space: pre;
   color: var(--cp05-cyan);
-  opacity: 0.15;
-  text-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+  opacity: 0.08;
+  text-shadow: 0 0 6px rgba(6, 182, 212, 0.25);
   animation: cp05-matrixFall linear infinite;
-  filter: blur(0.3px);
+  filter: blur(0.5px);
 }
 
 .cp05-matrix-col:nth-child(3n) {
   color: var(--cp05-purple-light);
-  opacity: 0.1;
-  text-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
+  opacity: 0.06;
+  text-shadow: 0 0 6px rgba(139, 92, 246, 0.2);
 }
 
 /* ================================================================
    SECTION BASE
    ================================================================ */
 .cp05-section {
-  padding: 100px 0;
+  padding: 90px 0;
   position: relative;
+}
+
+/* Section padding variations for visual rhythm */
+#services.cp05-section {
+  padding: 80px 0;
+}
+#strengths.cp05-section {
+  padding: 96px 0;
+}
+#message.cp05-section {
+  padding: 88px 0;
+}
+#company.cp05-section {
+  padding: 72px 0;
+}
+#history.cp05-section {
+  padding: 76px 0;
+}
+#numbers.cp05-section {
+  padding: 84px 0;
+}
+#partners.cp05-section {
+  padding: 68px 0;
+}
+#news.cp05-section {
+  padding: 80px 0;
+}
+#recruit.cp05-section {
+  padding: 92px 0;
+}
+#contact.cp05-section {
+  padding: 88px 0;
 }
 
 .cp05-section--alt {
@@ -438,7 +471,7 @@
 .cp05-section-title {
   text-align: center;
   font-family: var(--font-grotesk), "Space Grotesk", sans-serif;
-  font-size: 28px;
+  font-size: clamp(24px, 3.5vw, 30px);
   font-weight: 700;
   margin: 0 0 56px;
   letter-spacing: 0.03em;
@@ -545,13 +578,13 @@
 
 .cp05-service-card {
   background: var(--cp05-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--cp05-glass-border);
   border-top: 3px solid var(--cp05-purple);
   border-radius: var(--cp05-radius);
   padding: 36px 28px;
-  transition: box-shadow 0.35s, border-color 0.35s, transform 0.25s, backdrop-filter 0.35s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
@@ -573,12 +606,12 @@
 }
 
 .cp05-service-card:hover {
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.15), 0 8px 32px rgba(0, 0, 0, 0.3);
-  transform: translateY(-4px);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-color: rgba(255, 255, 255, 0.18);
-  animation: cp05-neonPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15), 0 0 40px rgba(99, 102, 241, 0.12), 0 12px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-6px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-color: rgba(6, 182, 212, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cp05-service-card:hover::before {
@@ -620,7 +653,8 @@
   font-size: 14px;
   color: var(--cp05-text-dim);
   margin: 0;
-  line-height: 1.85;
+  line-height: 1.75;
+  letter-spacing: 0.03em;
 }
 
 /* Service Images */
@@ -659,12 +693,12 @@
 }
 
 .cp05-strength-card:hover {
-  box-shadow: 0 0 40px rgba(99, 102, 241, 0.12), 0 0 16px rgba(6, 182, 212, 0.1);
-  transform: translateY(-4px);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-color: rgba(255, 255, 255, 0.18);
-  animation: cp05-neonPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.12), 0 0 40px rgba(99, 102, 241, 0.1), 0 12px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-color: rgba(6, 182, 212, 0.22);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cp05-strength-badge {
@@ -698,7 +732,8 @@
   font-size: 14px;
   color: var(--cp05-text-dim);
   margin: 0;
-  line-height: 1.85;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
 }
 
 /* ================================================================
@@ -730,8 +765,8 @@
 
 .cp05-message-box {
   background: var(--cp05-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--cp05-glass-border);
   border-radius: var(--cp05-radius);
   padding: 56px 48px 48px;
@@ -948,27 +983,28 @@
 
 .cp05-number-card {
   background: var(--cp05-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--cp05-glass-border);
   border-radius: var(--cp05-radius);
   padding: 36px 20px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.35s, backdrop-filter 0.35s;
-  animation: cp05-neonPulse 3s ease-in-out infinite, cp05-borderGlow 4s ease-in-out infinite;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cp05-borderGlow 5s ease-in-out infinite;
 }
 
 .cp05-number-card.cp05-visible {
-  animation: cp05-glassReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both, cp05-neonPulse 3s ease-in-out 0.7s infinite;
+  animation: cp05-glassReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both, cp05-borderGlow 5s ease-in-out 0.7s infinite;
 }
 
 .cp05-number-card:hover {
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.2), 0 0 60px rgba(6, 182, 212, 0.1);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15), 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-color: rgba(6, 182, 212, 0.2);
 }
 
 @keyframes cp05-borderGlow {
@@ -1027,12 +1063,12 @@
 }
 
 .cp05-partner-card:hover {
-  box-shadow: 0 0 24px rgba(6, 182, 212, 0.15);
-  transform: translateY(-4px);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-color: rgba(255, 255, 255, 0.18);
-  animation: cp05-neonPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15), 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-color: rgba(6, 182, 212, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cp05-partner-industry {
@@ -1357,8 +1393,8 @@
 
 .cp05-form-input:focus,
 .cp05-form-textarea:focus {
-  border-color: var(--cp05-purple);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15), 0 0 20px rgba(99, 102, 241, 0.12), 0 0 40px rgba(6, 182, 212, 0.06);
+  border-color: var(--cp05-cyan);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15), 0 0 20px rgba(6, 182, 212, 0.12), 0 0 40px rgba(6, 182, 212, 0.06);
   background: rgba(255, 255, 255, 0.07);
 }
 

@@ -12,7 +12,7 @@
   --cp01-accent-light: #f39c12;
   --cp01-accent-dark: #d35400;
   --cp01-bg: #ffffff;
-  --cp01-bg-alt: #f8f9fa;
+  --cp01-bg-alt: #f3f4f6;
   --cp01-text: #333333;
   --cp01-text-light: #6b7280;
   --cp01-border: #e5e7eb;
@@ -21,13 +21,15 @@
   --cp01-radius: 8px;
   --cp01-radius-lg: 16px;
   --cp01-transition: 0.3s ease;
+  --cp01-transition-bounce: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ── Base reset ── */
 .theme-cp01 {
   color: var(--cp01-text);
   background: var(--cp01-bg);
-  line-height: 1.8;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
   font-family: var(--font-sans), "Noto Sans JP", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -297,15 +299,16 @@
   font-weight: 700;
   color: #fff;
   background: var(--cp01-accent);
-  border-radius: 6px;
+  border-radius: 8px;
   text-decoration: none;
-  transition: background var(--cp01-transition), transform var(--cp01-transition);
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
 }
 
 .cp01-nav__cta:hover {
   background: var(--cp01-accent-dark);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 126, 34, 0.3);
 }
 
 /* Overlay */
@@ -431,14 +434,14 @@
 .cp01-particle--square {
   width: 1em;
   height: 1em;
-  background: rgba(230, 126, 34, 0.3);
+  background: rgba(230, 126, 34, 0.15);
   border-radius: 2px;
   transform: rotate(45deg);
 }
 .cp01-particle--circle {
   width: 1em;
   height: 1em;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 50%;
 }
 .cp01-particle--triangle {
@@ -446,19 +449,19 @@
   height: 0;
   border-left: 0.5em solid transparent;
   border-right: 0.5em solid transparent;
-  border-bottom: 1em solid rgba(230, 126, 34, 0.2);
+  border-bottom: 1em solid rgba(230, 126, 34, 0.1);
 }
 @keyframes cp01-particleFloat {
   0%, 100% {
     transform: translateY(0) rotate(0deg);
-    opacity: var(--particle-opacity, 0.1);
+    opacity: var(--particle-opacity, 0.06);
   }
   25% {
     transform: translateY(-30px) rotate(45deg);
   }
   50% {
     transform: translateY(-15px) rotate(90deg);
-    opacity: calc(var(--particle-opacity, 0.1) * 1.5);
+    opacity: calc(var(--particle-opacity, 0.06) * 1.3);
   }
   75% {
     transform: translateY(-40px) rotate(135deg);
@@ -474,11 +477,11 @@
   color: #fff;
   background: var(--cp01-accent);
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   text-decoration: none;
   cursor: pointer;
-  transition: background var(--cp01-transition), transform var(--cp01-transition), box-shadow var(--cp01-transition);
-  animation: cp01-fadeInUp 0.8s ease 0.6s both;
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cp01-fadeInUp 0.8s ease 0.4s both;
   letter-spacing: 0.04em;
 }
 
@@ -494,9 +497,20 @@
    SECTIONS — common
    =================================================== */
 .cp01-section {
-  padding: 100px 0;
+  padding: 80px 0;
   background: var(--cp01-bg);
 }
+
+/* Section padding variation for visual rhythm */
+.cp01-section#services { padding: 80px 0; }
+.cp01-section#strengths { padding: 100px 0; }
+.cp01-section#message { padding: 90px 0; }
+.cp01-section#overview { padding: 70px 0; }
+.cp01-section#numbers { padding: 80px 0; }
+.cp01-section#partners { padding: 70px 0; }
+.cp01-section#news { padding: 60px 0; }
+.cp01-section#access { padding: 80px 0; }
+.cp01-section#contact { padding: 90px 0; }
 
 .cp01-section--alt {
   background: var(--cp01-bg-alt);
@@ -516,12 +530,12 @@
 .cp01-section-label {
   display: block;
   font-family: var(--font-clean), "Inter", sans-serif;
-  font-size: 13px;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--cp01-accent);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .cp01-section-header--light .cp01-section-label {
@@ -771,7 +785,8 @@
 
 .cp01-strength-item:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: rgba(230, 126, 34, 0.3);
 }
 
 .cp01-strength-item__num {
@@ -1149,7 +1164,8 @@
 
 .cp01-partner-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: rgba(230, 126, 34, 0.25);
 }
 
 .cp01-partner-card__icon {
@@ -1318,6 +1334,7 @@
 .cp01-recruit .cp01-btn-primary:hover {
   background: #fff;
   color: var(--cp01-primary);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
 }
 
 /* ===================================================
@@ -1462,16 +1479,16 @@
   color: #fff;
   background: var(--cp01-accent);
   border: none;
-  border-radius: var(--cp01-radius);
+  border-radius: 10px;
   cursor: pointer;
-  transition: background var(--cp01-transition), transform var(--cp01-transition), box-shadow var(--cp01-transition);
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   letter-spacing: 0.04em;
 }
 
 .cp01-form__submit:hover {
   background: var(--cp01-accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(230, 126, 34, 0.3);
+  box-shadow: 0 8px 24px rgba(230, 126, 34, 0.3);
 }
 
 /* ===================================================
@@ -1936,6 +1953,7 @@
   opacity: 0;
   transform: scale(0.92);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .cp01-revealed .cp01-gallery-item {
@@ -1949,6 +1967,11 @@
 .cp01-revealed .cp01-gallery-item:nth-child(4) { transition-delay: 0.20s; }
 .cp01-revealed .cp01-gallery-item:nth-child(5) { transition-delay: 0.25s; }
 .cp01-revealed .cp01-gallery-item:nth-child(6) { transition-delay: 0.30s; }
+
+.cp01-gallery-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
 
 .cp01-gallery-img {
   width: 100%;
