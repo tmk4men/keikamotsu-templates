@@ -599,6 +599,20 @@
   width: 100%;
   height: 40px;
 }
+
+/* ── Grayscale emoji icons ── */
+.cp01-service-card__icon {
+  filter: grayscale(1);
+}
+
+/* ── Pre-line for \n in text ── */
+.cp01-service-card__text,
+.cp01-strength-item__text,
+.cp01-recruit__text,
+.cp01-contact-intro {
+  white-space: pre-line;
+}
+
 @media (max-width: 768px) {
   .cp01-wave-svg {
     height: 24px;

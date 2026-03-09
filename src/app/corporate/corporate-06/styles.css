@@ -1044,6 +1044,21 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* ── Grayscale emoji icons ── */
+.cp06-service-icon,
+.cp06-logo-icon,
+.cp06-footer-logo-icon {
+  filter: grayscale(1);
+}
+
+/* ── Pre-line for \n in text ── */
+.cp06-service-text,
+.cp06-strength-text,
+.cp06-recruit-text,
+.cp06-contact-intro {
+  white-space: pre-line;
+}
+
 /* ═══════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════ */

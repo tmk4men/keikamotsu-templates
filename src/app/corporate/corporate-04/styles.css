@@ -1559,6 +1559,19 @@
   box-shadow: 0 4px 20px rgba(201, 168, 76, 0.2);
 }
 
+/* ── Grayscale emoji icons ── */
+.cp04-service-icon {
+  filter: grayscale(1);
+}
+
+/* ── Pre-line for \n in text ── */
+.cp04-service-text,
+.cp04-strength-text,
+.cp04-recruit-text,
+.cp04-contact-intro {
+  white-space: pre-line;
+}
+
 /* ══════════════════════════════════════
    RESPONSIVE – 768px
    ══════════════════════════════════════ */

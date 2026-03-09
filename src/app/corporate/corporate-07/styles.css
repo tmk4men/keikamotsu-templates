@@ -1009,6 +1009,19 @@
   color: rgba(255, 255, 255, 0.4);
 }
 
+/* ── Grayscale emoji icons ── */
+.cp07-service-icon {
+  filter: grayscale(1);
+}
+
+/* ── Pre-line for \n in text ── */
+.cp07-service-text,
+.cp07-strength-text,
+.cp07-recruit-text,
+.cp07-contact-intro {
+  white-space: pre-line;
+}
+
 /* ═══════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════ */

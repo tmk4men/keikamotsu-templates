@@ -1646,6 +1646,19 @@
   display: block;
 }
 
+/* ── Grayscale emoji icons ── */
+.cp02-service-icon {
+  filter: grayscale(1);
+}
+
+/* ── Pre-line for \n in text ── */
+.cp02-service-text,
+.cp02-strength-text,
+.cp02-recruit-text,
+.cp02-contact-intro {
+  white-space: pre-line;
+}
+
 /* ===================================================
    RESPONSIVE — 768px
    =================================================== */
