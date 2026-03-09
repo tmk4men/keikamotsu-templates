@@ -1020,12 +1020,14 @@
   filter: grayscale(1);
 }
 
-/* ── Pre-line for \n in text ── */
-.cp08-service-text,
-.cp08-strength-text,
-.cp08-recruit-text,
-.cp08-contact-intro {
-  white-space: pre-line;
+/* ── Pre-line for \n in text (desktop only) ── */
+@media (min-width: 769px) {
+  .cp08-service-text,
+  .cp08-strength-text,
+  .cp08-recruit-text,
+  .cp08-contact-intro {
+    white-space: pre-line;
+  }
 }
 
 /* ── 装飾控えめ改善 ── */

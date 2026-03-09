@@ -1933,12 +1933,14 @@
   filter: grayscale(1);
 }
 
-/* ── Pre-line for \n in text ── */
-.cp05-service-text,
-.cp05-strength-text,
-.cp05-recruit-text,
-.cp05-contact-intro {
-  white-space: pre-line;
+/* ── Pre-line for \n in text (desktop only) ── */
+@media (min-width: 769px) {
+  .cp05-service-text,
+  .cp05-strength-text,
+  .cp05-recruit-text,
+  .cp05-contact-intro {
+    white-space: pre-line;
+  }
 }
 
 /* ================================================================

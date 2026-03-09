@@ -1038,12 +1038,14 @@
   filter: grayscale(1);
 }
 
-/* ── Pre-line for \n in text ── */
-.cp06-service-text,
-.cp06-strength-text,
-.cp06-recruit-text,
-.cp06-contact-intro {
-  white-space: pre-line;
+/* ── Pre-line for \n in text (desktop only) ── */
+@media (min-width: 769px) {
+  .cp06-service-text,
+  .cp06-strength-text,
+  .cp06-recruit-text,
+  .cp06-contact-intro {
+    white-space: pre-line;
+  }
 }
 
 /* ═══════════════════════════════════════════════

@@ -1026,12 +1026,14 @@
   filter: grayscale(1);
 }
 
-/* ── Pre-line for \n in text ── */
-.cp07-service-text,
-.cp07-strength-text,
-.cp07-recruit-text,
-.cp07-contact-intro {
-  white-space: pre-line;
+/* ── Pre-line for \n in text (desktop only) ── */
+@media (min-width: 769px) {
+  .cp07-service-text,
+  .cp07-strength-text,
+  .cp07-recruit-text,
+  .cp07-contact-intro {
+    white-space: pre-line;
+  }
 }
 
 /* ── 装飾控えめ改善: Company写真にborder-radius追加 ── */

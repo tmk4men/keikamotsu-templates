@@ -607,12 +607,14 @@
   filter: grayscale(1);
 }
 
-/* ── Pre-line for \n in text ── */
-.cp01-service-card__text,
-.cp01-strength-item__text,
-.cp01-recruit__text,
-.cp01-contact-intro {
-  white-space: pre-line;
+/* ── Pre-line for \n in text (desktop only) ── */
+@media (min-width: 769px) {
+  .cp01-service-card__text,
+  .cp01-strength-item__text,
+  .cp01-recruit__text,
+  .cp01-contact-intro {
+    white-space: pre-line;
+  }
 }
 
 @media (max-width: 768px) {
