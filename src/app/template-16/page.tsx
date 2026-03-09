@@ -22,7 +22,7 @@ const STAGES = [
   { label: "出発！", section: "応募" },
 ] as const;
 
-const SKILL_ICONS = ["🚗", "⛽", "🛡️", "👔", "📚", "💰"];
+const SKILL_ICONS = ["I", "II", "III", "IV", "V", "VI"];
 
 /* ── カスタムフック ── */
 function useHorizontalScroll() {
@@ -305,7 +305,7 @@ export default function Template16() {
           <div ref={stages[0].ref} className={`t16-stage-inner${stages[0].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title">STAGE 0 — 城門</div>
             <div className="t16-hero-content">
-              <div className="t16-hero-guild">⚔ {data.company.name} ギルド ⚔</div>
+              <div className="t16-hero-guild">-- {data.company.name} ギルド --</div>
               <h1 className="t16-hero-title">
                 {data.hero.headlineParts.map((p, i) => (
                   <span key={i}>{p}<br /></span>
@@ -364,7 +364,7 @@ export default function Template16() {
             <div className="t16-skill-grid">
               {data.benefits.map((b, i) => (
                 <div key={i} className="t16-skill-card">
-                  <span className="t16-skill-icon">{SKILL_ICONS[i] || "✨"}</span>
+                  <span className="t16-skill-icon">{SKILL_ICONS[i] || "-"}</span>
                   <div className="t16-skill-name">{b.title}</div>
                   <div className="t16-skill-desc">{b.text}</div>
                 </div>
@@ -557,7 +557,7 @@ export default function Template16() {
                 <RpgDialogBox speaker="ギルドマスター">
                   {data.cta.subtext}<br />
                   <span style={{ color: "var(--t16-gold)", fontFamily: "var(--font-dot)", fontSize: "1.1rem" }}>
-                    ☎ {data.cta.phone}
+                    TEL: {data.cta.phone}
                   </span>
                 </RpgDialogBox>
               </div>

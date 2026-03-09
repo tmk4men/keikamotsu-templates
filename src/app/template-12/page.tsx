@@ -228,7 +228,7 @@ export default function Template12() {
               <h4>応募資格</h4>
               <ul>
                 {data.jobs.requirements.map((r, i) => (
-                  <li key={i}><span className="t12-req-sparkle">✦</span>{r}</li>
+                  <li key={i}><span className="t12-req-sparkle">*</span>{r}</li>
                 ))}
               </ul>
             </div>
@@ -243,7 +243,7 @@ export default function Template12() {
           <div className="t12-benefits-grid">
             {data.benefits.map((b, i) => (
               <div key={i} className={`t12-benefit-card t12-anim t12-anim-delay-${(i % 4) + 1}`} data-anim="t12-anim--float">
-                <span className="t12-benefit-card__sparkle t12-sparkle-hover">✦</span>
+                <span className="t12-benefit-card__sparkle t12-sparkle-hover">*</span>
                 <div className="t12-benefit-card__pink-top" />
                 <h4 className="t12-benefit-card__title">{b.title}</h4>
                 <p className="t12-benefit-card__text">{b.text}</p>

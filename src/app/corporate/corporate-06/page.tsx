@@ -232,7 +232,7 @@ export default function Corporate06Page() {
       >
         <div className="cp06-header-inner">
           <a href="#" className="cp06-logo">
-            <span className="cp06-logo-icon">🚚</span>
+            <span className="cp06-logo-icon">GL</span>
             <span className="cp06-logo-text">{data.company.name}</span>
           </a>
 
@@ -750,7 +750,7 @@ export default function Corporate06Page() {
         <div className="cp06-footer-inner">
           <div className="cp06-footer-top">
             <div className="cp06-footer-brand">
-              <span className="cp06-footer-logo-icon">🚚</span>
+              <span className="cp06-footer-logo-icon">GL</span>
               <span className="cp06-footer-company">{data.company.name}</span>
             </div>
             <p className="cp06-footer-catchphrase">
