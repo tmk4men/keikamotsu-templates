@@ -115,6 +115,9 @@ export default function Template13() {
 
       {/* ─── HERO ─── */}
       <section className="t13-hero">
+        <video className="t13-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-nightcity.mp4" type="video/mp4" />
+        </video>
         <div className="t13-hero__bg" />
         <div className="t13-hero__watermark" aria-hidden="true">DRIVER</div>
         <div className="t13-hero__content">

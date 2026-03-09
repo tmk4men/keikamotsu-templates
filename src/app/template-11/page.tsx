@@ -183,6 +183,9 @@ export default function Template11() {
 
       {/* ─── HERO ─── */}
       <section className="t11-hero">
+        <video className="t11-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-nightcity.mp4" type="video/mp4" />
+        </video>
         <div className="t11-hero__bg" />
         <MatrixRain />
         <div className="t11-hero__content" ref={tw.ref}>

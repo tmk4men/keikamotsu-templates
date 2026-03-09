@@ -91,7 +91,15 @@
   position: relative; min-height: 100vh;
   display: flex; align-items: center; justify-content: center;
   background: url("../../../public/images/hero-bg.webp") center/cover no-repeat;
-  padding: 100px 20px 60px;
+  padding: 100px 20px 60px; overflow: hidden;
+}
+.t10-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 .classic-hero__overlay {
   position: absolute; inset: 0;

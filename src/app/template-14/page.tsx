@@ -145,6 +145,9 @@ export default function Template14() {
 
       {/* ─── HERO ─── */}
       <section className="t14-hero">
+        <video className="t14-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-bright.mp4" type="video/mp4" />
+        </video>
         <div className="t14-hero__bg" />
         <Bubbles count={15} />
         <div className="t14-hero__content">

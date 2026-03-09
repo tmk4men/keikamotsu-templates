@@ -686,7 +686,7 @@
    6. COMPANY OVERVIEW
    =================================================== */
 .cp02-overview-table-wrap {
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -1413,6 +1413,204 @@
   animation: cp02-verticalFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
 
+/* ===================================================
+   HERO VIDEO
+   =================================================== */
+.cp02-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* ===================================================
+   STRENGTHS — Image + Text Row Layout
+   =================================================== */
+.cp02-strengths-list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.cp02-strength-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--cp02-border);
+  border-radius: var(--cp02-radius);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cp02-strength-row:hover {
+  box-shadow: var(--cp02-shadow-lg);
+  transform: translateY(-4px);
+}
+
+.cp02-strength-row--reverse {
+  direction: rtl;
+}
+
+.cp02-strength-row--reverse > * {
+  direction: ltr;
+}
+
+.cp02-strength-row__image {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 280px;
+}
+
+.cp02-strength-row__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cp02-strength-row:hover .cp02-strength-row__img {
+  transform: scale(1.05);
+}
+
+.cp02-strength-row__content {
+  padding: 40px 36px;
+  text-align: left;
+}
+
+/* ===================================================
+   COMPANY OVERVIEW — Side Photo Layout
+   =================================================== */
+.cp02-company-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.cp02-company-photo {
+  position: relative;
+}
+
+.cp02-company-photo__img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 86, 179, 0.12);
+}
+
+.cp02-company-photo__caption {
+  text-align: center;
+  font-size: 13px;
+  color: var(--cp02-text-light);
+  margin-top: 12px;
+  letter-spacing: 1px;
+}
+
+/* ===================================================
+   VISUAL INTERLUDE
+   =================================================== */
+.cp02-interlude {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp02-interlude__img {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.cp02-interlude__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 56, 128, 0.65);
+  z-index: 1;
+}
+
+.cp02-interlude__text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-mincho), "Shippori Mincho", serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.15em;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* ===================================================
+   PHOTO GALLERY
+   =================================================== */
+.cp02-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cp02-gallery-item {
+  position: relative;
+  border-radius: var(--cp02-radius);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+}
+
+.cp02-gallery-item__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cp02-gallery-item:hover .cp02-gallery-item__img {
+  transform: scale(1.08);
+}
+
+.cp02-gallery-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 56, 128, 0.0);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20px;
+  transition: background 0.4s ease;
+}
+
+.cp02-gallery-item:hover .cp02-gallery-item__overlay {
+  background: rgba(0, 56, 128, 0.55);
+}
+
+.cp02-gallery-item__caption {
+  color: #ffffff;
+  font-family: var(--font-serif), "Noto Serif JP", serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.cp02-gallery-item:hover .cp02-gallery-item__caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ─── Desktop Line Break Utility ─── */
 .br-desktop {
   display: block;
@@ -1511,9 +1709,21 @@
   }
 
   /* Strengths */
-  .cp02-strengths-grid {
+  .cp02-strength-row {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 0;
+  }
+
+  .cp02-strength-row--reverse {
+    direction: ltr;
+  }
+
+  .cp02-strength-row__image {
+    min-height: 220px;
+  }
+
+  .cp02-strength-row__content {
+    padding: 28px 24px;
   }
 
   /* CEO Message */
@@ -1543,6 +1753,12 @@
     gap: 12px;
   }
 
+  /* Company Layout */
+  .cp02-company-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
   /* Company Table */
   .cp02-overview-table th {
     width: 110px;
@@ -1553,6 +1769,21 @@
   .cp02-overview-table td {
     padding: 12px 12px;
     font-size: 13px;
+  }
+
+  /* Gallery */
+  .cp02-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Interlude */
+  .cp02-interlude {
+    height: 300px;
+  }
+
+  .cp02-interlude__text {
+    font-size: 28px;
   }
 
   /* Numbers */
@@ -1657,6 +1888,34 @@
     width: 48px;
     height: 48px;
     font-size: 18px;
+  }
+
+  .cp02-strengths-list {
+    gap: 32px;
+  }
+
+  .cp02-strength-row__image {
+    min-height: 180px;
+  }
+
+  .cp02-strength-row__content {
+    padding: 24px 20px;
+  }
+
+  /* Gallery 480 */
+  .cp02-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* Interlude 480 */
+  .cp02-interlude {
+    height: 240px;
+  }
+
+  .cp02-interlude__text {
+    font-size: 22px;
+    letter-spacing: 0.1em;
   }
 
   .cp02-message-name {

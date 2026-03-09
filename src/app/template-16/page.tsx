@@ -299,6 +299,9 @@ export default function Template16() {
       <div ref={containerRef} className="t16-scroll-container">
         {/* ── Stage 0: 城門 (Hero) ── */}
         <section className="t16-stage t16-stage--castle-gate">
+          <video className="t16-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+            <source src="/keikamotsu-templates/videos/hero-nightcity.mp4" type="video/mp4" />
+          </video>
           <div ref={stages[0].ref} className={`t16-stage-inner${stages[0].revealed ? " revealed" : ""}`}>
             <div className="t16-stage-title">STAGE 0 — 城門</div>
             <div className="t16-hero-content">

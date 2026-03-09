@@ -112,6 +112,9 @@ export default function Template07Page() {
 
       {/* ========== Hero ========== */}
       <section className="dyn-hero">
+        <video className="dyn-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-nightcity.mp4" type="video/mp4" />
+        </video>
         <div className="dyn-hero__bg" />
         <div className="dyn-hero__content">
           <div className="dyn-hero__accent-line" />

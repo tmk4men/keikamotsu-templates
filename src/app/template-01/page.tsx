@@ -236,6 +236,9 @@ export default function Template01() {
 
       {/* ─── HERO ─── */}
       <section className="t01-hero">
+        <video className="t01-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-nightcity.mp4" type="video/mp4" />
+        </video>
         <div className="t01-hero__bg" />
         <Particles count={30} />
         <div className="t01-hero__content">

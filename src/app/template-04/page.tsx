@@ -169,6 +169,9 @@ export default function Template04() {
 
       {/* ─── HERO: split-screen ─── */}
       <section className="t04-hero">
+        <video className="t04-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-nightcity.mp4" type="video/mp4" />
+        </video>
         <div className="t04-hero__left">
           <div className="t04-hero__image" />
         </div>

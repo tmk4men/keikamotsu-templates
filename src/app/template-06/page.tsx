@@ -108,6 +108,9 @@ export default function Template06Page() {
 
       {/* ========== Hero ========== */}
       <section className="warm-hero">
+        <video className="warm-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-daytime.mp4" type="video/mp4" />
+        </video>
         <div className="warm-hero__grain" />
         <div className="warm-hero__content">
           <h1 className="warm-hero__heading">

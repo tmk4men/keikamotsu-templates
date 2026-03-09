@@ -118,6 +118,9 @@ export default function Template15() {
 
       {/* ─── HERO (collage style) ─── */}
       <section className="t15-hero">
+        <video className="t15-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-bright.mp4" type="video/mp4" />
+        </video>
         <div className="t15-hero__bg" />
         <div className="t15-hero__collage-circle" aria-hidden="true" />
         <div className="t15-hero__content">

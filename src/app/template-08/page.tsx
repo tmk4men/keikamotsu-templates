@@ -154,6 +154,9 @@ export default function Template08Page() {
 
       {/* ========== Hero ========== */}
       <section className="clean-hero">
+        <video className="clean-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-daytime.mp4" type="video/mp4" />
+        </video>
         <div className="clean-hero__overlay" />
         <div className="clean-hero__content">
           <h1 className="clean-hero__heading">

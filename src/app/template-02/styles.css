@@ -60,10 +60,19 @@
 
 /* ── HERO ── */
 .t02-hero {
+  position: relative; overflow: hidden;
   min-height: 100vh; display: flex; align-items: center; justify-content: center;
   background: var(--white); padding: 120px 32px 80px;
 }
-.t02-hero__inner { max-width: 800px; text-align: center; }
+.t02-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.t02-hero__inner { max-width: 800px; text-align: center; position: relative; z-index: 1; }
 
 /* Typewriter */
 .t02-typewriter { display: flex; flex-direction: column; gap: 8px; min-height: 2.4em; }

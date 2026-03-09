@@ -1667,6 +1667,267 @@
 }
 
 /* ================================================================
+   HERO VIDEO BACKGROUND
+   ================================================================ */
+.cp05-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.35;
+  filter: brightness(0.5) saturate(0.7);
+}
+
+/* ================================================================
+   STRENGTHS — Row Layout with Images
+   ================================================================ */
+.cp05-strengths-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.cp05-strength-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.cp05-strength-row--reverse {
+  direction: rtl;
+}
+
+.cp05-strength-row--reverse > * {
+  direction: ltr;
+}
+
+.cp05-strength-row-img-wrap {
+  position: relative;
+  border-radius: var(--cp05-radius);
+  overflow: hidden;
+}
+
+.cp05-strength-row-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--cp05-radius);
+  border: 1px solid var(--cp05-glass-border);
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s;
+}
+
+.cp05-strength-row:hover .cp05-strength-row-img {
+  transform: scale(1.04);
+  filter: brightness(1.1);
+}
+
+.cp05-strength-row-img-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--cp05-radius);
+  background: linear-gradient(135deg, rgba(99,102,241,0.15) 0%, transparent 50%, rgba(6,182,212,0.1) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.cp05-strength-row:hover .cp05-strength-row-img-glow {
+  opacity: 1;
+}
+
+.cp05-strength-row-content {
+  background: var(--cp05-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--cp05-glass-border);
+  border-radius: var(--cp05-radius);
+  padding: 40px 32px;
+  transition: box-shadow 0.35s, border-color 0.35s;
+}
+
+.cp05-strength-row:hover .cp05-strength-row-content {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.12), 0 0 16px rgba(6, 182, 212, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ================================================================
+   COMPANY OVERVIEW — Grid with Photo
+   ================================================================ */
+.cp05-company-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cp05-company-layout .cp05-company-table {
+  max-width: none;
+  margin: 0;
+}
+
+.cp05-company-photo-wrap {
+  position: relative;
+  border-radius: var(--cp05-radius);
+  overflow: hidden;
+  border: 1px solid var(--cp05-glass-border);
+  background: var(--cp05-glass);
+}
+
+.cp05-company-photo {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cp05-company-photo-wrap:hover .cp05-company-photo {
+  transform: scale(1.03);
+}
+
+.cp05-company-photo-caption {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cp05-text-dim);
+  background: var(--cp05-glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid var(--cp05-glass-border);
+  letter-spacing: 0.04em;
+}
+
+/* ================================================================
+   VISUAL INTERLUDE
+   ================================================================ */
+.cp05-visual-interlude {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.cp05-interlude-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.5) saturate(0.8);
+}
+
+.cp05-interlude-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(99,102,241,0.25) 0%, transparent 50%, rgba(6,182,212,0.2) 100%),
+    rgba(10, 10, 26, 0.55);
+  pointer-events: none;
+}
+
+.cp05-interlude-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.cp05-interlude-text {
+  font-family: var(--font-grotesk), "Space Grotesk", sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 12px;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(99,102,241,0.5), 0 0 60px rgba(6,182,212,0.3);
+}
+
+.cp05-interlude-sub {
+  font-family: var(--font-geometric), "Josefin Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0;
+  background: var(--cp05-gradient-h);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================================================================
+   PHOTO GALLERY
+   ================================================================ */
+.cp05-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cp05-gallery-item {
+  position: relative;
+  border-radius: var(--cp05-radius);
+  overflow: hidden;
+  border: 1px solid var(--cp05-glass-border);
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+}
+
+.cp05-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s;
+}
+
+.cp05-gallery-item:hover .cp05-gallery-img {
+  transform: scale(1.08);
+  filter: brightness(1.15);
+}
+
+.cp05-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,26,0.85) 0%, rgba(10,10,26,0.2) 40%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.cp05-gallery-item:hover .cp05-gallery-overlay {
+  opacity: 1;
+}
+
+.cp05-gallery-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 16px rgba(6,182,212,0.5);
+  padding: 6px 18px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ================================================================
    RESPONSIVE — 768px
    ================================================================ */
 @media (max-width: 768px) {
@@ -1817,6 +2078,45 @@
   .cp05-recruit-heading {
     font-size: 22px;
   }
+
+  /* Strengths rows */
+  .cp05-strength-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .cp05-strength-row--reverse {
+    direction: ltr;
+  }
+
+  .cp05-strength-row-img {
+    height: 220px;
+  }
+
+  /* Company layout */
+  .cp05-company-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .cp05-company-photo {
+    height: 260px;
+  }
+
+  /* Visual interlude */
+  .cp05-visual-interlude {
+    height: 300px;
+  }
+
+  /* Gallery */
+  .cp05-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .cp05-gallery-overlay {
+    opacity: 1;
+  }
 }
 
 /* ================================================================
@@ -1899,5 +2199,34 @@
 
   .cp05-recruit-text {
     font-size: 14px;
+  }
+
+  /* Strength rows */
+  .cp05-strength-row-img {
+    height: 180px;
+  }
+
+  .cp05-strength-row-content {
+    padding: 28px 20px;
+  }
+
+  /* Company photo */
+  .cp05-company-photo {
+    height: 200px;
+  }
+
+  /* Visual interlude */
+  .cp05-visual-interlude {
+    height: 240px;
+  }
+
+  .cp05-interlude-text {
+    font-size: 1.2rem;
+  }
+
+  /* Gallery */
+  .cp05-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 }

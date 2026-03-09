@@ -125,6 +125,8 @@ export default function CorporateTemplate04() {
   const [ringVisible, setRingVisible] = useState(false);
   const timelineRef = useRef<HTMLDivElement>(null);
   const numbersRef2 = useRef<HTMLDivElement>(null);
+  const galleryRef = useReveal(100);
+  const interludeRef = useReveal(100);
 
   /* ── scroll handler ── */
   useEffect(() => {
@@ -241,12 +243,23 @@ export default function CorporateTemplate04() {
       {/* ────────────────────── HERO ────────────────────── */}
       <section className="cp04-hero" ref={heroRef}>
         <div className="cp04-hero-bg">
+          <video
+            className="cp04-hero-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/keikamotsu-templates/images/hero-bg.webp"
+          >
+            <source src="/keikamotsu-templates/videos/hero-nightcity.mp4" type="video/mp4" />
+          </video>
           <Image
-            src="/keikamotsu-templates/hero-bg.webp"
+            src="/keikamotsu-templates/images/hero-bg.webp"
             alt=""
             fill
             priority
             style={{ objectFit: "cover" }}
+            className="cp04-hero-fallback"
           />
           <div className="cp04-hero-overlay" />
         </div>
@@ -305,18 +318,34 @@ export default function CorporateTemplate04() {
             <div className="cp04-section-line" />
           </div>
           <div className="cp04-strengths-list">
-            {data.strengths.map((s, i) => (
-              <div key={i} className="cp04-strength-item cp04-reveal-left" style={{ transitionDelay: `${i * 0.15}s` }}>
-                <div className="cp04-strength-num">{s.num}</div>
-                <div className="cp04-strength-body">
-                  <h3 className="cp04-strength-title">{s.title}</h3>
-                  <p className="cp04-strength-text">{s.text}</p>
+            {(() => {
+              const strengthImages = [
+                "/keikamotsu-templates/images/reasons.png",
+                "/keikamotsu-templates/images/workplace.png",
+                "/keikamotsu-templates/images/vehicle.png",
+              ];
+              return data.strengths.map((s, i) => (
+                <div key={i} className={`cp04-strength-item cp04-strength-item--grid ${i % 2 !== 0 ? "cp04-strength-item--reverse" : ""} ${i % 2 === 0 ? "cp04-reveal-left" : "cp04-reveal-right"}`} style={{ transitionDelay: `${i * 0.15}s` }}>
+                  <div className="cp04-strength-image-wrap">
+                    <Image
+                      src={strengthImages[i % strengthImages.length]}
+                      alt={s.title}
+                      width={500}
+                      height={320}
+                      className="cp04-strength-img"
+                    />
+                  </div>
+                  <div className="cp04-strength-content">
+                    <div className="cp04-strength-num">{s.num}</div>
+                    <h3 className="cp04-strength-title">{s.title}</h3>
+                    <p className="cp04-strength-text">{s.text}</p>
+                  </div>
+                  {i < data.strengths.length - 1 && (
+                    <div className="cp04-strength-divider" />
+                  )}
                 </div>
-                {i < data.strengths.length - 1 && (
-                  <div className="cp04-strength-divider" />
-                )}
-              </div>
-            ))}
+              ));
+            })()}
           </div>
         </div>
       </section>
@@ -364,14 +393,26 @@ export default function CorporateTemplate04() {
             <h2 className="cp04-section-title">会社概要</h2>
             <div className="cp04-section-line" />
           </div>
-          <dl className="cp04-company-table">
-            {data.companyOverview.map((row, i) => (
-              <div key={i} className="cp04-company-row">
-                <dt className="cp04-company-dt">{row.dt}</dt>
-                <dd className="cp04-company-dd">{row.dd}</dd>
-              </div>
-            ))}
-          </dl>
+          <div className="cp04-company-grid">
+            <dl className="cp04-company-table">
+              {data.companyOverview.map((row, i) => (
+                <div key={i} className="cp04-company-row">
+                  <dt className="cp04-company-dt">{row.dt}</dt>
+                  <dd className="cp04-company-dd">{row.dd}</dd>
+                </div>
+              ))}
+            </dl>
+            <div className="cp04-company-photo">
+              <Image
+                src="/keikamotsu-templates/images/company.png"
+                alt="本社・寝屋川営業所"
+                width={480}
+                height={360}
+                className="cp04-company-img"
+              />
+              <span className="cp04-company-caption">本社・寝屋川営業所</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -449,6 +490,61 @@ export default function CorporateTemplate04() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <GoldDivider />
+
+      {/* ────────────────────── PHOTO GALLERY ────────────────────── */}
+      <section className="cp04-gallery" ref={galleryRef}>
+        <div className="cp04-container cp04-reveal">
+          <div className="cp04-section-header">
+            <span className="cp04-section-en">Gallery</span>
+            <h2 className="cp04-section-title">フォトギャラリー</h2>
+            <div className="cp04-section-line" />
+          </div>
+          <div className="cp04-gallery-grid">
+            {[
+              { src: "/keikamotsu-templates/images/vehicle.png", alt: "配送車両" },
+              { src: "/keikamotsu-templates/images/workplace.png", alt: "職場環境" },
+              { src: "/keikamotsu-templates/images/team.png", alt: "チーム" },
+              { src: "/keikamotsu-templates/images/loading.png", alt: "積込作業" },
+              { src: "/keikamotsu-templates/images/delivery.png", alt: "配送風景" },
+              { src: "/keikamotsu-templates/images/daily-flow.png", alt: "日常業務" },
+            ].map((photo, i) => (
+              <div key={i} className="cp04-gallery-item cp04-reveal-scale" style={{ transitionDelay: `${i * 0.1}s` }}>
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={400}
+                  height={300}
+                  className="cp04-gallery-img"
+                />
+                <div className="cp04-gallery-overlay">
+                  <span className="cp04-gallery-label">{photo.alt}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <GoldDivider />
+
+      {/* ────────────────────── VISUAL INTERLUDE ────────────────────── */}
+      <section className="cp04-interlude" ref={interludeRef}>
+        <div className="cp04-interlude-bg">
+          <Image
+            src="/keikamotsu-templates/images/delivery.png"
+            alt=""
+            fill
+            style={{ objectFit: "cover" }}
+          />
+          <div className="cp04-interlude-overlay" />
+        </div>
+        <div className="cp04-interlude-content cp04-reveal">
+          <span className="cp04-interlude-en">Reliability</span>
+          <p className="cp04-interlude-text">確かな品質と信頼で、<br />お客様の物流を支え続けます。</p>
         </div>
       </section>
 

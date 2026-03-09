@@ -115,6 +115,9 @@ export default function Template09Page() {
 
       {/* ========== Hero ========== */}
       <section className="glass-hero">
+        <video className="t09-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-nightcity.mp4" type="video/mp4" />
+        </video>
         <div className="glass-hero__mesh" />
         <div className="glass-hero__particles">
           {[...Array(6)].map((_, i) => (

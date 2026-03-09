@@ -173,6 +173,9 @@ export default function Template05() {
 
       {/* ─── HERO ─── */}
       <section className="t05-hero">
+        <video className="t05-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-daytime.mp4" type="video/mp4" />
+        </video>
         <div className="t05-hero__bg" />
         <div className="t05-hero__content">
           <h1 className="t05-hero__heading">

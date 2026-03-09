@@ -118,6 +118,9 @@ export default function Template10Page() {
 
       {/* ========== Hero ========== */}
       <section className="classic-hero">
+        <video className="t10-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-daytime.mp4" type="video/mp4" />
+        </video>
         <div className="classic-hero__overlay" />
         <div className="classic-hero__frame">
           <div className="classic-hero__frame-corner classic-hero__frame-corner--tl" />

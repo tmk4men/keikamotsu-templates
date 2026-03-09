@@ -159,6 +159,9 @@ export default function Template03() {
 
       {/* ─── HERO ─── */}
       <section className="t03-hero">
+        <video className="t03-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-bright.mp4" type="video/mp4" />
+        </video>
         <Blob className="t03-hero__blob t03-hero__blob--1" />
         <Blob className="t03-hero__blob t03-hero__blob--2" />
         <Blob className="t03-hero__blob t03-hero__blob--3" />

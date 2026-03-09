@@ -316,6 +316,9 @@ export default function Template02() {
 
       {/* ─── HERO: kinetic typography, no bg image ─── */}
       <section className="t02-hero t02-snap-section">
+        <video className="t02-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-daytime.mp4" type="video/mp4" />
+        </video>
         <div className="t02-hero__inner">
           <IllustTruck className="t02-illust--hero" />
           <TypewriterHeadline />

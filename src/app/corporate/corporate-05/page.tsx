@@ -231,6 +231,16 @@ export default function Corporate05Page() {
 
       {/* ─── Hero ─── */}
       <section className="cp05-hero">
+        <video
+          className="cp05-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/keikamotsu-templates/images/hero-bg.webp"
+        >
+          <source src="/keikamotsu-templates/videos/hero-nightcity.mp4" type="video/mp4" />
+        </video>
         <div className="cp05-hero-mesh" aria-hidden="true" />
         <MatrixRain />
         <FloatingParticles />
@@ -276,14 +286,29 @@ export default function Corporate05Page() {
             <span className="cp05-section-title-en">Strengths</span>
             私たちの強み
           </h2>
-          <div className="cp05-strengths-grid">
-            {data.strengths.map((s, i) => (
-              <div key={i} className="cp05-strength-card cp05-reveal" style={{ transitionDelay: `${i * 0.12}s` }}>
-                <div className="cp05-strength-badge">{s.num}</div>
-                <h3 className="cp05-strength-title">{s.title}</h3>
-                <p className="cp05-strength-text">{s.text}</p>
-              </div>
-            ))}
+          <div className="cp05-strengths-rows">
+            {data.strengths.map((s, i) => {
+              const strengthImages = [
+                "/keikamotsu-templates/images/reasons.png",
+                "/keikamotsu-templates/images/workplace.png",
+                "/keikamotsu-templates/images/vehicle.png",
+              ];
+              const imgSrc = strengthImages[i % strengthImages.length];
+              const isReversed = i % 2 === 1;
+              return (
+                <div key={i} className={`cp05-strength-row cp05-reveal${isReversed ? " cp05-strength-row--reverse" : ""}`} style={{ transitionDelay: `${i * 0.12}s` }}>
+                  <div className="cp05-strength-row-img-wrap">
+                    <Image src={imgSrc} alt={s.title} width={520} height={340} className="cp05-strength-row-img" />
+                    <div className="cp05-strength-row-img-glow" aria-hidden="true" />
+                  </div>
+                  <div className="cp05-strength-row-content">
+                    <div className="cp05-strength-badge">{s.num}</div>
+                    <h3 className="cp05-strength-title">{s.title}</h3>
+                    <p className="cp05-strength-text">{s.text}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -322,15 +347,21 @@ export default function Corporate05Page() {
             <span className="cp05-section-title-en">Company</span>
             会社概要
           </h2>
-          <div className="cp05-company-table cp05-reveal">
-            <dl>
-              {data.companyOverview.map((row, i) => (
-                <div key={i} className="cp05-company-row">
-                  <dt>{row.dt}</dt>
-                  <dd>{row.dd}</dd>
-                </div>
-              ))}
-            </dl>
+          <div className="cp05-company-layout cp05-reveal">
+            <div className="cp05-company-table">
+              <dl>
+                {data.companyOverview.map((row, i) => (
+                  <div key={i} className="cp05-company-row">
+                    <dt>{row.dt}</dt>
+                    <dd>{row.dd}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <div className="cp05-company-photo-wrap">
+              <Image src="/keikamotsu-templates/images/company.png" alt="本社・寝屋川営業所" width={480} height={360} className="cp05-company-photo" />
+              <span className="cp05-company-photo-caption">本社・寝屋川営業所</span>
+            </div>
           </div>
         </div>
       </section>
@@ -388,6 +419,43 @@ export default function Corporate05Page() {
               <div key={i} className="cp05-partner-card cp05-reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
                 <span className="cp05-partner-industry">{p.industry}</span>
                 <span className="cp05-partner-name">{p.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Visual Interlude ─── */}
+      <div className="cp05-visual-interlude">
+        <Image src="/keikamotsu-templates/images/delivery.png" alt="配送風景" width={1920} height={400} className="cp05-interlude-img" />
+        <div className="cp05-interlude-overlay" aria-hidden="true" />
+        <div className="cp05-interlude-content cp05-reveal">
+          <p className="cp05-interlude-text">信頼と実績で、物流の未来を創る</p>
+          <p className="cp05-interlude-sub">Delivering the Future of Logistics</p>
+        </div>
+      </div>
+
+      {/* ─── Photo Gallery ─── */}
+      <section id="gallery" className="cp05-section">
+        <div className="cp05-container">
+          <h2 className="cp05-section-title cp05-glitch-title cp05-reveal">
+            <span className="cp05-section-title-en">Gallery</span>
+            フォトギャラリー
+          </h2>
+          <div className="cp05-gallery-grid">
+            {[
+              { src: "/keikamotsu-templates/images/vehicle.png", alt: "車両紹介" },
+              { src: "/keikamotsu-templates/images/workplace.png", alt: "職場環境" },
+              { src: "/keikamotsu-templates/images/loading.png", alt: "積み込み作業" },
+              { src: "/keikamotsu-templates/images/team.png", alt: "チームワーク" },
+              { src: "/keikamotsu-templates/images/daily-flow.png", alt: "日々の業務" },
+              { src: "/keikamotsu-templates/images/delivery.png", alt: "配送の様子" },
+            ].map((photo, i) => (
+              <div key={i} className="cp05-gallery-item cp05-reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+                <Image src={photo.src} alt={photo.alt} width={400} height={300} className="cp05-gallery-img" />
+                <div className="cp05-gallery-overlay">
+                  <span className="cp05-gallery-label">{photo.alt}</span>
+                </div>
               </div>
             ))}
           </div>

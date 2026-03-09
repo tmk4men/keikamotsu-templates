@@ -229,6 +229,16 @@ export default function Corporate01() {
 
       {/* ─── HERO ─── */}
       <section className="cp01-hero">
+        <video
+          className="cp01-hero__video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/keikamotsu-templates/images/hero-bg.webp"
+        >
+          <source src="/keikamotsu-templates/videos/hero-daytime.mp4" type="video/mp4" />
+        </video>
         <HeroParticles count={20} />
         <div ref={rHero} className="cp01-reveal cp01-hero__content">
           <h1 className="cp01-hero__headline">
@@ -304,19 +314,36 @@ export default function Corporate01() {
             <div className="cp01-section-divider" />
           </div>
           <div className="cp01-strengths-list">
-            {data.strengths.map((s, i) => (
-              <div
-                key={i}
-                className="cp01-strength-item"
-                style={{ animationDelay: `${i * 0.15}s` }}
-              >
-                <div className="cp01-strength-item__num">{s.num}</div>
-                <div className="cp01-strength-item__body">
-                  <h3 className="cp01-strength-item__title">{s.title}</h3>
-                  <p className="cp01-strength-item__text">{s.text}</p>
+            {(() => {
+              const strengthImages = [
+                "/keikamotsu-templates/images/reasons.png",
+                "/keikamotsu-templates/images/workplace.png",
+                "/keikamotsu-templates/images/vehicle.png",
+              ];
+              const strengthAlts = ["直接契約ドライバー", "スピーディーな対応", "幅広い人材"];
+              return data.strengths.map((s, i) => (
+                <div
+                  key={i}
+                  className={`cp01-strength-item ${i % 2 !== 0 ? "cp01-strength-item--reverse" : ""}`}
+                  style={{ animationDelay: `${i * 0.15}s` }}
+                >
+                  <div className="cp01-strength-item__image">
+                    <Image
+                      src={strengthImages[i]}
+                      alt={strengthAlts[i]}
+                      width={480}
+                      height={320}
+                      className="cp01-strength-img"
+                    />
+                  </div>
+                  <div className="cp01-strength-item__content">
+                    <div className="cp01-strength-item__num">{s.num}</div>
+                    <h3 className="cp01-strength-item__title">{s.title}</h3>
+                    <p className="cp01-strength-item__text">{s.text}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ));
+            })()}
           </div>
         </div>
       </section>
@@ -365,14 +392,26 @@ export default function Corporate01() {
             <h2 className="cp01-section-title">会社概要</h2>
             <div className="cp01-section-divider" />
           </div>
-          <dl className="cp01-overview-table">
-            {data.companyOverview.map((item, i) => (
-              <div key={i} className="cp01-overview-row">
-                <dt className="cp01-overview-dt">{item.dt}</dt>
-                <dd className="cp01-overview-dd">{item.dd}</dd>
-              </div>
-            ))}
-          </dl>
+          <div className="cp01-company-layout">
+            <dl className="cp01-overview-table">
+              {data.companyOverview.map((item, i) => (
+                <div key={i} className="cp01-overview-row">
+                  <dt className="cp01-overview-dt">{item.dt}</dt>
+                  <dd className="cp01-overview-dd">{item.dd}</dd>
+                </div>
+              ))}
+            </dl>
+            <div className="cp01-company-photo">
+              <Image
+                src="/keikamotsu-templates/images/company.png"
+                alt="会社外観"
+                width={500}
+                height={350}
+                className="cp01-company-img"
+              />
+              <p className="cp01-company-photo__caption">本社・寝屋川営業所</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -449,6 +488,54 @@ export default function Corporate01() {
                 <span className="cp01-partner-card__industry">
                   {p.industry}
                 </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── VISUAL INTERLUDE ─── */}
+      <div className="cp01-interlude" aria-hidden="true">
+        <Image
+          src="/keikamotsu-templates/images/delivery.png"
+          alt=""
+          width={1920}
+          height={600}
+          className="cp01-interlude__img"
+        />
+        <div className="cp01-interlude__overlay">
+          <span className="cp01-interlude__text">確実に、丁寧に、届ける。</span>
+        </div>
+      </div>
+
+      {/* ─── PHOTO GALLERY ─── */}
+      <section id="gallery" className="cp01-section">
+        <div className="cp01-reveal cp01-container">
+          <div className="cp01-section-header">
+            <span className="cp01-section-label">Gallery</span>
+            <h2 className="cp01-section-title">職場の風景</h2>
+            <div className="cp01-section-divider" />
+          </div>
+          <div className="cp01-gallery-grid">
+            {[
+              { src: "/keikamotsu-templates/images/team.png", alt: "チームメンバー", caption: "チームワーク" },
+              { src: "/keikamotsu-templates/images/loading.png", alt: "積み込み作業", caption: "丁寧な積み込み" },
+              { src: "/keikamotsu-templates/images/workplace.png", alt: "事務所風景", caption: "整備された環境" },
+              { src: "/keikamotsu-templates/images/vehicle.png", alt: "配送車両", caption: "配送車両" },
+              { src: "/keikamotsu-templates/images/reasons.png", alt: "研修風景", caption: "充実の研修制度" },
+              { src: "/keikamotsu-templates/images/delivery.png", alt: "配送業務", caption: "安全な配送" },
+            ].map((photo, i) => (
+              <div key={i} className="cp01-gallery-item" style={{ animationDelay: `${i * 0.08}s` }}>
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={400}
+                  height={300}
+                  className="cp01-gallery-img"
+                />
+                <div className="cp01-gallery-item__overlay">
+                  <span className="cp01-gallery-item__caption">{photo.caption}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -606,7 +693,7 @@ export default function Corporate01() {
       </button>
 
       {/* ─── FOOTER ─── */}
-      <footer className="cp01-footer">
+      <footer className="cp01-footer cp01-footer--with-bg">
         <div className="cp01-footer__inner">
           <div className="cp01-footer__top">
             <div className="cp01-footer__brand">

@@ -222,6 +222,9 @@ export default function Corporate08Page() {
 
       {/* ─── HERO ─── */}
       <section className="cp08-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <video className="cp08-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-daytime.mp4" type="video/mp4" />
+        </video>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
           <Image
             src="/keikamotsu-templates/images/vehicle.png"

@@ -236,6 +236,9 @@ export default function Corporate07Page() {
 
       {/* ─── HERO ─── */}
       <section className="cp07-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <video className="cp07-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-nightcity.mp4" type="video/mp4" />
+        </video>
         <Image
           src="/keikamotsu-templates/images/delivery.png"
           alt="配達風景"

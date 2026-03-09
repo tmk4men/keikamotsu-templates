@@ -155,6 +155,21 @@ export default function CorporateTemplate02() {
     "/keikamotsu-templates/images/service-route.png",
   ];
 
+  const strengthImages = [
+    "/keikamotsu-templates/images/reasons.png",
+    "/keikamotsu-templates/images/workplace.png",
+    "/keikamotsu-templates/images/vehicle.png",
+  ];
+
+  const galleryPhotos = [
+    { src: "/keikamotsu-templates/images/team.png", alt: "チームメンバー", caption: "チームワーク" },
+    { src: "/keikamotsu-templates/images/loading.png", alt: "積み込み作業", caption: "丁寧な積み込み" },
+    { src: "/keikamotsu-templates/images/workplace.png", alt: "事務所風景", caption: "整備された環境" },
+    { src: "/keikamotsu-templates/images/vehicle.png", alt: "配送車両", caption: "配送車両" },
+    { src: "/keikamotsu-templates/images/reasons.png", alt: "研修風景", caption: "充実の研修制度" },
+    { src: "/keikamotsu-templates/images/delivery.png", alt: "配送業務", caption: "安全な配送" },
+  ];
+
   /* ── tag color helper ── */
   const tagClass = (style: string) => {
     switch (style) {
@@ -212,6 +227,9 @@ export default function CorporateTemplate02() {
           2. HERO
           ============================================ */}
       <section className="cp02-hero" ref={heroRef}>
+        <video className="cp02-hero__video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-daytime.mp4" type="video/mp4" />
+        </video>
         <div className="cp02-hero-bg" />
         <div className="cp02-hero-overlay" />
         <div className="cp02-hero-content cp02-reveal">
@@ -272,12 +290,17 @@ export default function CorporateTemplate02() {
             <span className="cp02-section-title-en">Strengths</span>
             私たちの強み
           </h2>
-          <div className="cp02-strengths-grid">
+          <div className="cp02-strengths-list">
             {data.strengths.map((item, i) => (
-              <div key={i} className="cp02-strength-card cp02-reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
-                <div className="cp02-strength-num">{item.num}</div>
-                <h3 className="cp02-strength-title">{item.title}</h3>
-                <p className="cp02-strength-text">{item.text}</p>
+              <div key={i} className={`cp02-strength-row cp02-reveal${i % 2 !== 0 ? " cp02-strength-row--reverse" : ""}`} style={{ transitionDelay: `${i * 0.12}s` }}>
+                <div className="cp02-strength-row__image">
+                  <Image src={strengthImages[i % strengthImages.length]} alt={item.title} width={520} height={340} className="cp02-strength-row__img" />
+                </div>
+                <div className="cp02-strength-row__content">
+                  <div className="cp02-strength-num">{item.num}</div>
+                  <h3 className="cp02-strength-title">{item.title}</h3>
+                  <p className="cp02-strength-text">{item.text}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -335,17 +358,23 @@ export default function CorporateTemplate02() {
             <span className="cp02-section-title-en">Company</span>
             会社概要
           </h2>
-          <div className="cp02-overview-table-wrap cp02-reveal">
-            <table className="cp02-overview-table">
-              <tbody>
-                {data.companyOverview.map((row, i) => (
-                  <tr key={i} className={i % 2 === 0 ? "cp02-row-even" : ""}>
-                    <th>{row.dt}</th>
-                    <td>{row.dd}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="cp02-company-layout cp02-reveal">
+            <div className="cp02-overview-table-wrap">
+              <table className="cp02-overview-table">
+                <tbody>
+                  {data.companyOverview.map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? "cp02-row-even" : ""}>
+                      <th>{row.dt}</th>
+                      <td>{row.dd}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="cp02-company-photo">
+              <Image src="/keikamotsu-templates/images/company.png" alt="本社・寝屋川営業所" width={480} height={360} className="cp02-company-photo__img" />
+              <p className="cp02-company-photo__caption">本社・寝屋川営業所</p>
+            </div>
           </div>
         </div>
       </section>
@@ -414,6 +443,37 @@ export default function CorporateTemplate02() {
               <div key={i} className="cp02-partner-card cp02-reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
                 <span className="cp02-partner-badge">{p.industry}</span>
                 <p className="cp02-partner-name">{p.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          VISUAL INTERLUDE
+          ============================================ */}
+      <section className="cp02-interlude">
+        <Image src="/keikamotsu-templates/images/delivery.png" alt="配送業務" fill className="cp02-interlude__img" />
+        <div className="cp02-interlude__overlay" />
+        <p className="cp02-interlude__text cp02-reveal">確実に、丁寧に、届ける。</p>
+      </section>
+
+      {/* ============================================
+          PHOTO GALLERY
+          ============================================ */}
+      <section className="cp02-section cp02-section-white">
+        <div className="cp02-container">
+          <h2 className="cp02-section-title cp02-reveal">
+            <span className="cp02-section-title-en">Gallery</span>
+            フォトギャラリー
+          </h2>
+          <div className="cp02-gallery-grid">
+            {galleryPhotos.map((photo, i) => (
+              <div key={i} className="cp02-gallery-item cp02-reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+                <Image src={photo.src} alt={photo.alt} width={400} height={300} className="cp02-gallery-item__img" />
+                <div className="cp02-gallery-item__overlay">
+                  <p className="cp02-gallery-item__caption">{photo.caption}</p>
+                </div>
               </div>
             ))}
           </div>

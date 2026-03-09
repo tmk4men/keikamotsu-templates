@@ -267,6 +267,9 @@ export default function Corporate06Page() {
 
       {/* ─── HERO ─── */}
       <section className="cp06-hero" style={{ position: "relative", overflow: "hidden" }}>
+        <video className="cp06-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-daytime.mp4" type="video/mp4" />
+        </video>
         <Image
           src="/keikamotsu-templates/images/team.png"
           alt="チームの集合写真"

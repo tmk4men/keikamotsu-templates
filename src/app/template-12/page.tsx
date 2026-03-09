@@ -137,6 +137,9 @@ export default function Template12() {
 
       {/* ─── HERO ─── */}
       <section className="t12-hero">
+        <video className="t12-hero-video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-bright.mp4" type="video/mp4" />
+        </video>
         <div className="t12-hero__bg" />
         <Sparkles count={30} />
         <div className="t12-hero__content">

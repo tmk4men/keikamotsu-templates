@@ -127,7 +127,7 @@ export default function Corporate03Page() {
 
   /* scroll listener */
   useEffect(() => {
-    const sectionIds = ["services", "strengths", "message", "company", "history", "numbers", "partners", "news", "recruit", "access", "contact"];
+    const sectionIds = ["services", "strengths", "message", "company", "history", "numbers", "partners", "gallery", "news", "recruit", "access", "contact"];
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
       setShowTop(window.scrollY > 500);
@@ -223,6 +223,9 @@ export default function Corporate03Page() {
 
       {/* ====== HERO ====== */}
       <section className="cp03-hero">
+        <video className="cp03-hero__video" autoPlay muted loop playsInline poster="/keikamotsu-templates/images/hero-bg.webp">
+          <source src="/keikamotsu-templates/videos/hero-daytime.mp4" type="video/mp4" />
+        </video>
         <FallingLeaves />
         <div className="cp03-hero-bg-shapes" aria-hidden="true">
           <div className="cp03-hero-blob cp03-hero-blob--1" />
@@ -277,17 +280,37 @@ export default function Corporate03Page() {
             <span className="cp03-section-title-en">Strengths</span>
             私たちの強み
           </h2>
-          <div className="cp03-strengths-grid">
-            {data.strengths.map((s, i) => (
-              <div key={s.num} className="cp03-strength-card cp03-reveal" style={{ transitionDelay: `${i * 0.12}s`, animationDelay: `${i * 0.12}s` }}>
-                <div className="cp03-strength-num">{s.num}</div>
-                <h3 className="cp03-strength-title">{s.title}</h3>
-                <p className="cp03-strength-text">{s.text}</p>
-              </div>
-            ))}
+          <div className="cp03-strengths-list">
+            {data.strengths.map((s, i) => {
+              const strengthImages = [
+                "/keikamotsu-templates/images/reasons.png",
+                "/keikamotsu-templates/images/workplace.png",
+                "/keikamotsu-templates/images/vehicle.png",
+              ];
+              return (
+                <div key={s.num} className={`cp03-strength-row cp03-reveal${i % 2 === 1 ? " cp03-strength-row--reverse" : ""}`} style={{ transitionDelay: `${i * 0.15}s`, animationDelay: `${i * 0.15}s` }}>
+                  <div className="cp03-strength-img-wrap">
+                    <Image src={strengthImages[i % strengthImages.length]} alt={s.title} width={520} height={340} className="cp03-strength-img" />
+                  </div>
+                  <div className="cp03-strength-body">
+                    <div className="cp03-strength-num">{s.num}</div>
+                    <h3 className="cp03-strength-title">{s.title}</h3>
+                    <p className="cp03-strength-text">{s.text}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* ====== VISUAL INTERLUDE ====== */}
+      <div className="cp03-interlude">
+        <Image src="/keikamotsu-templates/images/delivery.png" alt="配送イメージ" width={1920} height={400} className="cp03-interlude-img" />
+        <div className="cp03-interlude-overlay">
+          <p className="cp03-interlude-text cp03-reveal">確実に、丁寧に、届ける。</p>
+        </div>
+      </div>
 
       <WaveDivider color="var(--cp03-bg-alt)" />
 
@@ -331,13 +354,19 @@ export default function Corporate03Page() {
             <span className="cp03-section-title-en">Company</span>
             会社概要
           </h2>
-          <div className="cp03-overview-table cp03-reveal">
-            {data.companyOverview.map((row, i) => (
-              <div key={row.dt} className={`cp03-overview-row${i % 2 === 0 ? " cp03-overview-row--alt" : ""}`}>
-                <dt className="cp03-overview-dt">{row.dt}</dt>
-                <dd className="cp03-overview-dd">{row.dd}</dd>
-              </div>
-            ))}
+          <div className="cp03-company-grid cp03-reveal">
+            <div className="cp03-overview-table">
+              {data.companyOverview.map((row, i) => (
+                <div key={row.dt} className={`cp03-overview-row${i % 2 === 0 ? " cp03-overview-row--alt" : ""}`}>
+                  <dt className="cp03-overview-dt">{row.dt}</dt>
+                  <dd className="cp03-overview-dd">{row.dd}</dd>
+                </div>
+              ))}
+            </div>
+            <div className="cp03-company-photo">
+              <Image src="/keikamotsu-templates/images/company.png" alt="本社・寝屋川営業所" width={480} height={360} className="cp03-company-img" />
+              <span className="cp03-company-caption">本社・寝屋川営業所</span>
+            </div>
           </div>
         </div>
       </section>
@@ -402,6 +431,33 @@ export default function Corporate03Page() {
               <div key={p.name} className="cp03-partner-card cp03-reveal" style={{ transitionDelay: `${i * 0.12}s`, animationDelay: `${i * 0.12}s` }}>
                 <span className="cp03-partner-industry">{p.industry}</span>
                 <span className="cp03-partner-name">{p.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ====== PHOTO GALLERY ====== */}
+      <section className="cp03-section">
+        <div className="cp03-container">
+          <h2 className="cp03-section-title cp03-reveal">
+            <span className="cp03-section-title-en">Gallery</span>
+            フォトギャラリー
+          </h2>
+          <div className="cp03-gallery-grid">
+            {[
+              { src: "/keikamotsu-templates/images/team.png", alt: "チーム" },
+              { src: "/keikamotsu-templates/images/loading.png", alt: "積み込み作業" },
+              { src: "/keikamotsu-templates/images/workplace.png", alt: "職場環境" },
+              { src: "/keikamotsu-templates/images/vehicle.png", alt: "車両" },
+              { src: "/keikamotsu-templates/images/reasons.png", alt: "選ばれる理由" },
+              { src: "/keikamotsu-templates/images/delivery.png", alt: "配送風景" },
+            ].map((photo, i) => (
+              <div key={i} className="cp03-gallery-item cp03-reveal" style={{ transitionDelay: `${i * 0.1}s`, animationDelay: `${i * 0.1}s` }}>
+                <Image src={photo.src} alt={photo.alt} width={400} height={300} className="cp03-gallery-img" />
+                <div className="cp03-gallery-overlay">
+                  <span className="cp03-gallery-label">{photo.alt}</span>
+                </div>
               </div>
             ))}
           </div>
