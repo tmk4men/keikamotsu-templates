@@ -1,35 +1,63 @@
 /* ===================================================
-   コーポレートHPテンプレートギャラリー
-   コーポレート5種を一覧表示
+   レイアウト集テンプレートギャラリー
+   レイアウト4種を一覧表示
    =================================================== */
 
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "コーポレートHPテンプレート一覧（8種）",
+  title: "レイアウト集テンプレート一覧（4種）",
   description:
-    "軽貨物ドライバー事業向けコーポレートサイトテンプレート8種を一覧表示。ロジスティクス・プロ、トラストブルー、エコモーション、エグゼクティブ、フューチャーフロー、ウォームドライブ、ボールドインパクト、クリアブリーズの8デザイン。",
+    "軽貨物ドライバー事業向けコーポレートサイト レイアウトバリエーション4種。ダッシュボード型・タブ切替型・マガジン型・LP型の多彩なページ構成。",
   openGraph: {
-    title: "コーポレートHPテンプレート一覧（8種）｜軽貨物ドライバー事業テンプレート集",
+    title: "レイアウト集テンプレート一覧（4種）｜軽貨物ドライバー事業テンプレート集",
     description:
-      "軽貨物ドライバー事業向けコーポレートサイトテンプレート8種。",
+      "コーポレートサイトのレイアウトバリエーション4種を一覧表示。",
     type: "website",
   },
 };
 
-const corporateTemplates = [
-  { id: "01", name: "ロジスティクス・プロ", desc: "クリーン企業風・白ベース、紺×オレンジの信頼感あるデザイン",     color: "#1e3a5f", accent: "#e67e22", bg: "#ffffff" },
-  { id: "02", name: "トラストブルー",       desc: "信頼・堅実をイメージ、セリフ体、青×緑の落ち着いた配色",       color: "#0056b3", accent: "#00a86b", bg: "#f8fafe" },
-  { id: "03", name: "エコモーション",       desc: "ナチュラル・エコ・丸みのあるデザイン、緑×琥珀の温かな印象",   color: "#2d7d46", accent: "#f59e0b", bg: "#f0fdf4" },
-  { id: "04", name: "エグゼクティブ",       desc: "ダークテーマの高級感、紺黒×ゴールドのプレミアムデザイン",     color: "#c9a84c", accent: "#c9a84c", bg: "#1a1a2e" },
-  { id: "05", name: "フューチャーフロー",   desc: "テック・グラデーション・グラスモーフィズムの先進的デザイン",   color: "#8b5cf6", accent: "#06b6d4", bg: "#0f0f23" },
-  { id: "06", name: "ウォームドライブ",     desc: "温かみ・地域密着、アースカラー・紙テクスチャの人間味あるデザイン", color: "#6b4226", accent: "#c2703e", bg: "#faf7f2" },
-  { id: "07", name: "ボールドインパクト",   desc: "力強さ・スピード感、ダークネイビー×オレンジのダイナミックデザイン", color: "#f97316", accent: "#f97316", bg: "#0f172a" },
-  { id: "08", name: "クリアブリーズ",       desc: "清潔感・透明性、スカイブルー×ミントグリーンのミニマルデザイン", color: "#0ea5e9", accent: "#10b981", bg: "#ffffff" },
+const layoutTemplates = [
+  {
+    id: "01",
+    name: "コマンドセンター",
+    subtitle: "ダッシュボード型",
+    desc: "左サイドバーナビ＋CSSグリッドパネル。データ重視のコンパクト構成",
+    color: "#0d9488",
+    accent: "#f59e0b",
+    bg: "#0f1729",
+  },
+  {
+    id: "02",
+    name: "インフォハブ",
+    subtitle: "タブ切替型",
+    desc: "粘着タブバーで4カテゴリ切替。非線形ナビでテーマ別グルーピング",
+    color: "#4f46e5",
+    accent: "#e11d48",
+    bg: "#fafaf9",
+  },
+  {
+    id: "03",
+    name: "ロジスティクス・ジャーナル",
+    subtitle: "マガジン型",
+    desc: "2カラム＋サイドバー構成。エディトリアルデザインで読み応えある印象",
+    color: "#c2410c",
+    accent: "#c2410c",
+    bg: "#fffbf5",
+  },
+  {
+    id: "04",
+    name: "スピードコネクト",
+    subtitle: "LP型",
+    desc: "スプリットHero＋ジグザグ＋CTA中断バナー。コンバージョン特化設計",
+    color: "#1e40af",
+    accent: "#16a34a",
+    bg: "#ffffff",
+  },
 ];
 
-export default function CorporateGalleryPage() {
+export default function LayoutsGalleryPage() {
   return (
     <div style={{ minHeight: "100vh", background: "#f8fafc", padding: "40px 20px" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
@@ -65,21 +93,8 @@ export default function CorporateGalleryPage() {
           >
             ← 採用HPテンプレート（16種）
           </Link>
-          <span style={{
-            display: "inline-flex",
-            alignItems: "center",
-            padding: "8px 20px",
-            borderRadius: 999,
-            fontSize: 14,
-            fontWeight: 700,
-            background: "#111827",
-            color: "#fff",
-            cursor: "default",
-          }}>
-            コーポレートHPテンプレート（8種）
-          </span>
           <Link
-            href="/layouts"
+            href="/corporate"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -94,8 +109,21 @@ export default function CorporateGalleryPage() {
               transition: "all 0.2s",
             }}
           >
-            レイアウト集（4種）→
+            コーポレートHP（8種）→
           </Link>
+          <span style={{
+            display: "inline-flex",
+            alignItems: "center",
+            padding: "8px 20px",
+            borderRadius: 999,
+            fontSize: 14,
+            fontWeight: 700,
+            background: "#111827",
+            color: "#fff",
+            cursor: "default",
+          }}>
+            レイアウト集（4種）
+          </span>
         </div>
 
         <div style={{
@@ -103,10 +131,10 @@ export default function CorporateGalleryPage() {
           gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
           gap: 16,
         }}>
-          {corporateTemplates.map((t) => (
+          {layoutTemplates.map((t) => (
             <Link
               key={t.id}
-              href={`/corporate/corporate-${t.id}`}
+              href={`/layouts/layout-${t.id}`}
               style={{
                 display: "block",
                 borderRadius: 12,
@@ -131,7 +159,7 @@ export default function CorporateGalleryPage() {
                   color: t.color,
                   letterSpacing: 2,
                 }}>
-                  C{t.id}
+                  L{t.id}
                 </span>
                 <span style={{
                   width: 24,
@@ -141,8 +169,11 @@ export default function CorporateGalleryPage() {
                 }} />
               </div>
               <div style={{ padding: "12px 16px" }}>
-                <p style={{ fontSize: 15, fontWeight: 700, color: "#111827", marginBottom: 4 }}>
+                <p style={{ fontSize: 15, fontWeight: 700, color: "#111827", marginBottom: 2 }}>
                   {t.name}
+                </p>
+                <p style={{ fontSize: 11, fontWeight: 600, color: t.color, marginBottom: 4 }}>
+                  {t.subtitle}
                 </p>
                 <p style={{ fontSize: 12, color: "#9ca3af", lineHeight: 1.6 }}>
                   {t.desc}

@@ -86,6 +86,24 @@ export default function GalleryPage() {
           >
             コーポレートHPテンプレート（8種）→
           </Link>
+          <Link
+            href="/layouts"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              padding: "8px 20px",
+              borderRadius: 999,
+              fontSize: 14,
+              fontWeight: 600,
+              background: "#fff",
+              color: "#374151",
+              border: "1px solid #d1d5db",
+              textDecoration: "none",
+              transition: "all 0.2s",
+            }}
+          >
+            レイアウト集（4種）→
+          </Link>
         </div>
 
         <div style={{
