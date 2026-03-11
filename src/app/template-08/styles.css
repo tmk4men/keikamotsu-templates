@@ -589,6 +589,26 @@
 .clean-form__submit { display: block; width: 100%; padding: 16px; font-size: 15px; font-weight: 700; cursor: pointer; border: none; background: var(--clean-green); color: #fff; border-radius: 8px; transition: background 0.3s, transform 0.3s; }
 .clean-form__submit:hover { background: var(--clean-green-dark); transform: translateY(-2px); }
 
+/* --- Tablet --- */
+@media (max-width: 1024px) {
+  .clean-container { max-width: 960px; }
+  .clean-reasons,
+  .clean-jobs,
+  .clean-benefits,
+  .clean-daily,
+  .clean-voices,
+  .clean-gallery-section,
+  .clean-faq-section,
+  .clean-form-section,
+  .clean-cta { padding: 60px 0; }
+  .clean-icon-grid { grid-template-columns: repeat(2, 1fr); }
+  .clean-voices__grid { grid-template-columns: repeat(2, 1fr); }
+  .clean-footer__inner { grid-template-columns: repeat(2, 1fr); }
+  .clean-hero__heading { font-size: 2rem; }
+  .clean-section-title { font-size: 1.6rem; }
+  .clean-carousel__img { height: 320px; }
+}
+
 /* --- Mobile --- */
 @media (max-width: 768px) {
   .clean-nav {
@@ -612,6 +632,10 @@
   .clean-strip { gap: 12px; }
   .clean-news__row { flex-direction: column; align-items: flex-start; gap: 6px; }
   .clean-carousel__img { height: 250px; }
+  .clean-form__input, .clean-form__textarea { min-height: 44px; }
+  .clean-form__submit { min-height: 48px; }
+  .clean-access__map iframe { height: 250px; }
+  .clean-nav__link { padding: 8px 0; font-size: 15px; }
 }
 
 /* --- Extra Small Mobile --- */
@@ -626,7 +650,7 @@
   .clean-faq-section,
   .clean-form-section,
   .clean-cta { padding: 48px 0; }
-  .clean-section-title { font-size: 1.4rem; }
+  .clean-section-title { font-size: max(18px, 1.4rem); }
   .clean-hero__heading { font-size: 1.5rem; }
   .clean-hero__stat-circle { width: 72px; height: 72px; }
   .clean-hero__stat-value { font-size: 1.2rem; }
@@ -634,4 +658,7 @@
   .clean-carousel__img { height: 200px; }
   .clean-icon-grid { grid-template-columns: 1fr; }
   .clean-footer__inner { grid-template-columns: 1fr; }
+  .clean-form { padding: 0 16px; }
+  .clean-form__input, .clean-form__textarea { min-height: 44px; padding: 12px; }
+  .clean-form__submit { padding: 16px 12px; }
 }

@@ -588,6 +588,19 @@
 .t01-back-top:hover { background: #22d3ee; }
 
 /* ── RESPONSIVE ── */
+
+/* ── Tablet breakpoint ── */
+@media (max-width: 1024px) {
+  .t01-section { padding: 60px 0; }
+  .t01-container { max-width: 960px; }
+  .t01-hero__heading-line { font-size: clamp(28px, 4.5vw, 52px); }
+  .t01-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .t01-voices { grid-template-columns: repeat(2, 1fr); }
+  .t01-jobs-grid { grid-template-columns: 1fr 1fr; }
+  .t01-salary-callout { padding: 32px 20px; }
+  .t01-carousel__img { height: 340px; }
+}
+
 @media (max-width: 768px) {
   .t01-nav { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(10,10,26,0.98); padding: 24px; gap: 16px; border-bottom: 1px solid var(--border); }
   .t01-nav--open { display: flex; }
@@ -605,6 +618,12 @@
   .t01-carousel__img { height: 260px; }
   .t01-section-nav { display: none; }
   .t01-back-top { bottom: 80px; }
+  .t01-form__input, .t01-form__textarea { box-sizing: border-box; min-height: 44px; }
+  .t01-form__submit { min-height: 44px; }
+  .t01-access__map iframe { height: 250px; }
+  .t01-footer__nav { flex-wrap: wrap; }
+  .t01-cta-phone { min-height: 44px; padding: 12px 32px; }
+  .t01-nav__cta { min-height: 44px; display: flex; align-items: center; }
 }
 
 @media (min-width: 769px) {
@@ -628,4 +647,5 @@
   .t01-cta-heading { font-size: 20px; }
   .t01-header__inner { padding: 0 16px; }
   .t01-footer__inner { padding: 0 16px; }
+  .t01-form__input, .t01-form__textarea { width: 100%; padding: 12px 16px; box-sizing: border-box; }
 }

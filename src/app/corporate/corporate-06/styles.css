@@ -694,6 +694,12 @@
   font-weight: 700;
   margin-bottom: 12px;
 }
+.cp06-partner-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: contain;
+}
 .cp06-partner-name {
   font-size: 14px;
   font-weight: 700;
@@ -1051,6 +1057,17 @@
 /* ═══════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════ */
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .cp06-container { max-width: 960px; }
+  .cp06-section { padding: 60px 0; }
+  .cp06-numbers-grid { grid-template-columns: repeat(2, 1fr); }
+  .cp06-partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .cp06-hero-headline { font-size: 32px; }
+}
+
+/* ── Mobile ── */
 @media (max-width: 768px) {
   .cp06-hamburger {
     display: flex;
@@ -1153,4 +1170,21 @@
     flex-direction: column;
     gap: 24px;
   }
+  .cp06-form input, .cp06-form textarea { min-height: 44px; }
+  .cp06-form button[type="submit"] { min-height: 48px; }
+  .cp06-access iframe { height: 250px; }
+}
+
+/* ── Extra-small ── */
+@media (max-width: 480px) {
+  .cp06-container { padding: 0 16px; }
+  .cp06-section { padding: 48px 0; }
+  .cp06-section-title { font-size: 20px; }
+  .cp06-hero { padding: 80px 16px 48px; }
+  .cp06-hero-headline { font-size: 22px; }
+  .cp06-numbers-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cp06-partners-grid { grid-template-columns: 1fr; }
+  .cp06-form { padding: 16px; }
+  .cp06-message { padding: 16px; }
+  .cp06-footer-inner { padding: 32px 16px 20px; }
 }

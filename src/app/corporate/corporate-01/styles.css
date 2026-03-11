@@ -1206,6 +1206,13 @@
   color: var(--cp01-primary);
 }
 
+.cp01-partner-card__logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
 .cp01-partner-card__name {
   font-size: 14px;
   font-weight: 600;
@@ -2038,6 +2045,60 @@
 }
 
 /* ===================================================
+   RESPONSIVE — Tablet Landscape (1024px)
+   =================================================== */
+@media (max-width: 1024px) {
+  .cp01-container {
+    max-width: 960px;
+  }
+
+  .cp01-section {
+    padding: 72px 0;
+  }
+
+  /* Numbers: 4col → 2col */
+  .cp01-numbers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Partners: 3col → 2col */
+  .cp01-partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Gallery: 3col → 2col */
+  .cp01-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Strengths: more flexible ratio */
+  .cp01-strength-item {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Company layout: more flexible */
+  .cp01-company-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  /* Access: more flexible */
+  .cp01-access {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  /* Footer: 3col → 2col */
+  .cp01-footer__middle {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+/* ===================================================
    RESPONSIVE — Tablet (768px)
    =================================================== */
 @media (max-width: 768px) {
@@ -2234,7 +2295,13 @@
   }
 
   .cp01-access__map iframe {
-    height: 280px;
+    height: 250px;
+  }
+
+  /* Form touch targets */
+  .cp01-form__input,
+  .cp01-form__textarea {
+    min-height: 44px;
   }
 
   /* Footer */
@@ -2361,7 +2428,7 @@
 
   /* Gallery */
   .cp01-gallery-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 8px;
   }
 
@@ -2387,7 +2454,7 @@
 
   /* Numbers */
   .cp01-numbers-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 12px;
   }
 
@@ -2403,6 +2470,12 @@
   .cp01-partners-grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  /* Form full-width */
+  .cp01-form__input,
+  .cp01-form__textarea {
+    width: 100%;
   }
 
   /* Timeline */

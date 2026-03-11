@@ -586,6 +586,18 @@
 .t14-form__submit:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(249, 115, 22, 0.3); animation-play-state: paused; }
 
 /* ── RESPONSIVE ── */
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .t14-container { max-width: 960px; }
+  .t14-section { padding: 3.5rem 0; }
+  .t14-reasons-grid { grid-template-columns: repeat(2, 1fr); }
+  .t14-benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .t14-voices-grid { grid-template-columns: repeat(2, 1fr); }
+  .t14-hero__heading { font-size: 2rem; }
+}
+
+/* ── Mobile ── */
 @media (max-width: 768px) {
   .t14-hamburger { display: flex; }
   .t14-nav {
@@ -606,6 +618,11 @@
   .t14-news-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   .t14-carousel__img { height: 260px; }
   .t14-form { padding: 1.5rem; }
+  .t14-form__input, .t14-form__textarea { min-height: 44px; }
+  .t14-form__submit { min-height: 48px; }
+  .t14-access__map iframe { height: 250px; }
+  .t14-dl__row { flex-direction: column; }
+  .t14-dl__dt { width: 100%; }
 }
 @media (max-width: 480px) {
   .t14-container { padding: 0 16px; }

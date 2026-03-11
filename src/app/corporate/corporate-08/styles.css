@@ -684,6 +684,12 @@
   font-weight: 700;
   margin-bottom: 12px;
 }
+.cp08-partner-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: contain;
+}
 .cp08-partner-name {
   font-size: 14px;
   font-weight: 600;
@@ -1068,6 +1074,18 @@
 /* ═══════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════ */
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .cp08-container { max-width: 960px; }
+  .cp08-section { padding: 60px 0; }
+  .cp08-strengths-grid { grid-template-columns: repeat(2, 1fr); }
+  .cp08-numbers-grid { grid-template-columns: repeat(2, 1fr); }
+  .cp08-partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .cp08-hero-headline { font-size: 32px; }
+}
+
+/* ── Mobile ── */
 @media (max-width: 768px) {
   .cp08-hamburger { display: flex; }
   .cp08-nav {
@@ -1131,4 +1149,22 @@
   }
   .cp08-footer-top { flex-direction: column; gap: 12px; text-align: center; }
   .cp08-footer-middle { flex-direction: column; gap: 24px; }
+  .cp08-form input, .cp08-form textarea { min-height: 44px; }
+  .cp08-form button[type="submit"] { min-height: 48px; }
+  .cp08-access iframe { height: 250px; }
+}
+
+/* ── Extra-small ── */
+@media (max-width: 480px) {
+  .cp08-container { padding: 0 16px; }
+  .cp08-section { padding: 48px 0; }
+  .cp08-section-title { font-size: 20px; }
+  .cp08-hero { padding: 80px 16px 48px; }
+  .cp08-hero-headline { font-size: 22px; }
+  .cp08-strengths-grid { grid-template-columns: 1fr; }
+  .cp08-numbers-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cp08-partners-grid { grid-template-columns: 1fr; }
+  .cp08-form { padding: 16px; }
+  .cp08-message { padding: 16px; }
+  .cp08-footer-inner { padding: 32px 16px 20px; }
 }

@@ -637,6 +637,19 @@
 .t15-form__submit:hover { transform: translateY(-2px) rotate(-1deg); box-shadow: 0 6px 25px rgba(124, 58, 237, 0.3); }
 
 /* ── RESPONSIVE ── */
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .t15-container { max-width: 960px; }
+  .t15-section { padding: 3.5rem 0; }
+  .t15-benefits-collage { grid-template-columns: repeat(2, 1fr); }
+  .t15-voices-grid { grid-template-columns: repeat(2, 1fr); }
+  .t15-hero__heading { font-size: 2.2rem; }
+  .t15-hero__overlap-text { font-size: 5rem; }
+  .t15-section-title--creative { font-size: 2rem; }
+}
+
+/* ── Mobile ── */
 @media (max-width: 768px) {
   .t15-hamburger { display: flex; }
   .t15-nav {
@@ -665,6 +678,11 @@
   .t15-carousel__img { height: 260px; }
   .t15-access__map { transform: rotate(0deg); }
   .t15-news-date { font-size: 1rem; }
+  .t15-form__input, .t15-form__textarea { min-height: 44px; }
+  .t15-form__submit { min-height: 48px; }
+  .t15-access__map iframe { height: 250px; }
+  .t15-form__group:nth-child(odd),
+  .t15-form__group:nth-child(even) { transform: none; }
 }
 @media (max-width: 480px) {
   .t15-container { padding: 0 16px; }

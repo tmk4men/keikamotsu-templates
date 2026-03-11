@@ -1126,6 +1126,15 @@
    レスポンシブ
    =================================================== */
 
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .t16-skill-grid { grid-template-columns: repeat(2, 1fr); }
+  .t16-guild-panels { gap: 1rem; }
+  .t16-npc-cards { gap: 1rem; }
+  .t16-dialog { padding: 20px; }
+  .t16-status-window { padding: 16px; }
+}
+
 /* 768px以下: 横→縦スクロール切替 */
 @media (max-width: 768px) {
   .t16-scroll-container {
@@ -1180,6 +1189,8 @@
   .t16-gallery-btn.next {
     right: 8px;
   }
+  .t16-form__input, .t16-form__textarea { min-height: 44px; }
+  .t16-form__submit { min-height: 48px; }
 }
 
 /* 480px以下 */

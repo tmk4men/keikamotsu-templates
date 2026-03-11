@@ -938,6 +938,13 @@
   box-shadow: 0 12px 32px rgba(45, 125, 70, 0.12);
   border-color: var(--cp03-primary-pale);
 }
+.cp03-partner-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
 .cp03-partner-industry {
   display: inline-block;
   background: linear-gradient(135deg, var(--cp03-accent-light), var(--cp03-accent));
@@ -1531,6 +1538,55 @@
 }
 
 /* ═══════════════════════════════════════
+   RESPONSIVE — Tablet Landscape (1024px)
+   ═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .cp03-container {
+    max-width: 960px;
+  }
+
+  .cp03-section {
+    padding: 72px 0;
+  }
+
+  /* Numbers: 4col → 2col */
+  .cp03-numbers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* Partners: 3col → 2col */
+  .cp03-partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Gallery: 3col → 2col */
+  .cp03-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Strengths row: more flexible */
+  .cp03-strength-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  /* Company grid: flexible instead of fixed 380px */
+  .cp03-company-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  /* Footer: wrap */
+  .cp03-footer-top {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
+
+/* ═══════════════════════════════════════
    RESPONSIVE — 768px
    ═══════════════════════════════════════ */
 @media (max-width: 768px) {
@@ -1647,7 +1703,6 @@
   }
 
   .cp03-overview-dt {
-    flex: 0 0 110px;
     font-size: 0.82rem;
   }
   .cp03-overview-dd {
@@ -1670,6 +1725,26 @@
   .cp03-contact-form {
     padding: 32px 24px;
     border-radius: var(--cp03-radius-lg);
+  }
+
+  /* Form touch targets */
+  .cp03-form-input,
+  .cp03-form-textarea {
+    min-height: 44px;
+  }
+
+  /* Map iframe */
+  .cp03-access-map iframe {
+    height: 250px;
+  }
+
+  /* Overview rows: stack */
+  .cp03-overview-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cp03-overview-dt {
+    flex: none;
   }
 
   .cp03-footer-top {
@@ -1734,7 +1809,7 @@
   }
 
   .cp03-numbers-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 14px;
   }
   .cp03-number-circle {
@@ -1748,7 +1823,7 @@
     grid-template-columns: 1fr;
   }
   .cp03-gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 10px;
   }
   .cp03-interlude {
@@ -1803,8 +1878,10 @@
     padding: 28px 18px;
     border-radius: var(--cp03-radius);
   }
-  .cp03-form-input {
+  .cp03-form-input,
+  .cp03-form-textarea {
     padding: 12px 14px;
+    width: 100%;
   }
 
   .cp03-recruit-heading {

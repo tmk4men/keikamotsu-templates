@@ -684,6 +684,12 @@
   font-weight: 900;
   margin-bottom: 12px;
 }
+.cp07-partner-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: contain;
+}
 .cp07-partner-name {
   font-size: 14px;
   font-weight: 700;
@@ -1065,6 +1071,17 @@
 /* ═══════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════ */
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .cp07-container { max-width: 960px; }
+  .cp07-section { padding: 60px 0; }
+  .cp07-numbers-grid { grid-template-columns: repeat(2, 1fr); }
+  .cp07-partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .cp07-hero-headline { font-size: 36px; }
+}
+
+/* ── Mobile ── */
 @media (max-width: 768px) {
   .cp07-hamburger { display: flex; }
   .cp07-nav {
@@ -1129,4 +1146,21 @@
   .cp07-reveal--left, .cp07-reveal--right {
     transform: translateY(30px);
   }
+  .cp07-form input, .cp07-form textarea { min-height: 44px; }
+  .cp07-form button[type="submit"] { min-height: 48px; }
+  .cp07-access iframe { height: 250px; }
+}
+
+/* ── Extra-small ── */
+@media (max-width: 480px) {
+  .cp07-container { padding: 0 16px; }
+  .cp07-section { padding: 40px 0; }
+  .cp07-section-title { font-size: 22px; }
+  .cp07-hero { padding: 80px 16px 48px; }
+  .cp07-hero-headline { font-size: 26px; }
+  .cp07-numbers-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cp07-partners-grid { grid-template-columns: 1fr; }
+  .cp07-form { padding: 16px; }
+  .cp07-message { padding: 16px; }
+  .cp07-footer-inner { padding: 32px 16px 20px; }
 }

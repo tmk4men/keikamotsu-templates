@@ -960,6 +960,13 @@
   border-bottom-color: var(--cp04-accent);
   box-shadow: 0 12px 32px rgba(201, 168, 76, 0.12);
 }
+.cp04-partner-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
 .cp04-partner-industry {
   font-size: 0.72rem;
   letter-spacing: 0.15em;
@@ -1572,6 +1579,72 @@
 }
 
 /* ══════════════════════════════════════
+   RESPONSIVE – Tablet Landscape (1024px)
+   ══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .cp04-container {
+    max-width: 960px;
+  }
+
+  .cp04-services,
+  .cp04-strengths,
+  .cp04-message,
+  .cp04-company,
+  .cp04-history,
+  .cp04-numbers,
+  .cp04-partners,
+  .cp04-news,
+  .cp04-recruit,
+  .cp04-access,
+  .cp04-contact,
+  .cp04-gallery {
+    padding: 68px 0;
+  }
+
+  /* Numbers: 4col → 2col */
+  .cp04-numbers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* Partners: 3col → 2col */
+  .cp04-partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Gallery: 3col → 2col */
+  .cp04-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Strengths: more flexible ratio */
+  .cp04-strength-item--grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  /* Company grid: more flexible */
+  .cp04-company-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  /* Access: more flexible */
+  .cp04-access-body {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  /* Footer: wrap */
+  .cp04-footer-mid {
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+}
+
+/* ══════════════════════════════════════
    RESPONSIVE – 768px
    ══════════════════════════════════════ */
 @media (max-width: 768px) {
@@ -1684,6 +1757,16 @@
     gap: 32px;
   }
 
+  .cp04-access-map iframe {
+    height: 250px;
+  }
+
+  /* Form touch targets */
+  .cp04-form-input,
+  .cp04-form-textarea {
+    min-height: 44px;
+  }
+
   .cp04-recruit-frame {
     padding: 40px 24px;
   }
@@ -1755,8 +1838,8 @@
   }
 
   .cp04-numbers-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
   .cp04-counter {
     font-size: 1.7rem;
@@ -1764,6 +1847,12 @@
 
   .cp04-partners-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Form full-width */
+  .cp04-form-input,
+  .cp04-form-textarea {
+    width: 100%;
   }
 
   .cp04-news-item {

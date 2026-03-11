@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 /* ===================================================
    Layout-03: ロジスティクス・ジャーナル / マガジン型
@@ -19,8 +19,9 @@
   --lay03-shadow: none;
   --lay03-shadow-lg: 0 8px 32px rgba(61, 43, 31, 0.12);
   --lay03-serif: 'Noto Serif JP', Georgia, serif;
-  --lay03-serif-display: 'Shippori Mincho', 'Noto Serif JP', serif;
+  --lay03-serif-display: 'Playfair Display', 'Shippori Mincho', 'Noto Serif JP', serif;
   --lay03-serif-en: 'Cormorant Garamond', Georgia, serif;
+  --lay03-serif-en-italic: 'Cormorant Garamond', Georgia, serif;
   --lay03-sans: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
   --lay03-radius: 4px;
 
@@ -56,8 +57,10 @@
 /* ── Reveal Animation ── */
 .lay03-reveal {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .lay03-revealed {
   opacity: 1;
@@ -82,6 +85,13 @@
     transform: none;
     clip-path: none;
   }
+  .lay03-reveal { transition: none; opacity: 1; transform: none; }
+  .lay03-revealed { opacity: 1; transform: none; }
+  .lay03-hero__headline { animation: none; opacity: 1; transform: none; }
+  .lay03-hero__subtext { animation: none; opacity: 1; transform: none; }
+  .lay03-service-img, .lay03-strength-img, .lay03-history-img { clip-path: none; transition: none; }
+  .lay03-revealed .lay03-service-img, .lay03-revealed .lay03-strength-img, .lay03-revealed .lay03-history-img { clip-path: none; }
+  .lay03-interlude { background-attachment: scroll; }
 }
 
 /* ===================================================
@@ -117,7 +127,7 @@
   flex-direction: column;
 }
 .lay03-masthead__company {
-  font-family: var(--lay03-serif-display);
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -149,17 +159,18 @@
   color: var(--lay03-accent);
 }
 .lay03-masthead__link::after {
-  content: "";
+  content: '';
   position: absolute;
-  bottom: -4px;
-  left: 0;
+  bottom: -2px;
+  left: 50%;
   width: 0;
   height: 1px;
   background: var(--lay03-accent);
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .lay03-masthead__link:hover::after {
   width: 100%;
+  left: 0;
 }
 
 /* Hamburger */
@@ -245,7 +256,7 @@
   padding: 5px 24px;
 }
 .lay03-hero__headline {
-  font-family: var(--lay03-serif-display);
+  font-family: 'Playfair Display', 'Shippori Mincho', serif;
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 700;
   line-height: 1.3;
@@ -313,8 +324,7 @@
 
 /* ── Sidebar Sticky ── */
 .lay03-sidebar-sticky {
-  position: sticky;
-  top: 88px;
+  position: static;
 }
 
 /* ===================================================
@@ -339,7 +349,8 @@
 }
 .lay03-section-label {
   display: block;
-  font-family: var(--lay03-serif-en);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
   font-size: 0.8rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -467,12 +478,13 @@
   margin-bottom: 28px;
   border-left: 3px solid var(--lay03-accent);
   background: transparent;
-  font-family: var(--lay03-serif-display);
-  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
   line-height: 1.8;
   letter-spacing: 0.08em;
   color: var(--lay03-text);
   font-style: normal;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .lay03-pullquote__mark {
   font-size: 2.4rem;
@@ -605,6 +617,14 @@
   color: var(--lay03-text-light);
   padding-top: 6px;
   letter-spacing: 0.05em;
+}
+.lay03-history-img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-top: 10px;
+  display: block;
 }
 
 /* ===================================================
@@ -788,6 +808,15 @@
   border-radius: 0;
   border: 1px solid var(--lay03-accent);
 }
+
+.lay03-partner-item__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .lay03-partner-item__name {
   font-size: 0.85rem;
   font-weight: 500;
@@ -891,7 +920,8 @@
 }
 .lay03-interlude__label {
   display: block;
-  font-family: var(--lay03-serif-en);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
   font-size: 0.8rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -920,6 +950,14 @@
 .lay03-strength-card:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.3);
+}
+.lay03-strength-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  display: block;
 }
 .lay03-strength-card__num {
   display: block;
@@ -1259,6 +1297,97 @@
 }
 
 /* ===================================================
+   ENHANCED ANIMATIONS
+   =================================================== */
+
+/* ── Hero editorial entrance ── */
+.lay03-hero__headline {
+  animation: lay03-editorialIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+@keyframes lay03-editorialIn {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+    letter-spacing: 0.2em;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.06em;
+  }
+}
+
+.lay03-hero__subtext {
+  animation: lay03-fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+@keyframes lay03-fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Image reveal with clip-path ── */
+.lay03-service-img,
+.lay03-strength-img,
+.lay03-history-img {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lay03-revealed .lay03-service-img,
+.lay03-revealed .lay03-strength-img,
+.lay03-revealed .lay03-history-img {
+  clip-path: inset(0 0 0 0);
+}
+.lay03-service-img:hover,
+.lay03-strength-img:hover,
+.lay03-history-img:hover {
+  transform: scale(1.03);
+}
+
+/* ── Pull quote entrance ── */
+.lay03-pullquote::before {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
+}
+
+/* ── Sidebar sticky elements float effect ── */
+.lay03-numbers-grid {
+  transition: box-shadow 0.4s ease;
+}
+.lay03-numbers-grid:hover {
+  box-shadow: 0 8px 32px rgba(61, 43, 31, 0.12);
+}
+
+/* ── Timeline item entrance stagger ── */
+.lay03-timeline__item {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lay03-timeline__item:hover {
+  transform: translateX(4px);
+}
+
+/* ── Interlude parallax hint ── */
+.lay03-interlude {
+  background-attachment: fixed;
+}
+
+/* ── CEO image subtle zoom ── */
+.lay03-ceo-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lay03-ceo-img:hover {
+  transform: scale(1.03);
+}
+
+/* ── Decorative drop cap for first paragraph ── */
+.lay03-article__first-letter::first-letter {
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+  font-size: 3.2em;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.08em;
+  color: var(--lay03-accent);
+}
+
+/* ===================================================
    RESPONSIVE: TABLET
    =================================================== */
 @media (max-width: 1024px) {
@@ -1389,6 +1518,13 @@
   }
   .lay03-footer__nav {
     max-width: none;
+  }
+
+  .lay03-history-img {
+    height: 100px;
+  }
+  .lay03-strength-img {
+    height: 120px;
   }
 
   .lay03-interlude {

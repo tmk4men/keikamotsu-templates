@@ -571,6 +571,25 @@
 .dyn-form__submit { display: block; width: 100%; padding: 16px; font-size: 15px; font-weight: 800; cursor: pointer; border: none; background: var(--dyn-orange); color: #fff; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; transition: background 0.3s, transform 0.2s; }
 .dyn-form__submit:hover { background: var(--dyn-orange-dark); transform: translateY(-2px); }
 
+/* --- Tablet --- */
+@media (max-width: 1024px) {
+  .dyn-container { max-width: 960px; }
+  .dyn-reasons,
+  .dyn-benefits,
+  .dyn-daily,
+  .dyn-voices,
+  .dyn-gallery-section,
+  .dyn-faq-section,
+  .dyn-form-section,
+  .dyn-cta { padding: 60px 0; }
+  .dyn-hero__heading { font-size: 3.8rem; }
+  .dyn-hero__salary-num { font-size: 3rem; }
+  .dyn-voices__grid { grid-template-columns: repeat(2, 1fr); }
+  .dyn-reason__big-num { font-size: 6rem; min-width: 140px; }
+  .dyn-section-title { font-size: 2rem; }
+  .dyn-carousel__img { height: 320px; }
+}
+
 /* --- Mobile --- */
 @media (max-width: 768px) {
   .dyn-nav {
@@ -592,6 +611,10 @@
   .dyn-news__item { flex-direction: column; align-items: flex-start; gap: 6px; }
   .dyn-section-title { font-size: 1.8rem; }
   .dyn-carousel__img { height: 250px; }
+  .dyn-form__input, .dyn-form__textarea { min-height: 44px; }
+  .dyn-access__map iframe { height: 250px; }
+  .dyn-footer__meta { display: flex; flex-direction: column; align-items: center; }
+  .dyn-nav__link { padding: 8px 0; font-size: 15px; }
 }
 
 /* --- Extra Small Mobile --- */
@@ -605,11 +628,14 @@
   .dyn-faq-section,
   .dyn-form-section,
   .dyn-cta { padding: 48px 0; }
-  .dyn-section-title { font-size: 1.5rem; }
+  .dyn-section-title { font-size: max(18px, 1.5rem); }
   .dyn-hero__heading { font-size: 2.2rem; }
   .dyn-hero__salary-num { font-size: 2rem; }
   .dyn-hero__badges { flex-direction: column; align-items: center; }
   .dyn-carousel__img { height: 200px; }
   .dyn-reason__big-num { font-size: 4rem; }
   .dyn-timeline__time { font-size: 1.6rem; min-width: 60px; }
+  .dyn-form { padding: 0 16px; }
+  .dyn-form__input, .dyn-form__textarea { min-height: 44px; padding: 12px; }
+  .dyn-form__submit { padding: 16px 12px; }
 }

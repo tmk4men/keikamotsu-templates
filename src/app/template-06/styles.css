@@ -645,6 +645,25 @@
 .warm-form__submit { display: block; width: 100%; padding: 16px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; background: var(--warm-brown); color: #fff; border-radius: 6px; font-family: var(--font-handwriting); transition: background 0.3s, transform 0.3s; }
 .warm-form__submit:hover { background: var(--warm-brown-light); transform: scale(1.02); }
 
+/* --- Tablet --- */
+@media (max-width: 1024px) {
+  .warm-container { max-width: 960px; }
+  .warm-reasons,
+  .warm-benefits,
+  .warm-daily,
+  .warm-voices,
+  .warm-gallery-section,
+  .warm-faq-section,
+  .warm-form-section,
+  .warm-cta { padding: 60px 0; }
+  .warm-hero__heading { font-size: 2.2rem; }
+  .warm-postcards { grid-template-columns: repeat(2, 1fr); }
+  .warm-sticky-board { grid-template-columns: repeat(2, 1fr); }
+  .warm-scrapbook { grid-template-columns: repeat(2, 1fr); }
+  .warm-voices__grid { grid-template-columns: repeat(2, 1fr); }
+  .warm-carousel__img { height: 320px; }
+}
+
 /* --- Mobile --- */
 @media (max-width: 768px) {
   .warm-nav {
@@ -666,6 +685,10 @@
   .warm-envelope__actions { flex-direction: column; }
   .warm-news__item { flex-direction: column; align-items: flex-start; gap: 6px; }
   .warm-carousel__img { height: 250px; }
+  .warm-form__input, .warm-form__textarea { min-height: 44px; }
+  .warm-access__map iframe { height: 250px; }
+  .warm-footer__inner { display: flex; flex-direction: column; align-items: center; }
+  .warm-nav__link { padding: 8px 0; font-size: 15px; }
 }
 
 /* --- Extra Small Mobile --- */
@@ -680,12 +703,14 @@
   .warm-faq-section,
   .warm-form-section,
   .warm-cta { padding: 48px 0; }
-  .warm-heading { font-size: 1.5rem; }
+  .warm-heading { font-size: 1.5rem; min-font-size: 18px; font-size: max(18px, 1.5rem); }
   .warm-hero__heading { font-size: 1.5rem; }
   .warm-hero__salary-num { font-size: 1.5rem; }
   .warm-hero__badges { flex-direction: column; align-items: center; }
   .warm-carousel__img { height: 200px; }
   .warm-scrapbook { grid-template-columns: 1fr; }
-  .warm-section-title,
   .warm-subheading { font-size: 0.85rem; }
+  .warm-form { padding: 0 16px; }
+  .warm-form__input, .warm-form__textarea { min-height: 44px; padding: 12px; }
+  .warm-form__submit { padding: 16px 12px; }
 }
