@@ -558,9 +558,7 @@ export default function Corporate06Page() {
                 className="cp06-partner-card cp06-reveal"
                 style={{ transitionDelay: `${i * 0.08}s` }}
               >
-                <div className="cp06-partner-icon" aria-hidden="true">
-                  {p.name.charAt(0)}
-                </div>
+                <img src={p.logo} alt={p.name} className="cp06-partner-logo" />
                 <h3 className="cp06-partner-name">{p.name}</h3>
                 <span className="cp06-partner-industry">{p.industry}</span>
               </div>

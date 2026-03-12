@@ -5,25 +5,118 @@ import Image from "next/image";
 import * as data from "@/data/corporateSiteData";
 import "./styles.css";
 
-/* ── scroll-reveal hook ── */
-function useReveal(delay = 0) {
+/* ── scroll-reveal hook (re-observe on tab change) ── */
+function useReveal(delay = 0, deps: unknown[] = []) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // reset: remove class and force reflow
+    el.classList.remove("lay02-revealed");
+    el.style.animation = "none";
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    el.offsetHeight; // force reflow
+    el.style.animation = "";
+
     const obs = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
-          setTimeout(() => el.classList.add("lay02-revealed"), delay);
+          setTimeout(() => {
+            el.classList.add("lay02-revealed");
+          }, delay + 100);
           obs.unobserve(el);
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.05 }
     );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [delay]);
+    const t = setTimeout(() => obs.observe(el), 150);
+    return () => { clearTimeout(t); obs.disconnect(); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [delay, ...deps]);
   return ref;
+}
+
+/* ── typing animation hook ── */
+function useTyping(text: string, speed = 100, startDelay = 400) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        setDisplayed(text.slice(0, i));
+        if (i >= text.length) {
+          clearInterval(interval);
+          setDone(true);
+        }
+      }, speed);
+      return () => clearInterval(interval);
+    }, startDelay);
+    return () => clearTimeout(timeout);
+  }, [text, speed, startDelay]);
+  return { displayed, done };
+}
+
+/* ── typing headline ── */
+function TypingHeadline() {
+  const fullText = "物流で未来を変えていく。";
+  const { displayed, done } = useTyping(fullText, 120, 500);
+  return (
+    <h1 className="lay02-hero__headline">
+      {displayed}
+      {!done && <span className="lay02-typing-cursor">|</span>}
+    </h1>
+  );
+}
+
+/* ── history timeline with stagger reveal ── */
+function HistoryTimeline({ activeTab }: { activeTab: string }) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    setRevealed(false);
+    const el = wrapperRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setRevealed(true);
+          obs.unobserve(el);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    const t = setTimeout(() => obs.observe(el), 80);
+    return () => { clearTimeout(t); obs.disconnect(); };
+  }, [activeTab]);
+
+  return (
+    <div ref={wrapperRef} className="lay02-timeline">
+      {data.history.map((h, i) => (
+        <div
+          key={i}
+          className={`lay02-timeline__item ${revealed ? "lay02-timeline__item--visible" : ""}`}
+          style={{ transitionDelay: revealed ? `${i * 150}ms` : "0ms" }}
+        >
+          <div className="lay02-timeline__dot" />
+          <div className="lay02-timeline__year">{h.year}</div>
+          <div className="lay02-timeline__event">
+            {h.event}
+            <Image
+              src={"/keikamotsu-templates/images/history-" + h.year + ".webp"}
+              alt={h.year + "年"}
+              width={300}
+              height={170}
+              className="lay02-history-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 /* ── animated counter ── */
@@ -87,6 +180,12 @@ const serviceImages = [
 ];
 const serviceAlts = ["EC物流配送", "企業間配送", "スポット便", "ルート配送"];
 
+const strengthImages = [
+  "/keikamotsu-templates/images/strength-01.webp",
+  "/keikamotsu-templates/images/strength-02.webp",
+  "/keikamotsu-templates/images/strength-03.webp",
+];
+
 export default function Layout02() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<TabId>("business");
@@ -129,18 +228,18 @@ export default function Layout02() {
     return parseFloat(cleaned);
   };
 
-  /* reveals */
-  const rBusiness = useReveal(0);
-  const rStrengths = useReveal(100);
-  const rMessage = useReveal(0);
-  const rCompany = useReveal(100);
-  const rHistory = useReveal(200);
-  const rNumbers = useReveal(0);
-  const rPartners = useReveal(100);
-  const rNews = useReveal(200);
-  const rRecruit = useReveal(0);
-  const rAccess = useReveal(100);
-  const rContact = useReveal(200);
+  /* reveals (re-observe on tab change) */
+  const rBusiness = useReveal(0, [activeTab]);
+  const rStrengths = useReveal(100, [activeTab]);
+  const rMessage = useReveal(0, [activeTab]);
+  const rCompany = useReveal(100, [activeTab]);
+  const rHistory = useReveal(200, [activeTab]);
+  const rNumbers = useReveal(0, [activeTab]);
+  const rPartners = useReveal(100, [activeTab]);
+  const rNews = useReveal(200, [activeTab]);
+  const rRecruit = useReveal(0, [activeTab]);
+  const rAccess = useReveal(100, [activeTab]);
+  const rContact = useReveal(200, [activeTab]);
 
   const handleTabChange = (tabId: TabId) => {
     setActiveTab(tabId);
@@ -211,10 +310,10 @@ export default function Layout02() {
         />
         <div className="lay02-hero__overlay" />
         <div className="lay02-hero__content">
-          <h1 className="lay02-hero__headline">
-            物流で未来を<br className="br-pc" />変えていく。
-          </h1>
-          <p className="lay02-hero__subtext">{data.hero.subtext[0]}</p>
+          <TypingHeadline />
+          <p className="lay02-hero__subtext">
+            大手運輸会社の委託配送と<br className="br-pc" />通販サイト荷物配送を軽自動車でメイン展開。
+          </p>
         </div>
       </section>
 
@@ -259,7 +358,7 @@ export default function Layout02() {
         >
           {/* Services - Accordion */}
           <section id="services" className="lay02-section">
-            <div ref={rBusiness} className="lay02-reveal lay02-container">
+            <div ref={rBusiness} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header">
                 <span className="lay02-section-label">Services</span>
                 <h2 className="lay02-section-title">事業内容</h2>
@@ -307,7 +406,7 @@ export default function Layout02() {
 
           {/* Strengths */}
           <section id="strengths" className="lay02-section lay02-section--alt">
-            <div ref={rStrengths} className="lay02-reveal lay02-container">
+            <div ref={rStrengths} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header">
                 <span className="lay02-section-label">Strengths</span>
                 <h2 className="lay02-section-title">私たちの強み</h2>
@@ -317,6 +416,7 @@ export default function Layout02() {
                 {data.strengths.map((s, i) => (
                   <div key={i} className="lay02-strength-card">
                     <div className="lay02-strength-card__num">{s.num}</div>
+                    <Image src={strengthImages[i]} alt={s.title} width={400} height={200} className="lay02-strength-img" loading="lazy" />
                     <h3 className="lay02-strength-card__title">{s.title}</h3>
                     <p className="lay02-strength-card__text">{s.text}</p>
                   </div>
@@ -334,7 +434,7 @@ export default function Layout02() {
         >
           {/* CEO Message */}
           <section id="message" className="lay02-section">
-            <div ref={rMessage} className="lay02-reveal lay02-container">
+            <div ref={rMessage} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header">
                 <span className="lay02-section-label">Message</span>
                 <h2 className="lay02-section-title">代表メッセージ</h2>
@@ -366,7 +466,7 @@ export default function Layout02() {
 
           {/* Company Overview */}
           <section id="company" className="lay02-section lay02-section--alt">
-            <div ref={rCompany} className="lay02-reveal lay02-container">
+            <div ref={rCompany} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header">
                 <span className="lay02-section-label">Company</span>
                 <h2 className="lay02-section-title">会社概要</h2>
@@ -398,21 +498,13 @@ export default function Layout02() {
 
           {/* History */}
           <section id="history" className="lay02-section">
-            <div ref={rHistory} className="lay02-reveal lay02-container">
+            <div ref={rHistory} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header">
                 <span className="lay02-section-label">History</span>
                 <h2 className="lay02-section-title">沿革</h2>
                 <div className="lay02-section-divider" />
               </div>
-              <div className="lay02-timeline">
-                {data.history.map((h, i) => (
-                  <div key={i} className="lay02-timeline__item">
-                    <div className="lay02-timeline__dot" />
-                    <div className="lay02-timeline__year">{h.year}</div>
-                    <div className="lay02-timeline__event">{h.event}</div>
-                  </div>
-                ))}
-              </div>
+              <HistoryTimeline activeTab={activeTab} />
             </div>
           </section>
         </div>
@@ -425,7 +517,7 @@ export default function Layout02() {
         >
           {/* Numbers */}
           <section id="numbers" className="lay02-section lay02-section--dark">
-            <div ref={rNumbers} className="lay02-reveal lay02-container">
+            <div ref={rNumbers} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header lay02-section-header--light">
                 <span className="lay02-section-label">Numbers</span>
                 <h2 className="lay02-section-title">数字で見る実績</h2>
@@ -449,7 +541,7 @@ export default function Layout02() {
 
           {/* Partners */}
           <section id="partners" className="lay02-section">
-            <div ref={rPartners} className="lay02-reveal lay02-container">
+            <div ref={rPartners} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header">
                 <span className="lay02-section-label">Partners</span>
                 <h2 className="lay02-section-title">主要取引先</h2>
@@ -458,9 +550,7 @@ export default function Layout02() {
               <div className="lay02-partners-grid">
                 {data.partners.map((p, i) => (
                   <div key={i} className="lay02-partner-card">
-                    <div className="lay02-partner-card__icon" aria-hidden="true">
-                      {p.name.charAt(0)}
-                    </div>
+                    <img src={p.logo} alt={p.name} className="lay02-partner-card__logo" />
                     <h3 className="lay02-partner-card__name">{p.name}</h3>
                     <span className="lay02-partner-card__industry">{p.industry}</span>
                   </div>
@@ -471,7 +561,7 @@ export default function Layout02() {
 
           {/* News */}
           <section id="news" className="lay02-section lay02-section--alt">
-            <div ref={rNews} className="lay02-reveal lay02-container">
+            <div ref={rNews} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header">
                 <span className="lay02-section-label">News</span>
                 <h2 className="lay02-section-title">お知らせ</h2>
@@ -500,7 +590,7 @@ export default function Layout02() {
         >
           {/* Recruit */}
           <section id="recruit" className="lay02-section lay02-recruit-section">
-            <div ref={rRecruit} className="lay02-reveal lay02-container">
+            <div ref={rRecruit} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header lay02-section-header--light">
                 <span className="lay02-section-label">Recruit</span>
                 <h2 className="lay02-section-title">採用情報</h2>
@@ -526,7 +616,7 @@ export default function Layout02() {
 
           {/* Access */}
           <section id="access" className="lay02-section">
-            <div ref={rAccess} className="lay02-reveal lay02-container">
+            <div ref={rAccess} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header">
                 <span className="lay02-section-label">Access</span>
                 <h2 className="lay02-section-title">{data.access.heading}</h2>
@@ -565,7 +655,7 @@ export default function Layout02() {
 
           {/* Contact Form */}
           <section id="contact" className="lay02-section lay02-section--alt">
-            <div ref={rContact} className="lay02-reveal lay02-container">
+            <div ref={rContact} className="lay02-reveal lay02-reveal--up lay02-container">
               <div className="lay02-section-header">
                 <span className="lay02-section-label">Contact</span>
                 <h2 className="lay02-section-title">{data.contact.heading}</h2>

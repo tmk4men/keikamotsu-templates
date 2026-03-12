@@ -481,9 +481,7 @@ export default function Corporate01() {
                 className="cp01-partner-card"
                 style={{ animationDelay: `${i * 0.08}s` }}
               >
-                <div className="cp01-partner-card__icon" aria-hidden="true">
-                  {p.name.charAt(0)}
-                </div>
+                <img src={p.logo} alt={p.name} className="cp01-partner-card__logo" />
                 <h3 className="cp01-partner-card__name">{p.name}</h3>
                 <span className="cp01-partner-card__industry">
                   {p.industry}

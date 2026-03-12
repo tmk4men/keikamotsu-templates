@@ -485,6 +485,7 @@ export default function CorporateTemplate04() {
           <div className="cp04-partners-grid">
             {data.partners.map((p, i) => (
               <div key={i} className="cp04-partner-card cp04-reveal-scale" style={{ transitionDelay: `${i * 0.15}s` }}>
+                <img src={p.logo} alt={p.name} className="cp04-partner-logo" />
                 <span className="cp04-partner-industry">{p.industry}</span>
                 <span className="cp04-partner-name">{p.name}</span>
               </div>

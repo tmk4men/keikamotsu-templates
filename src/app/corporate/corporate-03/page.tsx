@@ -429,6 +429,7 @@ export default function Corporate03Page() {
           <div className="cp03-partners-grid">
             {data.partners.map((p, i) => (
               <div key={p.name} className="cp03-partner-card cp03-reveal" style={{ transitionDelay: `${i * 0.12}s`, animationDelay: `${i * 0.12}s` }}>
+                <img src={p.logo} alt={p.name} className="cp03-partner-logo" />
                 <span className="cp03-partner-industry">{p.industry}</span>
                 <span className="cp03-partner-name">{p.name}</span>
               </div>

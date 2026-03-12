@@ -452,7 +452,7 @@ export default function Corporate08Page() {
           <div className="cp08-partners-grid">
             {data.partners.map((p, i) => (
               <div key={i} className="cp08-partner-card cp08-reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
-                <div className="cp08-partner-icon">{p.name.charAt(0)}</div>
+                <img src={p.logo} alt={p.name} className="cp08-partner-logo" />
                 <h3 className="cp08-partner-name">{p.name}</h3>
                 <span className="cp08-partner-industry">{p.industry}</span>
               </div>

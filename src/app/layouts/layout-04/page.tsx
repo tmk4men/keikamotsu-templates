@@ -14,16 +14,100 @@ function useReveal(delay = 0) {
     const obs = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
-          setTimeout(() => el.classList.add("lay04-revealed"), delay);
+          setTimeout(() => el.classList.add("lay04-revealed"), delay + 100);
           obs.unobserve(el);
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.05 }
     );
-    obs.observe(el);
-    return () => obs.disconnect();
+    const t = setTimeout(() => obs.observe(el), 100);
+    return () => { clearTimeout(t); obs.disconnect(); };
   }, [delay]);
   return ref;
+}
+
+/* ── typing headline ── */
+function useTyping(text: string, speed = 120, startDelay = 500) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+  useEffect(() => {
+    let i = 0;
+    const t = setTimeout(() => {
+      const iv = setInterval(() => {
+        i++;
+        setDisplayed(text.slice(0, i));
+        if (i >= text.length) { clearInterval(iv); setDone(true); }
+      }, speed);
+    }, startDelay);
+    return () => clearTimeout(t);
+  }, [text, speed, startDelay]);
+  return { displayed, done };
+}
+
+function TypingHeadline() {
+  const fullText = "物流で未来を変えていく。";
+  const { displayed, done } = useTyping(fullText, 120, 500);
+  const half = Math.ceil(fullText.length / 2);
+  const line1 = displayed.slice(0, half);
+  const line2 = displayed.slice(half);
+  return (
+    <h1 className="lay04-hero-split__headline">
+      {line1}
+      {displayed.length >= half && <br />}
+      {line2}
+      {!done && <span className="lay04-typing-cursor">|</span>}
+    </h1>
+  );
+}
+
+/* ── zigzag item with individual reveal ── */
+function ZigzagItem({ children, index }: { children: React.ReactNode; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setTimeout(() => el.classList.add("lay04-zigzag--visible"), 150);
+          obs.unobserve(el);
+        }
+      },
+      { threshold: 0.15 }
+    );
+    const t = setTimeout(() => obs.observe(el), 100 + index * 80);
+    return () => { clearTimeout(t); obs.disconnect(); };
+  }, [index]);
+  return (
+    <div ref={ref} className="lay04-zigzag-item-wrap">
+      {children}
+    </div>
+  );
+}
+
+/* ── stagger card reveal ── */
+function StaggerCard({ children, index }: { children: React.ReactNode; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setTimeout(() => el.classList.add("lay04-stagger--visible"), index * 150);
+          obs.unobserve(el);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    const t = setTimeout(() => obs.observe(el), 100);
+    return () => { clearTimeout(t); obs.disconnect(); };
+  }, [index]);
+  return (
+    <div ref={ref} className="lay04-stagger-card">
+      {children}
+    </div>
+  );
 }
 
 /* ── animated counter ── */
@@ -123,10 +207,10 @@ export default function Layout04() {
 
   /* nav links - LP型: limited navigation */
   const lpNavLinks = [
-    { href: "#services", label: "事業内容" },
-    { href: "#company", label: "会社概要" },
-    { href: "#recruit", label: "採用情報" },
-    { href: "#contact", label: "お問い合わせ" },
+    { href: "#services", label: "事業内容", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="6" width="22" height="15" rx="2" /><path d="M1 10h22" /><path d="M8 6V3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3" /></svg> },
+    { href: "#company", label: "会社概要", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18" /><path d="M5 21V7l8-4v18" /><path d="M19 21V11l-6-4" /><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01" /></svg> },
+    { href: "#recruit", label: "採用情報", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M19 8v6M22 11h-6" /></svg> },
+    { href: "#contact", label: "お問い合わせ", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><path d="m22 6-10 7L2 6" /></svg> },
   ];
 
   /* service images */
@@ -135,6 +219,13 @@ export default function Layout04() {
     "/keikamotsu-templates/images/service-b2b.webp",
     "/keikamotsu-templates/images/service-spot.webp",
     "/keikamotsu-templates/images/service-route.webp",
+  ];
+
+  /* strength images */
+  const strengthImages = [
+    "/keikamotsu-templates/images/strength-01.webp",
+    "/keikamotsu-templates/images/strength-02.webp",
+    "/keikamotsu-templates/images/strength-03.webp",
   ];
 
   return (
@@ -160,6 +251,7 @@ export default function Layout04() {
           <nav className={`lay04-nav ${menuOpen ? "lay04-nav--open" : ""}`}>
             {lpNavLinks.map((l) => (
               <a key={l.href} href={l.href} className="lay04-nav__link" onClick={closeMenu}>
+                <span className="lay04-nav__icon">{l.icon}</span>
                 {l.label}
               </a>
             ))}
@@ -177,9 +269,7 @@ export default function Layout04() {
       <section className="lay04-hero-split">
         <div ref={rHero} className="lay04-reveal lay04-hero-split__inner">
           <div className="lay04-hero-split__left">
-            <h1 className="lay04-hero-split__headline">
-              物流で未来を<br />変えていく。
-            </h1>
+            <TypingHeadline />
             <div className="lay04-hero-split__subtext">
               {data.hero.subtext.map((line, i) => (
                 <p key={i}>{line}</p>
@@ -226,26 +316,25 @@ export default function Layout04() {
           </div>
           <div className="lay04-zigzag-list">
             {data.services.map((s, i) => (
-              <div
-                key={i}
-                className={`lay04-zigzag ${i % 2 !== 0 ? "lay04-zigzag--reverse" : ""}`}
-              >
-                <div className="lay04-zigzag__image">
-                  <Image
-                    src={serviceImages[i]}
-                    alt={s.title}
-                    width={560}
-                    height={380}
-                    className="lay04-zigzag__img"
-                    loading="lazy"
-                  />
+              <ZigzagItem key={i} index={i}>
+                <div className={`lay04-zigzag ${i % 2 !== 0 ? "lay04-zigzag--reverse" : ""}`}>
+                  <div className="lay04-zigzag__image">
+                    <Image
+                      src={serviceImages[i]}
+                      alt={s.title}
+                      width={560}
+                      height={380}
+                      className="lay04-zigzag__img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="lay04-zigzag__content">
+                    <span className="lay04-zigzag__num">{s.num}</span>
+                    <h3 className="lay04-zigzag__title">{s.title}</h3>
+                    <p className="lay04-zigzag__text">{s.text}</p>
+                  </div>
                 </div>
-                <div className="lay04-zigzag__content">
-                  <span className="lay04-zigzag__num">{s.num}</span>
-                  <h3 className="lay04-zigzag__title">{s.title}</h3>
-                  <p className="lay04-zigzag__text">{s.text}</p>
-                </div>
-              </div>
+              </ZigzagItem>
             ))}
           </div>
         </div>
@@ -275,11 +364,14 @@ export default function Layout04() {
           </div>
           <div className="lay04-strengths-grid">
             {data.strengths.map((s, i) => (
-              <div key={i} className="lay04-strength-card">
-                <div className="lay04-strength-card__num">{String(i + 1).padStart(2, "0")}</div>
-                <h3 className="lay04-strength-card__title">{s.title}</h3>
-                <p className="lay04-strength-card__text">{s.text}</p>
-              </div>
+              <StaggerCard key={i} index={i}>
+                <div className="lay04-strength-card">
+                  <Image src={strengthImages[i]} alt={s.title} width={400} height={200} className="lay04-strength-img" loading="lazy" />
+                  <div className="lay04-strength-card__num">{String(i + 1).padStart(2, "0")}</div>
+                  <h3 className="lay04-strength-card__title">{s.title}</h3>
+                  <p className="lay04-strength-card__text">{s.text}</p>
+                </div>
+              </StaggerCard>
             ))}
           </div>
         </div>
@@ -298,7 +390,7 @@ export default function Layout04() {
               {[...data.partners, ...data.partners].map((p, i) => (
                 <React.Fragment key={i}>
                   <div className="lay04-marquee__item">
-                    <span className="lay04-marquee__icon">{p.name.charAt(0)}</span>
+                    <img src={p.logo} alt={p.name} className="lay04-marquee__logo" />
                     <span className="lay04-marquee__name">{p.name}</span>
                     <span className="lay04-marquee__industry">{p.industry}</span>
                   </div>
@@ -410,6 +502,7 @@ export default function Layout04() {
                   </button>
                   <div className="lay04-accordion__panel">
                     <p className="lay04-accordion__event">{h.event}</p>
+                    <Image src={"/keikamotsu-templates/images/history-" + h.year + ".webp"} alt={h.year + "年"} width={300} height={170} className="lay04-history-img" loading="lazy" />
                   </div>
                 </div>
               ))}

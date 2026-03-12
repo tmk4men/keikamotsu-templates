@@ -447,7 +447,7 @@ export default function Corporate07Page() {
           <div className="cp07-partners-grid">
             {data.partners.map((p, i) => (
               <div key={i} className="cp07-partner-card cp07-reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
-                <div className="cp07-partner-icon">{p.name.charAt(0)}</div>
+                <img src={p.logo} alt={p.name} className="cp07-partner-logo" />
                 <h3 className="cp07-partner-name">{p.name}</h3>
                 <span className="cp07-partner-industry">{p.industry}</span>
               </div>

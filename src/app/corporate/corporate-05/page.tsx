@@ -417,6 +417,7 @@ export default function Corporate05Page() {
           <div className="cp05-partners-grid">
             {data.partners.map((p, i) => (
               <div key={i} className="cp05-partner-card cp05-reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+                <img src={p.logo} alt={p.name} className="cp05-partner-logo" />
                 <span className="cp05-partner-industry">{p.industry}</span>
                 <span className="cp05-partner-name">{p.name}</span>
               </div>

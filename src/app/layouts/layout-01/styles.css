@@ -27,11 +27,27 @@
 }
 
 /* ── Reset & Layout ── */
+.lay01-layout,
+.lay01-layout *,
+.lay01-layout *::before,
+.lay01-layout *::after {
+  box-sizing: border-box;
+}
+
 .lay01-layout {
   display: flex;
   min-height: 100vh;
   background: var(--lay01-bg);
   font-family: 'Noto Sans JP', sans-serif;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+.lay01-layout img,
+.lay01-layout iframe,
+.lay01-layout video {
+  max-width: 100%;
 }
 
 /* ── Japanese text line breaks ── */
@@ -165,8 +181,10 @@
   margin-left: var(--lay01-sidebar-w);
   flex: 1;
   min-height: 100vh;
+  min-width: 0;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 /* ── Mobile Header (hidden desktop) ── */
@@ -1597,6 +1615,9 @@
   /* Main full width */
   .lay01-main {
     margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   /* Show mobile header */
@@ -1653,12 +1674,33 @@
     letter-spacing: -0.02em;
   }
 
+  /* Hide decorative corner pseudo-elements that overflow */
+  #numbers.lay01-panel::before,
+  #message.lay01-panel::before,
+  #services.lay01-panel::before,
+  #partners.lay01-panel::before,
+  #company.lay01-panel::before {
+    display: none;
+  }
+
   /* Grid single column */
   .lay01-grid {
     grid-template-columns: 1fr;
     gap: 16px;
     padding: 16px;
     padding-bottom: 80px;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Prevent grid children from exceeding column width */
+  .lay01-grid > * {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .lay01-panel--span2 {
@@ -1667,6 +1709,12 @@
 
   .lay01-panel {
     padding: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   #numbers.lay01-panel {
@@ -1800,6 +1848,17 @@
   }
 
   /* Footer */
+  .lay01-footer {
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  .lay01-footer__inner {
+    max-width: 100%;
+    overflow: hidden;
+    padding: 32px 16px 20px;
+  }
+
   .lay01-footer__top {
     flex-direction: column;
     gap: 12px;
@@ -1860,11 +1919,15 @@
   .lay01-grid {
     padding: 12px;
     gap: 12px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .lay01-panel {
     padding: 16px;
     border-radius: var(--lay01-radius);
+    max-width: 100%;
+    width: 100%;
   }
 
   #numbers.lay01-panel,

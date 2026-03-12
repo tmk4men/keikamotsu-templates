@@ -125,6 +125,12 @@ export default function Layout03() {
     return parseFloat(cleaned);
   };
 
+  const strengthImages = [
+    "/keikamotsu-templates/images/strength-01.webp",
+    "/keikamotsu-templates/images/strength-02.webp",
+    "/keikamotsu-templates/images/strength-03.webp",
+  ];
+
   const serviceImages = [
     "/keikamotsu-templates/images/service-ec.webp",
     "/keikamotsu-templates/images/service-b2b.webp",
@@ -301,7 +307,10 @@ export default function Layout03() {
                   <div key={i} className="lay03-timeline__item">
                     <div className="lay03-timeline__year">{h.year}</div>
                     <div className="lay03-timeline__line" aria-hidden="true" />
-                    <div className="lay03-timeline__event">{h.event}</div>
+                    <div className="lay03-timeline__event">
+                      {h.event}
+                      <Image src={"/keikamotsu-templates/images/history-" + h.year + ".webp"} alt={h.year + "年"} width={300} height={170} className="lay03-history-img" loading="lazy" />
+                    </div>
                   </div>
                 ))}
               </div>
@@ -394,9 +403,7 @@ export default function Layout03() {
               <div className="lay03-partners-list">
                 {data.partners.map((p, i) => (
                   <div key={i} className="lay03-partner-item">
-                    <span className="lay03-partner-item__icon" aria-hidden="true">
-                      {p.name.charAt(0)}
-                    </span>
+                    <img src={p.logo} alt={p.name} className="lay03-partner-item__logo" />
                     <div>
                       <div className="lay03-partner-item__name">{p.name}</div>
                       <span className="lay03-partner-item__industry">{p.industry}</span>
@@ -450,6 +457,9 @@ export default function Layout03() {
           <div className="lay03-strengths-grid">
             {data.strengths.map((s, i) => (
               <div key={i} className="lay03-strength-card">
+                {strengthImages[i] && (
+                  <Image src={strengthImages[i]} alt={s.title} width={400} height={200} className="lay03-strength-img" loading="lazy" />
+                )}
                 <span className="lay03-strength-card__num">{s.num}</span>
                 <h3 className="lay03-strength-card__title">{s.title}</h3>
                 <p className="lay03-strength-card__text">{s.text}</p>

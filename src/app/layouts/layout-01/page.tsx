@@ -14,16 +14,51 @@ function useReveal(delay = 0) {
     const obs = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
-          setTimeout(() => el.classList.add("lay01-revealed"), delay);
+          setTimeout(() => el.classList.add("lay01-revealed"), delay + 100);
           obs.unobserve(el);
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.08 }
     );
-    obs.observe(el);
-    return () => obs.disconnect();
+    // delay observe to ensure initial paint at opacity:0
+    const t = setTimeout(() => obs.observe(el), 100);
+    return () => { clearTimeout(t); obs.disconnect(); };
   }, [delay]);
   return ref;
+}
+
+/* ── typing animation hook ── */
+function useTyping(text: string, speed = 100, startDelay = 400) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        setDisplayed(text.slice(0, i));
+        if (i >= text.length) {
+          clearInterval(interval);
+          setDone(true);
+        }
+      }, speed);
+      return () => clearInterval(interval);
+    }, startDelay);
+    return () => clearTimeout(timeout);
+  }, [text, speed, startDelay]);
+  return { displayed, done };
+}
+
+/* ── typing headline ── */
+function TypingHeadline() {
+  const fullText = "物流で未来を変えていく。";
+  const { displayed, done } = useTyping(fullText, 120, 500);
+  return (
+    <h1 className="lay01-hero__headline">
+      {displayed}
+      {!done && <span className="lay01-typing-cursor">|</span>}
+    </h1>
+  );
 }
 
 /* ── animated counter ── */
@@ -96,6 +131,8 @@ const mobileTabItems = [
 export default function Layout01() {
   const [activeSection, setActiveSection] = useState("lay01-hero");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const historyTrackRef = useRef<HTMLDivElement>(null);
+  const historyWrapperRef = useRef<HTMLDivElement>(null);
 
   /* scroll handler for active section tracking */
   useEffect(() => {
@@ -117,6 +154,32 @@ export default function Layout01() {
     window.addEventListener("scroll", h, { passive: true });
     h();
     return () => window.removeEventListener("scroll", h);
+  }, []);
+
+  /* scroll-linked horizontal history */
+  useEffect(() => {
+    const wrapper = historyWrapperRef.current;
+    const track = historyTrackRef.current;
+    if (!wrapper || !track) return;
+
+    const onScroll = () => {
+      const rect = wrapper.getBoundingClientRect();
+      const wrapperH = wrapper.offsetHeight;
+      const viewH = window.innerHeight;
+      const scrollable = wrapperH - viewH;
+      if (scrollable <= 0) return;
+
+      // How far into the wrapper we've scrolled (0 → 1)
+      const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
+      const trackW = track.scrollWidth;
+      const visibleW = track.parentElement?.offsetWidth ?? track.offsetWidth;
+      const maxShift = trackW - visibleW;
+      track.style.transform = `translateX(-${progress * maxShift}px)`;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   /* close sidebar on ESC (mobile) */
@@ -157,6 +220,21 @@ export default function Layout01() {
     "/keikamotsu-templates/images/service-route.webp",
   ];
   const serviceAlts = ["EC物流配送", "企業間配送", "スポット便", "ルート配送"];
+
+  const strengthImages = [
+    "/keikamotsu-templates/images/strength-01.webp",
+    "/keikamotsu-templates/images/strength-02.webp",
+    "/keikamotsu-templates/images/strength-03.webp",
+  ];
+  const strengthAlts = ["直接契約", "スピード", "多様な人材"];
+
+  const historyImageMap: Record<string, string> = {
+    "2021": "/keikamotsu-templates/images/history-2021.webp",
+    "2022": "/keikamotsu-templates/images/history-2022.webp",
+    "2023": "/keikamotsu-templates/images/history-2023.webp",
+    "2024": "/keikamotsu-templates/images/history-2024.webp",
+    "2025": "/keikamotsu-templates/images/history-2025.webp",
+  };
 
   return (
     <div className="lay01-layout">
@@ -235,9 +313,7 @@ export default function Layout01() {
           </video>
           <div className="lay01-hero__overlay" />
           <div ref={rHero} className="lay01-reveal lay01-hero__content">
-            <h1 className="lay01-hero__headline">
-              物流で未来を<br className="br-pc" />変えていく。
-            </h1>
+            <TypingHeadline />
             <p className="lay01-hero__subtext">{data.hero.subtext[0]}</p>
             <a href="#contact" className="lay01-btn-primary">
               {data.hero.cta}
@@ -249,7 +325,7 @@ export default function Layout01() {
         <div className="lay01-grid">
           {/* ─── NUMBERS (top, prominent) ─── */}
           <section id="numbers" className="lay01-panel lay01-panel--span2">
-            <div ref={rNumbers} className="lay01-reveal">
+            <div ref={rNumbers} className="lay01-reveal lay01-reveal--up">
               <div className="lay01-panel__header">
                 <span className="lay01-panel__label">Numbers</span>
                 <h2 className="lay01-panel__title">数字で見る実績</h2>
@@ -272,7 +348,7 @@ export default function Layout01() {
 
           {/* ─── CEO MESSAGE ─── */}
           <section id="message" className="lay01-panel">
-            <div ref={rMessage} className="lay01-reveal">
+            <div ref={rMessage} className="lay01-reveal lay01-reveal--up">
               <div className="lay01-panel__header">
                 <span className="lay01-panel__label">Message</span>
                 <h2 className="lay01-panel__title">代表メッセージ</h2>
@@ -303,7 +379,7 @@ export default function Layout01() {
 
           {/* ─── SERVICES (2col span) ─── */}
           <section id="services" className="lay01-panel lay01-panel--span2">
-            <div ref={rServices} className="lay01-reveal">
+            <div ref={rServices} className="lay01-reveal lay01-reveal--up">
               <div className="lay01-panel__header">
                 <span className="lay01-panel__label">Services</span>
                 <h2 className="lay01-panel__title">事業内容</h2>
@@ -335,7 +411,7 @@ export default function Layout01() {
 
           {/* ─── STRENGTHS ─── */}
           <section id="strengths" className="lay01-panel">
-            <div ref={rStrengths} className="lay01-reveal">
+            <div ref={rStrengths} className="lay01-reveal lay01-reveal--up">
               <div className="lay01-panel__header">
                 <span className="lay01-panel__label">Strengths</span>
                 <h2 className="lay01-panel__title">私たちの強み</h2>
@@ -345,6 +421,16 @@ export default function Layout01() {
                   <div key={i} className="lay01-strength-item">
                     <div className="lay01-strength-item__num">{s.num}</div>
                     <div className="lay01-strength-item__content">
+                      {strengthImages[i] && (
+                        <Image
+                          src={strengthImages[i]}
+                          alt={strengthAlts[i] || s.title}
+                          width={400}
+                          height={200}
+                          className="lay01-strength-img"
+                          loading="lazy"
+                        />
+                      )}
                       <h3 className="lay01-strength-item__title">{s.title}</h3>
                       <p className="lay01-strength-item__text">{s.text}</p>
                     </div>
@@ -356,7 +442,7 @@ export default function Layout01() {
 
           {/* ─── PARTNERS ─── */}
           <section id="partners" className="lay01-panel">
-            <div ref={rPartners} className="lay01-reveal">
+            <div ref={rPartners} className="lay01-reveal lay01-reveal--up">
               <div className="lay01-panel__header">
                 <span className="lay01-panel__label">Partners</span>
                 <h2 className="lay01-panel__title">主要取引先</h2>
@@ -364,7 +450,7 @@ export default function Layout01() {
               <div className="lay01-partners-grid">
                 {data.partners.map((p, i) => (
                   <div key={i} className="lay01-partner-card">
-                    <div className="lay01-partner-card__icon">{p.name.charAt(0)}</div>
+                    <img src={p.logo} alt={p.name} className="lay01-partner-card__logo" />
                     <div className="lay01-partner-card__info">
                       <h3 className="lay01-partner-card__name">{p.name}</h3>
                       <span className="lay01-partner-card__industry">{p.industry}</span>
@@ -375,28 +461,49 @@ export default function Layout01() {
             </div>
           </section>
 
-          {/* ─── HISTORY (horizontal scroll) ─── */}
-          <section id="history" className="lay01-panel lay01-panel--span2">
-            <div ref={rHistory} className="lay01-reveal">
-              <div className="lay01-panel__header">
-                <span className="lay01-panel__label">History</span>
-                <h2 className="lay01-panel__title">沿革</h2>
-              </div>
-              <div className="lay01-history-scroll">
-                {data.history.map((h, i) => (
-                  <div key={i} className="lay01-history-card">
-                    <div className="lay01-history-card__year">{h.year}</div>
-                    <div className="lay01-history-card__line" />
-                    <div className="lay01-history-card__event">{h.event}</div>
+          {/* ─── HISTORY (scroll-linked horizontal) ─── */}
+          <div
+            id="history"
+            ref={historyWrapperRef}
+            className="lay01-history-wrapper"
+          >
+            <div className="lay01-history-sticky">
+              <div ref={rHistory} className="lay01-reveal lay01-reveal--up">
+                <div className="lay01-panel__header">
+                  <span className="lay01-panel__label">History</span>
+                  <h2 className="lay01-panel__title">沿革 ─ 2021〜2025</h2>
+                </div>
+                <div className="lay01-history-viewport">
+                  <div ref={historyTrackRef} className="lay01-history-track">
+                    {data.history.map((h, i) => (
+                      <div key={i} className="lay01-history-card">
+                        <div className="lay01-history-card__year">{h.year}</div>
+                        <div className="lay01-history-card__dot" />
+                        <div className="lay01-history-card__event">{h.event}</div>
+                        {historyImageMap[h.year] && (
+                          <Image
+                            src={historyImageMap[h.year]}
+                            alt={`${h.year}年の様子`}
+                            width={300}
+                            height={170}
+                            className="lay01-history-card__img"
+                            loading="lazy"
+                          />
+                        )}
+                      </div>
+                    ))}
                   </div>
-                ))}
+                  {/* progress line behind cards */}
+                  <div className="lay01-history-line" />
+                </div>
+                <p className="lay01-history-hint">↓ スクロールでタイムラインが進みます</p>
               </div>
             </div>
-          </section>
+          </div>
 
           {/* ─── NEWS ─── */}
           <section id="news" className="lay01-panel">
-            <div ref={rNews} className="lay01-reveal">
+            <div ref={rNews} className="lay01-reveal lay01-reveal--up">
               <div className="lay01-panel__header">
                 <span className="lay01-panel__label">News</span>
                 <h2 className="lay01-panel__title">お知らせ</h2>
@@ -417,7 +524,7 @@ export default function Layout01() {
 
           {/* ─── RECRUIT ─── */}
           <section id="recruit" className="lay01-panel lay01-panel--accent">
-            <div ref={rRecruit} className="lay01-reveal">
+            <div ref={rRecruit} className="lay01-reveal lay01-reveal--up">
               <div className="lay01-panel__header">
                 <span className="lay01-panel__label lay01-panel__label--light">Recruit</span>
                 <h2 className="lay01-panel__title lay01-panel__title--light">採用情報</h2>
@@ -442,7 +549,7 @@ export default function Layout01() {
 
           {/* ─── COMPANY + ACCESS ─── */}
           <section id="company" className="lay01-panel lay01-panel--span2">
-            <div ref={rCompany} className="lay01-reveal">
+            <div ref={rCompany} className="lay01-reveal lay01-reveal--up">
               <div className="lay01-panel__header">
                 <span className="lay01-panel__label">Company</span>
                 <h2 className="lay01-panel__title">会社概要</h2>
@@ -472,7 +579,7 @@ export default function Layout01() {
 
           {/* ─── ACCESS ─── */}
           <section id="access" className="lay01-panel lay01-panel--span2">
-            <div ref={rAccess} className="lay01-reveal">
+            <div ref={rAccess} className="lay01-reveal lay01-reveal--up">
               <div className="lay01-panel__header">
                 <span className="lay01-panel__label">Access</span>
                 <h2 className="lay01-panel__title">{data.access.heading}</h2>
@@ -510,7 +617,7 @@ export default function Layout01() {
 
           {/* ─── CONTACT FORM ─── */}
           <section id="contact" className="lay01-panel lay01-panel--span2">
-            <div ref={rContact} className="lay01-reveal">
+            <div ref={rContact} className="lay01-reveal lay01-reveal--up">
               <div className="lay01-panel__header">
                 <span className="lay01-panel__label">Contact</span>
                 <h2 className="lay01-panel__title">{data.contact.heading}</h2>

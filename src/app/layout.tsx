@@ -20,6 +20,7 @@ import {
 } from "next/font/google";
 import { meta } from "@/data/siteData";
 import { company } from "@/data/corporateSiteData";
+import ScrollToTop from "@/components/ScrollToTop";
 import "./globals.css";
 
 /* ── 基本日本語フォント ── */
@@ -197,6 +198,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <ScrollToTop />
       </body>
     </html>
   );

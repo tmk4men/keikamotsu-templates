@@ -441,6 +441,7 @@ export default function CorporateTemplate02() {
           <div className="cp02-partners-grid">
             {data.partners.map((p, i) => (
               <div key={i} className="cp02-partner-card cp02-reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
+                <img src={p.logo} alt={p.name} className="cp02-partner-logo" />
                 <span className="cp02-partner-badge">{p.industry}</span>
                 <p className="cp02-partner-name">{p.name}</p>
               </div>
