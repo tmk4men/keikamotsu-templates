@@ -7,13 +7,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "レイアウト集テンプレート一覧（4種）",
+  title: "レイアウト集テンプレート一覧（5種）",
   description:
-    "軽貨物ドライバー事業向けコーポレートサイト レイアウトバリエーション4種。ダッシュボード型・タブ切替型・マガジン型・LP型の多彩なページ構成。",
+    "軽貨物ドライバー事業向けコーポレートサイト レイアウトバリエーション5種。ダッシュボード型・タブ切替型・マガジン型・LP型・横スクロール型の多彩なページ構成。",
   openGraph: {
-    title: "レイアウト集テンプレート一覧（4種）｜軽貨物ドライバー事業テンプレート集",
+    title: "レイアウト集テンプレート一覧（5種）｜軽貨物ドライバー事業テンプレート集",
     description:
-      "コーポレートサイトのレイアウトバリエーション4種を一覧表示。",
+      "コーポレートサイトのレイアウトバリエーション5種を一覧表示。",
     type: "website",
   },
 };
@@ -54,6 +54,15 @@ const layoutTemplates = [
     color: "#1e40af",
     accent: "#16a34a",
     bg: "#ffffff",
+  },
+  {
+    id: "05",
+    name: "ホライゾンフロー",
+    subtitle: "横スクロール型",
+    desc: "フルスクリーン横スクロール＋scroll-snap。没入感ある水平移動体験、モバイルは縦自動切替",
+    color: "#1a3a2a",
+    accent: "#c49a6c",
+    bg: "#f7f6f3",
   },
 ];
 
@@ -122,7 +131,7 @@ export default function LayoutsGalleryPage() {
             color: "#fff",
             cursor: "default",
           }}>
-            レイアウト集（4種）
+            レイアウト集（5種）
           </span>
         </div>
 
