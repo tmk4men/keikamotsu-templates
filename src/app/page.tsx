@@ -7,13 +7,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "採用HPテンプレート一覧（16種）",
+  title: "採用HPテンプレート一覧（17種）",
   description:
-    "軽貨物ドライバー採用に特化したHPデザインテンプレート16種を一覧表示。スタイリッシュ、ミニマル、ポップ、高級感など多彩なデザインから選べます。",
+    "軽貨物ドライバー採用に特化したHPデザインテンプレート17種を一覧表示。スタイリッシュ、ミニマル、ポップ、高級感など多彩なデザインから選べます。",
   openGraph: {
-    title: "採用HPテンプレート一覧（16種）｜軽貨物ドライバー事業テンプレート集",
+    title: "採用HPテンプレート一覧（17種）｜軽貨物ドライバー事業テンプレート集",
     description:
-      "軽貨物ドライバー採用に特化したHPデザインテンプレート16種を一覧表示。",
+      "軽貨物ドライバー採用に特化したHPデザインテンプレート17種を一覧表示。",
     type: "website",
   },
 };
@@ -35,6 +35,7 @@ const templates = [
   { id: "14", name: "親しみやすい",     desc: "パステルカラー、丸角多用、やわらかい印象",                 color: "#10b981", bg: "#ecfdf5" },
   { id: "15", name: "クリエイティブ",   desc: "非対称レイアウト、アート風、個性的なスクロール",           color: "#f97316", bg: "#fffbeb" },
   { id: "16", name: "RPGクエスト",     desc: "横スクロール、RPGテーマ、ステージ構成の冒険的デザイン",   color: "#ffd700", bg: "#1a2e1a" },
+  { id: "17", name: "ナチュラル",     desc: "グリーン×アースカラー、ウェーブ区切り、ガラスモーフィズム", color: "#1e6e3e", bg: "#faf9f7" },
 ];
 
 export default function GalleryPage() {
@@ -66,7 +67,7 @@ export default function GalleryPage() {
             color: "#fff",
             cursor: "default",
           }}>
-            採用HPテンプレート（16種）
+            採用HPテンプレート（17種）
           </span>
           <Link
             href="/corporate"

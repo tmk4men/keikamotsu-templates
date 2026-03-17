@@ -1,0 +1,418 @@
+/* ==============================================
+   Template 17: ナチュラル (Natural Green)
+   ウェーブ区切り、ガラスモーフィズム、マーキー、パーティクル
+   ============================================== */
+
+@theme {
+  --color-brand: #1e6e3e;
+  --color-brand-dark: #174f2e;
+  --color-brand-light: #e8f5ee;
+  --color-brand-pale: #f2f9f5;
+
+  --color-cta: #e8601c;
+  --color-cta-hover: #cf5418;
+
+  --color-bg: #faf9f7;
+  --color-bg-alt: #f4f2ed;
+
+  --font-body: "Noto Sans JP", system-ui, sans-serif;
+}
+
+/* 日本語の折り返し制御 */
+.theme-17 h1, .theme-17 h2, .theme-17 h3, .theme-17 h4, .theme-17 p, .theme-17 li, .theme-17 td, .theme-17 th, .theme-17 span, .theme-17 a {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* ===========================
+   ヒーロー背景
+   =========================== */
+.hero-bg {
+  background: url("../../../public/images/hero-bg.webp") center center / cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    170deg,
+    rgba(5, 15, 10, 0.92) 0%,
+    rgba(10, 30, 18, 0.85) 40%,
+    rgba(10, 35, 20, 0.80) 100%
+  );
+  pointer-events: none;
+}
+
+/* ヒーロー光の粒子 */
+@keyframes float-particle {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  50% { transform: translateY(-60px) scale(1.5); }
+}
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.6), rgba(255,255,255,0));
+  pointer-events: none;
+  animation: float-particle var(--dur, 6s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* ヒーローグラデーションテキスト */
+.hero-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 50%, #ffffff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 6s ease infinite;
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ヒーローバッジ（グラスモーフィズム） */
+.hero-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+.hero-badge:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* ===========================
+   ウェーブセクション区切り
+   =========================== */
+.wave-divider {
+  position: relative;
+}
+.wave-divider::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0 16C240 48 480 0 720 24C960 48 1200 0 1440 16V48H0Z' fill='%23faf9f7'/%3E%3C/svg%3E");
+  background-size: cover;
+  pointer-events: none;
+}
+.wave-divider-alt::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0 16C240 48 480 0 720 24C960 48 1200 0 1440 16V48H0Z' fill='%23f4f2ed'/%3E%3C/svg%3E");
+}
+.wave-divider-bg::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0 16C240 48 480 0 720 24C960 48 1200 0 1440 16V48H0Z' fill='%23faf9f7'/%3E%3C/svg%3E");
+}
+.wave-divider-pale::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0 16C240 48 480 0 720 24C960 48 1200 0 1440 16V48H0Z' fill='%23f2f9f5'/%3E%3C/svg%3E");
+}
+
+/* ===========================
+   セクション見出し下線（クレヨン風）
+   =========================== */
+.heading-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+.heading-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='4' viewBox='0 0 120 4'%3E%3Cpath d='M0 2.5Q2 1 5 2Q8 3 12 1.5Q16 0.5 20 2Q24 3.5 28 1.5Q32 0.5 36 2Q40 3 44 1.5Q48 0.5 52 2.5Q56 3.5 60 1.5Q64 0.5 68 2Q72 3 76 1.5Q80 0.5 84 2.5Q88 3.5 92 2Q96 0.5 100 1.5Q104 3 108 2Q112 1 116 2.5Q118 3 120 2' stroke='%232563eb' stroke-width='2.5' fill='none' stroke-linecap='round' opacity='0.7'/%3E%3Cpath d='M0 2Q3 3 7 1.5Q11 0.5 15 2Q19 3 23 1.5Q27 1 31 2.5Q35 3.5 39 2Q43 1 47 2Q51 3 55 1.5Q59 0.5 63 2Q67 3.5 71 1.5Q75 0.5 79 2.5Q83 3.5 87 1.5Q91 0.5 95 2Q99 3 103 1.5Q107 0.5 111 2.5Q115 3.5 120 2' stroke='%2360a5fa' stroke-width='1.5' fill='none' stroke-linecap='round' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: 120px 4px;
+  background-repeat: repeat-x;
+  transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+.revealed .heading-underline::after {
+  width: 100%;
+}
+
+/* 見出し用明朝体 */
+.font-heading {
+  font-family: var(--font-heading), "Noto Sans JP", serif;
+}
+
+/* 手書き風フォント */
+.font-handwriting {
+  font-family: var(--font-handwriting), cursive;
+}
+
+/* ===========================
+   ナビリンク ホバー下線
+   =========================== */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #1e6e3e;
+  border-radius: 1px;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ===========================
+   CTAパルスアニメーション
+   =========================== */
+@keyframes cta-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 96, 28, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(232, 96, 28, 0); }
+}
+.cta-pulse {
+  animation: cta-glow 2.5s ease-in-out infinite;
+}
+.cta-pulse:hover {
+  animation: none;
+}
+
+/* ===========================
+   スタガーカード
+   =========================== */
+.stagger-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.revealed .stagger-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+.revealed .stagger-card:nth-child(1) { transition-delay: 0s; }
+.revealed .stagger-card:nth-child(2) { transition-delay: 0.1s; }
+.revealed .stagger-card:nth-child(3) { transition-delay: 0.2s; }
+.revealed .stagger-card:nth-child(4) { transition-delay: 0.3s; }
+.revealed .stagger-card:nth-child(5) { transition-delay: 0.4s; }
+.revealed .stagger-card:nth-child(6) { transition-delay: 0.5s; }
+.revealed .stagger-card:nth-child(7) { transition-delay: 0.6s; }
+.revealed .stagger-card:nth-child(8) { transition-delay: 0.7s; }
+.revealed .stagger-card:nth-child(9) { transition-delay: 0.8s; }
+.revealed .stagger-card:nth-child(10) { transition-delay: 0.9s; }
+
+/* ===========================
+   トラック走行アニメーション
+   =========================== */
+@keyframes truck-drive {
+  0% { transform: translateX(-150px); }
+  100% { transform: translateX(var(--drive-end, calc(100vw - 200px))); }
+}
+@keyframes wheel-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes wind-blow {
+  0% { transform: translateX(60vw); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(-20vw); opacity: 0; }
+}
+@keyframes road-dash-move {
+  from { background-position: 0 0; }
+  to { background-position: -40px 0; }
+}
+@keyframes text-reveal {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+.truck-drive {
+  animation: truck-drive 8s ease-out forwards;
+}
+.wheel-spin {
+  animation: wheel-spin 0.8s linear infinite;
+}
+.wind-line {
+  animation: wind-blow 6s linear infinite;
+}
+.road-dash {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.3) 0px,
+    rgba(255,255,255,0.3) 12px,
+    transparent 12px,
+    transparent 28px
+  );
+  animation: road-dash-move 1.2s linear infinite;
+}
+.text-behind-truck {
+  clip-path: inset(0 100% 0 0);
+  animation: text-reveal 4s ease-out 0.5s forwards;
+}
+
+/* ===========================
+   横断幕マーキー
+   =========================== */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
+@keyframes marquee-scroll-reverse {
+  from { transform: translateX(-33.333%); }
+  to { transform: translateX(0); }
+}
+.marquee-track {
+  animation: marquee-scroll 18s linear infinite;
+}
+.marquee-track-reverse {
+  animation: marquee-scroll-reverse 22s linear infinite;
+}
+
+/* ===========================
+   吹き出し（先輩ドライバーの声）
+   =========================== */
+.speech-bubble {
+  position: relative;
+}
+.speech-bubble.slide-from-left::before {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: 28px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 11px solid rgba(255, 255, 255, 0.5);
+}
+.speech-bubble.slide-from-left::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 29px;
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 10px solid rgba(255, 255, 255, 0.55);
+}
+.speech-bubble.slide-from-right::before {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  right: 28px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 11px solid rgba(255, 255, 255, 0.5);
+}
+.speech-bubble.slide-from-right::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  right: 29px;
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 10px solid rgba(255, 255, 255, 0.55);
+}
+
+/* ===========================
+   セクション背景グラデーション
+   =========================== */
+.section-grad-green {
+  background: linear-gradient(160deg, #f2f9f5 0%, #faf9f7 40%, #eef7f2 100%);
+}
+.section-grad-warm {
+  background: linear-gradient(160deg, #faf8f4 0%, #f4f2ed 40%, #f8f4ee 100%);
+}
+.section-grad-mint {
+  background: linear-gradient(160deg, #eef8f3 0%, #faf9f7 35%, #f0f7f9 100%);
+}
+.section-grad-sunset {
+  background: linear-gradient(160deg, #faf6f2 0%, #f4f2ed 35%, #f6f0f4 100%);
+}
+.section-grad-sky {
+  background: linear-gradient(160deg, #f0f6fa 0%, #faf9f7 40%, #eef5f0 100%);
+}
+.section-grad-cta {
+  background: linear-gradient(160deg, #e8f5ee 0%, #f2f9f5 30%, #e0f2e8 60%, #eef8f2 100%);
+}
+
+/* ===========================
+   ガラスモーフィズム カード
+   =========================== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+/* 応募条件の下線アニメーション */
+@keyframes underline-grow {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.condition-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+.revealed .condition-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #1e6e3e, #34d399);
+  border-radius: 1px;
+  animation: underline-grow 0.8s ease-out forwards;
+  animation-delay: inherit;
+}
+
+/* 左右スライドイン */
+.slide-from-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.slide-from-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.revealed .slide-from-left,
+.revealed .slide-from-right {
+  opacity: 1;
+  transform: translateX(0);
+}
